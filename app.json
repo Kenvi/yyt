@@ -1,0 +1,31 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "tabBar": {
+    "color":"#777",
+    "backgroundColor":"#f8f6f7",
+    "selectedColor":"#31CE06",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "预约",
+        "iconPath":"images/icon2a.png",
+        "selectedIconPath":"images/icon2.png"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "text": "我的",
+        "iconPath": "images/icon4a.png",
+        "selectedIconPath":"images/icon4.png"
+      }
+    ]
+  },
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "易医通",
+    "navigationBarTextStyle":"black"
+  }
+}
