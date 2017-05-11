@@ -1,7 +1,30 @@
 <!--index.wxml-->
-<map id="myMap" show-location />
+<view class="page-tit">救护车预约</view>
+<view class="order-nav">
+  <view class="tab-item active">救护车</view>
+  <view class="tab-item">航空</view>
+  <view class="tab-item">高铁</view>
+  <view class="tab-item">直升机</view>
+</view>
 
-<button type="primary" bindtap="getCenterLocation">获取位置</button>
-<button type="primary" bindtap="moveToLocation">移动位置</button>
+<view class="main-form-wrap">
+  <form class="main-form">
+    <view class="form-group">
+      <text >出发地</text>
+      <input type="text" id="startLocation" value="1111" />
+      <text class="locate"></text>
+    </view>
+    <view class="form-group">
+      <text >目的地</text>
+      <input type="text" id="startLocation" value="1111" />
+      <text class="locate"></text>
+    </view>
+    <view class="form-group">
+      <view>用车时间</view>
+      <picker mode="date" value="" >
+        <view>2017-05-11</view>
+      </picker>
 
-<view class="a2"></view>
+    </view>
+  </form>
+</view>
