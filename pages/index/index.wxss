@@ -58,6 +58,21 @@
       border: 4rpx solid #eee;
       border-radius: 10rpx; }
     .main-form .form-group > picker {
-      margin-left: 15rpx; }
+      margin-left: 30rpx;
+      font-weight: bold; }
+
+.map-wrap {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99; }
+
+map#startlocate {
+  width: 100%;
+  height: 100%; }
 
 /*# sourceMappingURL=index.wxss.map */

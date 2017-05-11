@@ -11,12 +11,12 @@
   <form class="main-form">
     <view class="form-group">
       <text >出发地</text>
-      <input type="text" id="startLocation" value="1111" />
+      <input type="text" id="startLocation" value="" />
       <text class="locate"></text>
     </view>
     <view class="form-group">
       <text >目的地</text>
-      <input type="text" id="startLocation" value="1111" />
+      <input type="text" id="endLocation" value="" />
       <text class="locate"></text>
     </view>
     <view class="form-group">
@@ -24,7 +24,13 @@
       <picker mode="date" value="" >
         <view>2017-05-11</view>
       </picker>
-
+      <picker mode="time" value="" >
+        <view>09:00</view>
+      </picker>
     </view>
   </form>
+</view>
+
+<view class="map-wrap">
+  <map id="startlocate"  scale="16" controls="{{controls}}" bindcontroltap="controltap"  bindmarkertap="markertap"  bindregionchange="regionchange" show-location ></map>
 </view>
