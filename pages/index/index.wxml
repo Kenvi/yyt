@@ -32,5 +32,5 @@
 </view>
 
 <view class="map-wrap">
-  <map id="startlocate"  scale="16" controls="{{controls}}" bindcontroltap="controltap"  bindmarkertap="markertap"  bindregionchange="regionchange" show-location ></map>
+  <map id="startlocate" longitude="113.324520" latitude="23.099994"  scale="14" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}"  bindmarkertap="markertap"  bindregionchange="regionchange" show-location ></map>
 </view>
