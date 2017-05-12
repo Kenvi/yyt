@@ -1,8 +1,9 @@
-.log-list {
-  display: flex;
-  flex-direction: column;
-  padding: 40rpx;
+.map_container{
+  height: 300px;
+  width: 100%;
 }
-.log-item {
-  margin: 10rpx;
+
+.map {
+  height: 100%;
+  width: 100%;
 }

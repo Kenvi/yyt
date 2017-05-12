@@ -1,46 +1,77 @@
 //logs.js
-var util = require('../../utils/util.js')
+var bmap  = require('../../utils/bmap-wx.min.js')
+var AK =  '3pcGRQbqAf19GeF1lFiO7BWeofRpsnQ9'
+var wxMarkerData = [];  //定位成功回调对象
 Page({
   data: {
-    markers: [{
-      iconPath: "/images/aim.png",
-      id: 0,
-      latitude: 23.099994,
-      longitude: 113.324520,
-      width: 50,
-      height: 50
-    }],
-    polyline: [{
-      points: [{
-        longitude: 113.3245211,
-        latitude: 23.10229
-      }, {
-        longitude: 113.324520,
-        latitude: 23.21229
-      }],
-      color:"#FF0000DD",
-      width: 2,
-      dottedLine: true
-    }],
-    controls: [{
-      id: 1,
-      iconPath: '/images/aim.png',
-      position: {
-        left: 0,
-        top: 300 - 50,
-        width: 50,
-        height: 50
-      },
-      clickable: true
-    }]
+    markers: [],
+    latitude: '',
+    longitude: '',
+    placeData: {}
   },
-  regionchange:function(e) {
-    console.log(e.type)
+  makertap: function(e) {
+    var that = this;
+    var id = e.markerId;
+    that.showSearchInfo(wxMarkerData, id);
+    that.changeMarkerColor(wxMarkerData, id);
   },
-  markertap:function(e) {
-    console.log(e.markerId)
+  onLoad: function() {
+    var that = this;
+    // 新建百度地图对象
+    var BMap = new bmap.BMapWX({
+      ak: AK
+    });
+    var fail = function(data) {
+      console.log(data)
+    };
+    var success = function(data) {
+      wxMarkerData = data.wxMarkerData;
+      that.setData({
+        markers: wxMarkerData
+      });
+      that.setData({
+        latitude: wxMarkerData[0].latitude
+      });
+      that.setData({
+        longitude: wxMarkerData[0].longitude
+      });
+    }
+    // 发起POI检索请求
+    BMap.search({
+      "query": '酒店',
+      fail: fail,
+      success: success,
+      // 此处需要在相应路径放置图片文件
+      iconPath: '/images/marker.png',
+      // 此处需要在相应路径放置图片文件
+      iconTapPath: '/images/marker.png'
+    });
   },
-  controltap:function(e) {
-    console.log(e.controlId)
+  showSearchInfo: function(data, i) {
+    var that = this;
+    that.setData({
+      placeData: {
+        title: '名称：' + data[i].title + '\n',
+        address: '地址：' + data[i].address + '\n',
+        telephone: '电话：' + data[i].telephone
+      }
+    });
+  },
+  changeMarkerColor: function(data, i) {
+    var that = this;
+    var markers = [];
+    for (var j = 0; j < data.length; j++) {
+      if (j == i) {
+        // 此处需要在相应路径放置图片文件
+        data[j].iconPath = "/images/marker.png";
+      } else {
+        // 此处需要在相应路径放置图片文件
+        data[j].iconPath = "/images/marker.png";
+      }
+      markers[j](data[j]);
+    }
+    that.setData({
+      markers: markers
+    });
   }
 })
