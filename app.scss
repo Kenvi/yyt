@@ -1,19 +1,22 @@
-.back {
+.back{
   position: relative;
+  //overflow: hidden;
   width: 30rpx;
-  left: 20rpx; }
-  .back:before, .back:after {
+  left: 20rpx;
+  &:before,&:after{
     position: absolute;
     content: '';
     left: 0rpx;
     width: 25rpx;
     height: 5rpx;
-    background: #fff; }
-  .back:before {
+    background: #fff;
+  }
+  &:before{
     transform: rotate(45deg);
-    top: 60%; }
-  .back:after {
+    top: 60%;
+  }
+  &:after{
     transform: rotate(-45deg);
-    top: 35%; }
-
-/*# sourceMappingURL=app.wxss.map */
+    top:35%;
+  }
+}

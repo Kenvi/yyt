@@ -1,17 +1,15 @@
 //index.js
 //获取应用实例
 var app = getApp()
+var bmap  = require('../../utils/bmap-wx.min.js')
+var AK =  '3pcGRQbqAf19GeF1lFiO7BWeofRpsnQ9'
 Page({
   data: {
-    markers: [{
-      iconPath: "/images/aim.png",
-      id: 0,
-      title:'cxb',
-      latitude: 23.099994,
-      longitude: 113.324520,
-      width: 30,
-      height: 30
-    }],
+    locate:{
+      lat:'',
+      lng:''
+    },
+    markers: [],
     polyline: [{
       points: [{
         longitude: 113.3245211,
@@ -23,7 +21,83 @@ Page({
       color:"#FF0000DD",
       width: 2,
       dottedLine: true
+    }],
+    sugData: '',
+    isShowBeginAddressSelect:false,
+    beginAddress:'',
+    hideSugInfo:false
+  },
+  showBeginAddressSelect:function () {
+    this.setData({
+      isShowBeginAddressSelect:true
+    })
+  },
+  hideBeginAddressSelect:function () {
+    this.setData({
+      isShowBeginAddressSelect:false,
+      beginAddress:''
+    })
+  },
+  bindKeyInput: function(e) {
+    var that = this;
+    that.setData({
+      hideSugInfo:false
+    })
+    if (e.detail.value === '') {
+      that.setData({
+        sugData: ''
+      });
+      return;
+    }
+    var BMap = new bmap.BMapWX({
+      ak: AK
+    });
+    BMap.suggestion({
+      query: e.detail.value,
+      region: '广州',
+      city_limit: true,
+      fail: function(data) {
+        console.log(data)
+      },
+      success: function(data) {
+        that.setData({
+          sugData: data.result
+        });
+      }
+    });
+  },
+  selectAddress:function (e) {
+    var item = e.target.dataset.item
+    if(!item.location){
+      wx.showModal({
+        title:'提示',
+        content:'该地点无明确位置，请重新选择其他地点'
+      })
+      return
+    }
+    var markers = [{
+      iconPath: "/images/marker.png",
+      id: item.uid,
+      title:item.name,
+      latitude: item.location.lat,
+      longitude: item.location.lng,
+      width: 15,
+      height: 19
     }]
+    this.setData({
+      beginAddress:item.name,
+      markers:markers,
+      locate:{
+        lat:item.location.lat,
+        lng:item.location.lng
+      },
+      hideSugInfo:true
+    })
+  },
+  selectAddressConform:function () {
+    this.setData({
+      isShowBeginAddressSelect:false
+    })
   },
   regionchange : function(e) {
     console.log(e.type)
@@ -32,9 +106,11 @@ Page({
      const that = this
      wx.getLocation({
        success:function (res) {
-         wx.openLocation({
-           latitude:res.latitude,
-           longitude:res.longitude
+         that.setData({
+           locate:{
+             lat:res.latitude,
+             long:res.longitude
+           }
          })
        }
      })
@@ -42,7 +118,7 @@ Page({
   controltap : function(e) {
     this.moveToLocation()
   },
-  onReady: function (e) {
+  onReady: function () {
     // 使用 wx.createMapContext 获取 map 上下文 
     this.mapCtx = wx.createMapContext('startlocate')
     var info = wx.getSystemInfoSync()

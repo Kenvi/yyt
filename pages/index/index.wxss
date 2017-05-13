@@ -46,33 +46,64 @@
         margin-left: 20rpx;
         background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAvCAIAAAAJu49LAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo4QzI2NkUyNzM2MTMxMUU3ODdDN0MwODc4MjY5OEE1QiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo4QzI2NkUyODM2MTMxMUU3ODdDN0MwODc4MjY5OEE1QiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjhDMTEyMzcyMzYxMzExRTc4N0M3QzA4NzgyNjk4QTVCIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjhDMTEyMzczMzYxMzExRTc4N0M3QzA4NzgyNjk4QTVCIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+rQysawAAA/lJREFUeNq0WGlIVFEUfvfMWyy1rDS11CzNqJBWTS1JsX1Fqag/atGPwsof/cigoOVHREI/WpB2S1oskDbKkoooSsukxYzCFkuNNspG7e2dKWtmbLzvzfg6IIxw7/vOueec7zv3El3Xmf9vxBCm2a5frNduvtUef9QbWvRvomNDb4EM6kVGBpO0KJgVAwMCiO8wNxq0HVXK5ZeaRvUECDM1GtYlselR4B1M/Vc974pc/krz6mSmRMPeadzQPsQUTEmtuqJcbpV9yUFPjtkzlcuNtxnAbLqlbL6tdDPhG1LYLaks6QoGARDGktJCpK2prAeYk3XqknOyhUV8eJbz9DpgXn/T4w+JdsnKXsE8PVwqxP6qiI4SXH1VthYDrU1mVl2VndHcadRSSiTzPmKjmPfp+hIeW9iRpe2VxmmP7EUKktisOAjzdxzChza97Lm27Y7ypsWARAqrlLQonnxs08J3iwq1ETPjbCVzOIyjk7UrTM5F+fQzlc4RjXkCIJfQMTDk0vkeMNB6sMzJeRwyDWU7EhVCAHIiZRELzL4ZHAs0Z4umc7yN5ihyI9R+0uk05ZGjXG1IEJkxmBbQk086YMdQVqRGgJlySo2kLUMIsMs0mFB/YgYmpCdtmV3SQbDRVnxuN6WtX6jLMHPYB7T9d5tMwdCXRQQSGBdGO9ZLL9XG7wZI71tRxWmtMzYUIGMQDeaHwqyuMOCI/AqFroEZ0QCzY4Be9WXP1ZVXZFX33HprKuRSKgtwwMyNBejjR5BL6P4W1agJxdLZF5r054P440K9NuGotKtape+dE2sL7kEcDI1dmn7CFOX6sQzOTYQwOEm1mZPA8kX8tMHQIWvoV1Wzd3OMGRsTCg9yeaesrU+2/Y9hsyDJXaTxL/mYVNlkZUBYx/dz+d/N3xEN/rM9jbU2FPzgX4JxNs3kSMiKs+zosIinuOiQ25yGijt8v9je7UlNsDG1y4WYICdbulEAFuvGiRYc3fpk1hXDw3Ara8y4IyLeMXzGGN6P1CwVBPfjh3+54eBMDoiPGLjvwExO+CfFHngzIRxwVvINZm0imzIQzN5vRJVJLBYfeXl0I4JJdY7gx3pzW8P0JBSLomoWA2m+Mpsf3d+zrHQpNvEhZGcGZz6UHelcVxjGV9ysMhn1xhADRev8Ap74fJP+8kMfdUh6R9Xp8ADyaBmPokIbcelu9vUjJ+YZTJ3H53J0DGMYtEkRUJjOUfgxLcr4I8TkK8fic/Kpus5JQqo9k8mZaWWzMHhvmnBMfOoycA/rS+7lCIG8RY8prm8SicUSFgX+DhLI3WwekSx7s3G1a2+06aUSzk2XFjoGCSufhjrZ3hpVVpn88d4J4E8BBgAmaaVH4yMqOgAAAABJRU5ErkJggg==") center no-repeat;
         background-size: 100%; }
-    .main-form .form-group > input {
+    .main-form .form-group #startLocation, .main-form .form-group #endLocation {
       position: relative;
       top: -20rpx;
       display: block;
       width: 70%;
       height: 38rpx;
+      line-height: 38rpx;
       padding: 8rpx 12rpx;
       color: #555;
       background: #fff;
       border: 4rpx solid #eee;
-      border-radius: 10rpx; }
+      border-radius: 10rpx;
+      overflow: hidden; }
     .main-form .form-group > picker {
       margin-left: 30rpx;
       font-weight: bold; }
 
 .map-wrap {
-  display: flex;
-  flex-direction: row;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  z-index: 99; }
+  height: 1110rpx;
+  z-index: 99;
+  background: #fff; }
+  .map-wrap .suggestion .section {
+    display: flex;
+    flex-direction: row;
+    height: 60rpx;
+    padding: 20rpx 0;
+    background: #2fa4e7;
+    color: #fff; }
+    .map-wrap .suggestion .section > input {
+      text-align: center;
+      display: block;
+      margin: 0 auto;
+      padding: 0 10rpx;
+      font-size: 30rpx;
+      height: 60rpx;
+      line-height: 60rpx;
+      background: #fff;
+      color: #666;
+      border-radius: 6rpx; }
+    .map-wrap .suggestion .section .edit {
+      height: 60rpx;
+      line-height: 60rpx;
+      padding-right: 30rpx;
+      font-size: 30rpx; }
+  .map-wrap .suggestion .sug_info {
+    padding: 10rpx 15rpx;
+    font-size: 30rpx; }
+    .map-wrap .suggestion .sug_info > view {
+      margin-top: 15rpx; }
 
 map#startlocate {
+  position: absolute;
   width: 100%;
-  height: 100%; }
+  height: 1010rpx;
+  top: 100rpx; }
 
 /*# sourceMappingURL=index.wxss.map */

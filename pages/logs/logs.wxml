@@ -1,9 +1,7 @@
 <!--logs.wxml-->
-<view class="map_container">
-  <map class="map" id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="14" show-location="true" markers="{{markers}}" bindmarkertap="makertap"></map>
+<view class="section">
+  <input placeholder="输入关键字" auto-focus type="text" bindinput="bindKeyInput"/>
 </view>
-<view class="place_info">
-  <text>{{placeData.title}}</text>
-  <text>{{placeData.address}}</text>
-  <text>{{placeData.telephone}}</text>
+<view class="sug_info">
+  <text>{{sugData}}</text>
 </view>

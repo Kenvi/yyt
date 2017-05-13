@@ -11,12 +11,12 @@
   <form class="main-form">
     <view class="form-group">
       <text >出发地</text>
-      <input type="text" id="startLocation" value="" />
-      <text class="locate"></text>
+      <view bindtap="showBeginAddressSelect" id="startLocation" >{{beginAddress}}</view>
+      <text bindtap="showBeginAddressSelect" class="locate"></text>
     </view>
     <view class="form-group">
       <text >目的地</text>
-      <input type="text" id="endLocation" value="" />
+      <view  id="endLocation"  ></view>
       <text class="locate"></text>
     </view>
     <view class="form-group">
@@ -31,6 +31,16 @@
   </form>
 </view>
 
-<view class="map-wrap">
-  <map id="startlocate" longitude="113.324520" latitude="23.099994"  scale="14" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}"  bindmarkertap="markertap"  bindregionchange="regionchange" show-location ></map>
+<view class="map-wrap" hidden="{{!isShowBeginAddressSelect}}">
+  <view class="suggestion">
+    <view class="section">
+      <view bindtap="hideBeginAddressSelect" class="back"></view>
+      <input placeholder="输入关键字" value="{{beginAddress}}" type="text" bindinput="bindKeyInput"/>
+      <view bindtap="selectAddressConform" class="edit">确定</view>
+    </view>
+    <view hidden="{{hideSugInfo}}" class="sug_info">
+      <view bindtap="selectAddress" data-item="{{item}}" wx:for="{{sugData}}" wx:key="{{item.uid}}">{{item.name}}</view>
+    </view>
+  </view>
+  <map hidden="{{!hideSugInfo}}" id="startlocate" longitude="{{locate.lng}}" latitude="{{locate.lat}}"  scale="14" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}"  bindmarkertap="markertap"  bindregionchange="regionchange" show-location ></map>
 </view>

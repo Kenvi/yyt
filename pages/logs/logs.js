@@ -4,18 +4,9 @@ var AK =  '3pcGRQbqAf19GeF1lFiO7BWeofRpsnQ9'
 var wxMarkerData = [];  //定位成功回调对象
 Page({
   data: {
-    markers: [],
-    latitude: '',
-    longitude: '',
-    placeData: {}
+    sugData: ''
   },
-  makertap: function(e) {
-    var that = this;
-    var id = e.markerId;
-    that.showSearchInfo(wxMarkerData, id);
-    that.changeMarkerColor(wxMarkerData, id);
-  },
-  onLoad: function() {
+  bindKeyInput: function(e) {
     var that = this;
     // 新建百度地图对象
     var BMap = new bmap.BMapWX({
@@ -25,53 +16,26 @@ Page({
       console.log(data)
     };
     var success = function(data) {
-      wxMarkerData = data.wxMarkerData;
+      var sugData = '';
+      for(var i = 0; i < data.result.length; i++) {
+        sugData = sugData + data.result[i].name + '\n';
+      }
+      console.log(sugData)
       that.setData({
-        markers: wxMarkerData
-      });
-      that.setData({
-        latitude: wxMarkerData[0].latitude
-      });
-      that.setData({
-        longitude: wxMarkerData[0].longitude
+        sugData: sugData
       });
     }
-    // 发起POI检索请求
-    BMap.search({
-      "query": '酒店',
-      fail: fail,
-      success: success,
-      // 此处需要在相应路径放置图片文件
-      iconPath: '/images/marker.png',
-      // 此处需要在相应路径放置图片文件
-      iconTapPath: '/images/marker.png'
-    });
-  },
-  showSearchInfo: function(data, i) {
-    var that = this;
-    that.setData({
-      placeData: {
-        title: '名称：' + data[i].title + '\n',
-        address: '地址：' + data[i].address + '\n',
-        telephone: '电话：' + data[i].telephone
-      }
-    });
-  },
-  changeMarkerColor: function(data, i) {
-    var that = this;
-    var markers = [];
-    for (var j = 0; j < data.length; j++) {
-      if (j == i) {
-        // 此处需要在相应路径放置图片文件
-        data[j].iconPath = "/images/marker.png";
-      } else {
-        // 此处需要在相应路径放置图片文件
-        data[j].iconPath = "/images/marker.png";
-      }
-      markers[j](data[j]);
-    }
-    that.setData({
-      markers: markers
-    });
+    // 发起suggestion检索请求
+    setTimeout(function () {
+      BMap.suggestion({
+        query: e.detail.value,
+        region: '广州',
+        city_limit: true,
+        fail: fail,
+        success: function (data) {
+          console.log(1111)
+        }
+      });
+    },100)
   }
 })
