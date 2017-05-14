@@ -6,6 +6,19 @@ App({
     if(CityList === ''){
       this.getCityList()
     }
+
+    this.getUserInfo(function (res) {
+      wx.checkSession({
+        success:function (res) {
+          console.log('success')
+          console.log(res)
+        },
+        fail:function (err) {
+          console.log('fail')
+          console.log(err)
+        }
+      })
+    })
   },
   getUserInfo:function(cb){
     var that = this
@@ -17,6 +30,9 @@ App({
         success: function () {
           wx.getUserInfo({
             success: function (res) {
+              // if(res.code){
+                console.log(res)
+              // }
               that.globalData.userInfo = res.userInfo
               typeof cb == "function" && cb(that.globalData.userInfo)
             }
