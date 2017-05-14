@@ -8,6 +8,7 @@ var BMap = new bmap.BMapWX({
 })
 Page({
   data: {
+    serveType:'ambulance',
     locate:{
       lat:'',
       lng:''
@@ -42,6 +43,11 @@ Page({
         },
         clickable: true
       }]
+    })
+  },
+  shiftServe:function (e) {
+    this.setData({
+      serveType:e.target.dataset.serve
     })
   },
   showAddressSelect:function (e) {
@@ -212,11 +218,14 @@ Page({
       M = date.getMonth()+1,
       D = date.getDate(),
       h = date.getHours(),
-      m = date.getMinutes()
+      m = date.getMinutes(),
+      _format = function (num) {
+        return num > 9 ? num : '0'+num
+      }
 
     this.setData({
-      date:Y+'-'+M+'-'+D,
-      time:h+':'+m
+      date:Y+'-'+_format(M)+'-'+_format(D),
+      time:_format(h)+':'+_format(m)
     })
   },
   bindDateChange: function(e) {

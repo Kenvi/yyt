@@ -1,10 +1,10 @@
 <!--index.wxml-->
 <view class="page-tit">救护车预约</view>
 <view class="order-nav">
-  <view class="tab-item active">救护车</view>
-  <view class="tab-item">航空</view>
-  <view class="tab-item">高铁</view>
-  <view class="tab-item">直升机</view>
+  <view bindtap="shiftServe" data-serve="ambulance" class="tab-item {{serveType==='ambulance'?'active':''}}">救护车</view>
+  <view bindtap="shiftServe" data-serve="aviation" class="tab-item {{serveType==='aviation'?'active':''}}">航空</view>
+  <view bindtap="shiftServe" data-serve="highSpeedRail" class="tab-item {{serveType==='highSpeedRail'?'active':''}}">高铁</view>
+  <view bindtap="shiftServe" data-serve="helicopter" class="tab-item {{serveType==='helicopter'?'active':''}}">直升机</view>
 </view>
 
 <view class="main-form-wrap">
