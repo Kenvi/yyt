@@ -1,6 +1,7 @@
 .back {
   position: relative;
   width: 30rpx;
+  height: 60rpx;
   left: 20rpx; }
   .back:before, .back:after {
     position: absolute;
@@ -14,6 +15,26 @@
     top: 60%; }
   .back:after {
     transform: rotate(-45deg);
+    top: 35%; }
+
+.right_arrow {
+  position: relative;
+  overflow: hidden;
+  width: 30rpx;
+  height: 60rpx;
+  left: 20rpx; }
+  .right_arrow:before, .right_arrow:after {
+    position: absolute;
+    content: '';
+    right: 0;
+    width: 25rpx;
+    height: 5rpx;
+    background: #999; }
+  .right_arrow:before {
+    transform: rotate(-45deg);
+    top: 60%; }
+  .right_arrow:after {
+    transform: rotate(45deg);
     top: 35%; }
 
 /*# sourceMappingURL=app.wxss.map */

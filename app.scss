@@ -1,22 +1,47 @@
 .back{
+   position: relative;
+   //overflow: hidden;
+   width: 30rpx;
+   height: 60rpx;
+   left: 20rpx;
+   &:before,&:after{
+     position: absolute;
+     content: '';
+     left: 0rpx;
+     width: 25rpx;
+     height: 5rpx;
+     background: #fff;
+   }
+   &:before{
+     transform: rotate(45deg);
+     top: 60%;
+   }
+   &:after{
+     transform: rotate(-45deg);
+     top:35%;
+   }
+ }
+
+.right_arrow{
   position: relative;
-  //overflow: hidden;
+  overflow: hidden;
   width: 30rpx;
+  height: 60rpx;
   left: 20rpx;
   &:before,&:after{
     position: absolute;
     content: '';
-    left: 0rpx;
+    right: 0;
     width: 25rpx;
     height: 5rpx;
-    background: #fff;
+    background: #999;
   }
   &:before{
-    transform: rotate(45deg);
+    transform: rotate(-45deg);
     top: 60%;
   }
   &:after{
-    transform: rotate(-45deg);
+    transform: rotate(45deg);
     top:35%;
   }
 }
