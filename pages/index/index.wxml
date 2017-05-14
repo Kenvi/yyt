@@ -35,8 +35,8 @@
   <view class="suggestion">
     <view class="section">
       <view bindtap="hideBeginAddressSelect" class="back"></view>
-      <input placeholder="输入关键字" value="{{beginAddress}}" type="text" bindinput="bindKeyInput"/>
-      <view bindtap="selectAddressConform" class="edit">确定</view>
+      <input placeholder="输入关键字" value="{{editBeginAddress}}" type="text"  bindinput="bindKeyInput"/>
+      <view bindtap="selectAddressConform" data-address="{{editBeginAddress}}" class="edit">确定</view>
     </view>
     <view hidden="{{hideSugInfo}}" class="sug_info">
       <view bindtap="selectAddress" data-item="{{item}}" wx:for="{{sugData}}" wx:key="{{item.uid}}">{{item.name}}</view>

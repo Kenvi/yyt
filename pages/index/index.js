@@ -3,12 +3,16 @@
 var app = getApp()
 var bmap  = require('../../utils/bmap-wx.min.js')
 var AK =  '3pcGRQbqAf19GeF1lFiO7BWeofRpsnQ9'
+var BMap = new bmap.BMapWX({
+  ak: AK
+})
 Page({
   data: {
     locate:{
       lat:'',
       lng:''
     },
+    controls:[],
     markers: [],
     polyline: [{
       points: [{
@@ -25,7 +29,27 @@ Page({
     sugData: '',
     isShowBeginAddressSelect:false,
     beginAddress:'',
-    hideSugInfo:false
+    editBeginAddress:'',
+    hideSugInfo:true
+  },
+  onReady: function () {
+    // 使用 wx.createMapContext 获取 map 上下文
+    this.mapCtx = wx.createMapContext('startlocate')
+    this.getLocation(true)
+    var info = wx.getSystemInfoSync()
+    this.setData({
+      controls: [{
+        id: 1,
+        iconPath: '/images/aim.png',
+        position: {
+          left: 15,
+          top: info.windowHeight-100,
+          width: 30,
+          height: 30
+        },
+        clickable: true
+      }]
+    })
   },
   showBeginAddressSelect:function () {
     this.setData({
@@ -34,8 +58,7 @@ Page({
   },
   hideBeginAddressSelect:function () {
     this.setData({
-      isShowBeginAddressSelect:false,
-      beginAddress:''
+      isShowBeginAddressSelect:false
     })
   },
   bindKeyInput: function(e) {
@@ -49,9 +72,6 @@ Page({
       });
       return;
     }
-    var BMap = new bmap.BMapWX({
-      ak: AK
-    });
     BMap.suggestion({
       query: e.detail.value,
       region: '广州',
@@ -85,7 +105,7 @@ Page({
       height: 19
     }]
     this.setData({
-      beginAddress:item.name,
+      editBeginAddress:item.name,
       markers:markers,
       locate:{
         lat:item.location.lat,
@@ -94,53 +114,78 @@ Page({
       hideSugInfo:true
     })
   },
-  selectAddressConform:function () {
+  selectAddressConform:function (e) {
+    const address = e.target.dataset.address
     this.setData({
-      isShowBeginAddressSelect:false
+      isShowBeginAddressSelect:false,
+      beginAddress:address
     })
   },
-  regionchange : function(e) {
-    console.log(e.type)
+  getLocation:function (setBeginAddress) {
+    var that = this
+    BMap.regeocoding({
+      fail: function (err) {
+        console.log(err)
+      },
+      success: function (data) {
+        var wxMarkerData = data.wxMarkerData
+        if(setBeginAddress){
+          that.setData({
+            beginAddress:wxMarkerData[0].address
+          })
+        }
+        that.setData({
+          locate:{
+            lat:wxMarkerData[0].latitude,
+            lng:wxMarkerData[0].longitude
+          },
+          markers: wxMarkerData,
+          editBeginAddress:wxMarkerData[0].address
+        })
+      },
+      iconPath: '/images/marker.png',
+      iconTapPath: '/images/marker.png'
+    })
+
+  },
+  regionchange:function (e) {
+    if(e.type==='end'){
+      this.getCenterLocation()
+    }
+
   },
   markertap : function(e) {
-     const that = this
-     wx.getLocation({
-       success:function (res) {
-         that.setData({
-           locate:{
-             lat:res.latitude,
-             long:res.longitude
-           }
-         })
-       }
-     })
+    console.log(e)
   },
   controltap : function(e) {
+    console.log(e)
     this.moveToLocation()
-  },
-  onReady: function () {
-    // 使用 wx.createMapContext 获取 map 上下文 
-    this.mapCtx = wx.createMapContext('startlocate')
-    var info = wx.getSystemInfoSync()
-    this.setData({
-      controls: [{
-        id: 1,
-        iconPath: '/images/aim.png',
-        position: {
-          left: 10,
-          top: info.windowHeight-50,
-          width: 30,
-          height: 30
-        },
-        clickable: true
-      }]
-    })
+    this.getLocation()
   },
   getCenterLocation: function () {
+    var that = this
     this.mapCtx.getCenterLocation({
       success: function (res) {
-        console.log(res.longitude)
-        console.log(res.latitude)
+        console.log(res)
+        BMap.regeocoding({
+          location:res.latitude+','+res.longitude,
+          fail: function (err) {
+            console.log(err)
+          },
+          success: function (data) {
+            var  wxMarkerData = data.wxMarkerData
+            that.setData({
+              locate:{
+                lat:wxMarkerData[0].latitude,
+                lng:wxMarkerData[0].longitude
+              },
+              markers: wxMarkerData,
+              editBeginAddress:wxMarkerData[0].address
+            })
+          },
+          iconPath: '/images/marker.png',
+          iconTapPath: '/images/marker.png'
+        })
       }
     })
   },

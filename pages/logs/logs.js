@@ -4,9 +4,17 @@ var AK =  '3pcGRQbqAf19GeF1lFiO7BWeofRpsnQ9'
 var wxMarkerData = [];  //定位成功回调对象
 Page({
   data: {
-    sugData: ''
+    markers: [],
+    latitude: '',
+    longitude: '',
+    rgcData: {}
   },
-  bindKeyInput: function(e) {
+  makertap: function(e) {
+    var that = this;
+    var id = e.markerId;
+    that.showSearchInfo(wxMarkerData, id);
+  },
+  onLoad: function() {
     var that = this;
     // 新建百度地图对象
     var BMap = new bmap.BMapWX({
@@ -16,26 +24,34 @@ Page({
       console.log(data)
     };
     var success = function(data) {
-      var sugData = '';
-      for(var i = 0; i < data.result.length; i++) {
-        sugData = sugData + data.result[i].name + '\n';
-      }
-      console.log(sugData)
+      wxMarkerData = data.wxMarkerData;
       that.setData({
-        sugData: sugData
+        markers: wxMarkerData
+      });
+      that.setData({
+        latitude: wxMarkerData[0].latitude
+      });
+      that.setData({
+        longitude: wxMarkerData[0].longitude
       });
     }
-    // 发起suggestion检索请求
-    setTimeout(function () {
-      BMap.suggestion({
-        query: e.detail.value,
-        region: '广州',
-        city_limit: true,
-        fail: fail,
-        success: function (data) {
-          console.log(1111)
-        }
-      });
-    },100)
+    // 发起regeocoding检索请求
+    BMap.regeocoding({
+      fail: fail,
+      success: success,
+      iconPath: '/images/marker.png',
+      iconTapPath: '/images/marker.png'
+    });
+  },
+  showSearchInfo: function(data, i) {
+    var that = this;
+    that.setData({
+      rgcData: {
+        address: '地址：' + data[i].address + '\n',
+        desc: '描述：' + data[i].desc + '\n',
+        business: '商圈：' + data[i].business
+      }
+    });
   }
+
 })
