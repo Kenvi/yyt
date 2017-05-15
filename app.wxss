@@ -37,4 +37,28 @@
     transform: rotate(45deg);
     top: 35%; }
 
+.down_arrow {
+  position: relative;
+  overflow: hidden;
+  width: 60rpx;
+  height: 30rpx; }
+  .down_arrow:before, .down_arrow:after {
+    position: absolute;
+    content: '';
+    top: 50%;
+    width: 25rpx;
+    height: 5rpx;
+    background: #999; }
+  .down_arrow:before {
+    transform: rotate(45deg);
+    left: 0; }
+  .down_arrow:after {
+    transform: rotate(-45deg);
+    left: 25%; }
+
+.one-line-hide {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
+
 /*# sourceMappingURL=app.wxss.map */

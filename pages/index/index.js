@@ -99,7 +99,7 @@ Page({
     });
   },
   selectAddress:function (e) {
-    var item = e.target.dataset.item
+    var item = e.currentTarget.dataset.item
     if(!item.location){
       wx.showModal({
         title:'提示',
@@ -125,8 +125,8 @@ Page({
     })
   },
   selectAddressConform:function (e) {
-    var address = e.target.dataset.address,
-      type = e.target.dataset.type
+    var address = e.currentTarget.dataset.address,
+      type = this.data.addressType
     if(type === 'endLocation'){
       this.setData({
         isShowAddressSelect:false,
