@@ -1,6 +1,6 @@
 //app.js
-const AppId = 'wx124c238afb015486'
-const Secret = 'd5091a4fdbe6abdd000a8160471dc89c'
+const config = require('/config/config')
+
 App({
   onLaunch: function () {
     //调用API从本地缓存中获取数据
@@ -35,8 +35,8 @@ App({
             wx.request({
               url: 'https://api.weixin.qq.com/sns/jscode2session',
               data: {
-                appid:AppId,
-                secret:Secret,
+                appid:config.AppId,
+                secret:config.Secret,
                 js_code: res.code,
                 grant_type:'authorization_code'
               },
