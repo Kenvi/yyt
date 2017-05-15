@@ -22,10 +22,12 @@ Page({
     isShowAddressSelect:false,
     beginAddress:'',
     endAddress:'',
+    endAddressDetail:{},
     editAddress:'',
     addressType:'',
     hideSugInfo:true,
     hideUsualCity:true,
+    hospitalList:[],
     hideHospitalList:true,
     date:'2017-01-01',
     time:'00:00',
@@ -74,10 +76,24 @@ Page({
       })
       return
     }
-    if(e.target.dataset.type){
-      this.setData({
+    if(e.currentTarget.dataset.type && e.currentTarget.dataset.type==='endLocation'){
+      var item = this.data.endAddressDetail
+      var data = {
         addressType:e.target.dataset.type
-      })
+      }
+      if(item.lat1 && item.lng1){
+        data.locate = {
+          lat:item.lat1,
+          lng:item.lng1
+        }
+        this.setData(data)
+        console.log(data)
+        this.getCenterLocation()
+        console.log(22)
+      }else{
+        this.setData(data)
+
+      }
     }
     this.setData({
       isShowAddressSelect:true
@@ -196,7 +212,7 @@ Page({
   },
   controltap : function(e) {
     console.log(e)
-    this.moveToLocation()
+    // this.moveToLocation()
     this.getLocation()
   },
   getCenterLocation: function () {
@@ -232,6 +248,55 @@ Page({
   showHospitalList:function () {
     this.setData({
       hideHospitalList:false,
+      editAddress:''
+    })
+    var areaId = this.getAreaId()
+    this.getHospitalList(areaId)
+  },
+  getHospitalList:function (areaid) {
+    var that = this
+    var params = {
+      method:'getHospitalList',
+      t:0
+    }
+    if(areaid){
+      params.areaid = areaid
+    }else{
+      params.areaid = '1947'
+    }
+    wx.request({
+      url: 'https://www.emtsos.com/emMiniApi.do',
+      data: params,
+      success:function (res) {
+       if(res.data.ret === 1){
+         that.setData({
+           hospitalList:res.data.data.hospitalList
+         })
+       }
+      },
+      fail:function (err) {
+        console.log(err)
+      }
+    })
+  },
+  getAreaId:function () {
+    var areaId = ''
+    switch (this.data.currentCity){
+      case '广州市' : areaId = 1947;break;
+      case '北京市' : areaId = 1;break;
+      case '上海市' : areaId = 792;break;
+      case '深圳市' : areaId = 1971;break;
+      default : areaId = 1947;break;
+    }
+    return areaId
+  },
+  selectHospital:function (e) {
+    var item = e.currentTarget.dataset.item
+    console.log(item)
+    this.setData({
+      endAddressDetail:item,
+      endAddress:item.addr + ' ' + item.hospitalname,
+      hideHospitalList:true,
       editAddress:''
     })
   },
