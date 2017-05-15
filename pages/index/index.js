@@ -11,6 +11,7 @@ Page({
     cityList:app.globalData.cityList,
     currentCity:'广州市',
     serveType:'ambulance',
+    serveTit:'救护车预约',
     locate:{
       lat:'',
       lng:''
@@ -27,7 +28,8 @@ Page({
     hideUsualCity:true,
     hideHospitalList:true,
     date:'2017-01-01',
-    time:'00:00'
+    time:'00:00',
+    floors:[2,3,4,5,6,7,8,9]
   },
   onReady: function () {
     // 使用 wx.createMapContext 获取 map 上下文
@@ -50,9 +52,17 @@ Page({
     })
   },
   shiftServe:function (e) {
-    this.setData({
-      serveType:e.target.dataset.serve
-    })
+    var params = {
+      serveType:e.currentTarget.dataset.serve
+    }
+    switch(e.currentTarget.dataset.serve){
+      case 'ambulance' : params.serveTit = '救护车预约';break;
+      case 'aviation' : params.serveTit = '航空医疗救援预约';break;
+      case 'highSpeedRail' : params.serveTit = '高铁医疗救援预约';break;
+      case 'helicopter' : params.serveTit = '直升机医疗救援预约';break;
+      default : params.serveTit = '救护车预约';break;
+    }
+    this.setData(params)
   },
   showAddressSelect:function (e) {
     if(this.data.beginAddress === ''){

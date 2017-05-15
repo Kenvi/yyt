@@ -75,6 +75,59 @@
   }
 }
 
+.other-form-wrap{
+  padding: 30rpx 0;
+  .other-tit{
+    font-size: 32rpx;
+    padding:0 30rpx 15rpx;
+    border-bottom: 2rpx solid #ddd;
+  }
+  .ambulance-serve{
+    padding: 30rpx;
+    >view{
+      font-size: 28rpx;
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 20rpx;
+      text{
+        display: block;
+        margin: 15rpx 0 0 30rpx;
+      }
+      picker-view{
+        width: 100rpx;
+        height: 50rpx;
+        line-height: 50rpx;
+        border-radius: 10rpx;
+        margin: 10rpx 0 0 50rpx;
+        text-align: center;
+        background: #3399f3;
+        color: #fff;
+      }
+    }
+  }
+  .next-step{
+    padding: 30rpx;
+    text-align: center;
+    .agreement{
+      font-size: 28rpx;
+      font-weight: bold;
+      >checkbox{
+        margin-left: 10rpx;
+      }
+      >text:last-child{
+        margin-left: 20rpx;
+        color: #FF8040;
+      }
+    }
+    >button{
+      background: #3399f3;
+      color: #fff;
+      width: 60%;
+      margin-top: 50rpx;
+    }
+  }
+}
+
 .map-wrap,.end-address-wrap{
   position: absolute;
   top:0;

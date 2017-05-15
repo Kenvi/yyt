@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<view class="page-tit">救护车预约</view>
+<view class="page-tit">{{serveTit}}</view>
 <view class="order-nav">
   <view bindtap="shiftServe" data-serve="ambulance" class="tab-item {{serveType==='ambulance'?'active':''}}">救护车</view>
   <view bindtap="shiftServe" data-serve="aviation" class="tab-item {{serveType==='aviation'?'active':''}}">航空</view>
@@ -29,6 +29,26 @@
       </picker>
     </view>
   </form>
+</view>
+
+<view class="other-form-wrap">
+  <view class="other-tit">配套服务</view>
+  <view class="ambulance-serve">
+    <view><switch></switch><text>呼吸机</text></view>
+    <view>
+      <switch></switch>
+      <text>担架上楼</text>
+      <picker-view indicator-style="height: 50px;" value="1">
+        <picker-view-column>
+          <view wx:for="{{floors}}" wx:key="{{index}}">{{item}}楼</view>
+        </picker-view-column>
+      </picker-view>
+    </view>
+  </view>
+  <view class="next-step">
+    <view class="agreement"><text>同意</text><checkbox></checkbox><text>医疗转运知情同意书</text></view>
+    <button type="button" >下一步</button>
+  </view>
 </view>
 
 <!--出发地地图选择组件-->
