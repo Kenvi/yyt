@@ -1,4 +1,6 @@
 //app.js
+const AppId = 'wx124c238afb015486'
+const Secret = 'd5091a4fdbe6abdd000a8160471dc89c'
 App({
   onLaunch: function () {
     //调用API从本地缓存中获取数据
@@ -6,18 +8,18 @@ App({
     if(CityList === ''){
       this.getCityList()
     }
-
-    this.getUserInfo(function (res) {
-      wx.checkSession({
-        success:function (res) {
-          console.log('success')
-          console.log(res)
-        },
-        fail:function (err) {
-          console.log('fail')
-          console.log(err)
-        }
-      })
+    this.checkWxSession()
+  },
+  checkWxSession:function () {
+    wx.checkSession({
+      success:function (res) {
+        console.log('success')
+        console.log(res)
+      },
+      fail:function (err) {
+        console.log('fail')
+        console.log(err)
+      }
     })
   },
   getUserInfo:function(cb){
@@ -27,16 +29,27 @@ App({
     }else{
       //调用登录接口
       wx.login({
-        success: function () {
-          wx.getUserInfo({
-            success: function (res) {
-              // if(res.code){
+        success: function (res) {
+          if (res.code) {
+            //发起网络请求
+            wx.request({
+              url: 'https://api.weixin.qq.com/sns/jscode2session',
+              data: {
+                appid:AppId,
+                secret:Secret,
+                js_code: res.code,
+                grant_type:'authorization_code'
+              },
+              success:function (res) {
                 console.log(res)
-              // }
-              that.globalData.userInfo = res.userInfo
-              typeof cb == "function" && cb(that.globalData.userInfo)
-            }
-          })
+              },
+              fail:function (err) {
+                console.log(err)
+              }
+            })
+          } else {
+            console.log('获取用户登录态失败！' + res.errMsg)
+          }
         }
       })
     }
