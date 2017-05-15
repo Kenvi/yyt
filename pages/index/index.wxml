@@ -16,7 +16,7 @@
     </view>
     <view class="form-group">
       <text >目的地</text>
-      <view id="endLocation" class="one-line-hide" >{{endAddress}}</view>
+      <view bindtap="showHospitalList" id="endLocation" class="one-line-hide" >{{endAddress}}</view>
       <text bindtap="showAddressSelect" data-type="endLocation" class="locate"></text>
     </view>
     <view class="form-group">
@@ -54,8 +54,35 @@
 </view>
 
 <!--目的地医院选择组件-->
-<view class="end-address-wrap" hidden="true">
+<view class="end-address-wrap" hidden="{{hideHospitalList}}">
   <view class="suggestion">
+    <view class="section-city">
+      <view bindtap="showUsualCity" class="city"><text>{{currentCity}}</text><view class="down_arrow"></view></view>
+      <input placeholder="输入关键字" value="{{editAddress}}" type="text"  bindinput="bindKeyInput"/>
+      <view bindtap="cancelChooseHospital" class="cancel">取消</view>
+    </view>
+    <view hidden="{{hideUsualCity}}" class="usual-city">
+      <view class="active" wx:for="{{cityList.Usual}}" wx:key="{{item.areaid}}">{{item.areaname}}</view>
+    </view>
+    <view hidden="{{hideUsualCity}}" class="sug_info">
+      <view bindtap="" data-item="{{item}}" wx:for="{{cityList.NEIDI}}" wx:key="{{item.areaid}}">
+        <view class="eqc"></view>
+        <view class="content">
+          <view class="province-item">{{item.areaname}}</view>
+        </view>
+        <view class="right_arrow"></view>
+      </view>
+    </view>
+    <view hidden="{{hideSugInfo}}" class="sug_info">
+      <view bindtap="selectAddress" data-item="{{item}}" wx:for="{{sugData}}" wx:key="{{item.uid}}">
+        <view class="eqc"></view>
+        <view class="content">
+          <view class="tit">{{item.name}}</view>
+          <view class="desc">{{item.city}}{{item.district}}</view>
+        </view>
+        <view class="right_arrow"></view>
+      </view>
+    </view>
 
   </view>
 </view>

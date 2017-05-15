@@ -40,13 +40,13 @@
 .down_arrow {
   position: relative;
   overflow: hidden;
-  width: 60rpx;
+  width: 40rpx;
   height: 30rpx; }
   .down_arrow:before, .down_arrow:after {
     position: absolute;
     content: '';
-    top: 50%;
-    width: 25rpx;
+    top: 65%;
+    width: 15rpx;
     height: 5rpx;
     background: #999; }
   .down_arrow:before {
@@ -54,7 +54,7 @@
     left: 0; }
   .down_arrow:after {
     transform: rotate(-45deg);
-    left: 25%; }
+    left: 20%; }
 
 .one-line-hide {
   overflow: hidden;

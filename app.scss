@@ -49,13 +49,13 @@
 .down_arrow{
   position: relative;
   overflow: hidden;
-  width: 60rpx;
+  width: 40rpx;
   height: 30rpx;
   &:before,&:after{
     position: absolute;
     content: '';
-    top: 50%;
-    width: 25rpx;
+    top: 65%;
+    width: 15rpx;
     height: 5rpx;
     background: #999;
   }
@@ -65,7 +65,7 @@
   }
   &:after{
     transform: rotate(-45deg);
-    left:25%;
+    left:20%;
   }
 }
 

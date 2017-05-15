@@ -7,10 +7,13 @@ App({
     var CityList = wx.getStorageSync('CityList')
     if(CityList === ''){
       this.getCityList()
+    }else{
+      this.globalData.cityList = CityList
     }
     this.checkWxSession()
   },
   checkWxSession:function () {
+    const that = this
     wx.checkSession({
       success:function (res) {
         console.log('success')
@@ -18,7 +21,7 @@ App({
       },
       fail:function (err) {
         console.log('fail')
-        console.log(err)
+        that.getUserInfo()
       }
     })
   },
@@ -75,6 +78,7 @@ App({
     })
   },
   globalData:{
-    userInfo:null
+    userInfo:null,
+    cityList:null
   }
 })

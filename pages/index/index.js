@@ -8,6 +8,8 @@ var BMap = new bmap.BMapWX({
 })
 Page({
   data: {
+    cityList:app.globalData.cityList,
+    currentCity:'广州市',
     serveType:'ambulance',
     locate:{
       lat:'',
@@ -22,6 +24,8 @@ Page({
     editAddress:'',
     addressType:'',
     hideSugInfo:true,
+    hideUsualCity:true,
+    hideHospitalList:true,
     date:'2017-01-01',
     time:'00:00'
   },
@@ -211,6 +215,24 @@ Page({
   },
   moveToLocation: function () {
     this.mapCtx.moveToLocation()
+  },
+  showHospitalList:function () {
+    this.setData({
+      hideHospitalList:false,
+      editAddress:''
+    })
+  },
+  showUsualCity:function () {
+    this.setData({
+      hideUsualCity:false
+    })
+  },
+  cancelChooseHospital:function () {
+    this.setData({
+      hideHospitalList:true,
+      hideUsualCity:true,
+      editAddress:''
+    })
   },
   getDate:function () {
     var date = new Date(),
