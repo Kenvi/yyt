@@ -78,8 +78,9 @@
       margin-bottom: 20rpx; }
       .other-form-wrap .ambulance-serve > view text {
         display: block;
+        font-weight: bold;
         margin: 15rpx 0 0 30rpx; }
-      .other-form-wrap .ambulance-serve > view picker-view {
+      .other-form-wrap .ambulance-serve > view picker {
         width: 100rpx;
         height: 50rpx;
         line-height: 50rpx;
@@ -102,7 +103,9 @@
     .other-form-wrap .next-step > button {
       background: #3399f3;
       color: #fff;
-      width: 60%;
+      width: 400rpx;
+      height: 80rpx;
+      line-height: 80rpx;
       margin-top: 50rpx; }
 
 .map-wrap, .end-address-wrap {
@@ -224,5 +227,47 @@ map#startlocate {
   width: 100%;
   height: 100%;
   top: 100rpx; }
+
+.notice-page {
+  position: absolute;
+  z-index: 999;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: #fff; }
+  .notice-page .title {
+    display: flex;
+    flex-direction: row;
+    height: 60rpx;
+    padding: 20rpx 0;
+    background: #2fa4e7;
+    color: #fff; }
+    .notice-page .title .content {
+      width: 80%;
+      margin: 0 auto;
+      text-align: center;
+      line-height: 60rpx; }
+  .notice-page .notice-content {
+    margin: 30rpx;
+    padding: 30rpx;
+    background: #f5f5f5;
+    border: 2rpx solid #ccc;
+    border-radius: 8rpx;
+    font-size: 28rpx;
+    text-align: justify; }
+    .notice-page .notice-content > view {
+      line-height: 1.4;
+      margin-bottom: 10rpx;
+      color: #555; }
+      .notice-page .notice-content > view text {
+        font-weight: bold; }
+    .notice-page .notice-content .b {
+      font-weight: bold; }
+    .notice-page .notice-content .c-b {
+      color: #0070C0; }
+    .notice-page .notice-content .c-o {
+      color: #FF8040; }
+    .notice-page .notice-content .ml50 {
+      margin-left: 50rpx; }
 
 /*# sourceMappingURL=index.wxss.map */

@@ -29,7 +29,9 @@ Page({
     hideHospitalList:true,
     date:'2017-01-01',
     time:'00:00',
-    floors:[2,3,4,5,6,7,8,9]
+    floors:[2,3,4,5,6,7,8,9],
+    currentFloor:2,
+    hideNoticePage:true
   },
   onReady: function () {
     // 使用 wx.createMapContext 获取 map 上下文
@@ -165,7 +167,8 @@ Page({
         var wxMarkerData = data.wxMarkerData
         if(setBeginAddress){
           that.setData({
-            beginAddress:wxMarkerData[0].address
+            beginAddress:wxMarkerData[0].address,
+            currentCity:data.originalData.result.addressComponent.city
           })
         }
         that.setData({
@@ -268,6 +271,17 @@ Page({
   bindTimeChange: function(e) {
     this.setData({
       time: e.detail.value
+    })
+  },
+  bindFloorChange:function (e) {
+    this.setData({
+      currentFloor: e.detail.value
+    })
+  },
+  showNoticePage:function () {
+    var ifShow = !this.data.hideNoticePage
+    this.setData({
+      hideNoticePage: ifShow
     })
   }
 })
