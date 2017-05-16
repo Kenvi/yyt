@@ -1,7 +1,7 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/mine/mine"
   ],
   "tabBar": {
     "color":"#777",
@@ -15,7 +15,7 @@
         "selectedIconPath":"images/icon2.png"
       },
       {
-        "pagePath": "pages/logs/logs",
+        "pagePath": "pages/mine/mine",
         "text": "我的",
         "iconPath": "images/icon4a.png",
         "selectedIconPath":"images/icon4.png"
