@@ -103,6 +103,9 @@
         text-align: center;
         background: #3399f3;
         color: #fff;
+        &.hide{
+          display: none;
+        }
       }
     }
   }
@@ -127,6 +130,19 @@
       height: 80rpx;
       line-height: 80rpx;
       margin-top: 50rpx;
+    }
+  }
+  .other-serve-link{
+    display: flex;
+    padding: 30rpx;
+    &.hide{
+      display: none;
+    }
+    >view{
+      width: 33.33%;
+      text-align: center;
+      font-size: 28rpx;
+      color: #2fa4e7;
     }
   }
 }

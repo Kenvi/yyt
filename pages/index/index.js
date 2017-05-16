@@ -33,9 +33,12 @@ Page({
     hideHospitalList:true,
     date:'2017-01-01',
     time:'00:00',
+    needRespirator:false,
+    ifShowFloorChange:false,
     floors:[2,3,4,5,6,7,8,9],
     currentFloor:0,
-    hideNoticePage:true
+    hideNoticePage:true,
+    agreeNoticePage:false
   },
   onReady: function () {
     // 使用 wx.createMapContext 获取 map 上下文
@@ -410,6 +413,20 @@ Page({
       time: e.detail.value
     })
   },
+  //呼吸机选择切换
+  ambulanceAddRespirator:function (e) {
+    this.setData({
+      needRespirator: e.detail.value
+    })
+    var that = this
+    console.log(that.data.needRespirator)
+  },
+  //担架上楼选择切换
+  showFloorChange:function (e) {
+    this.setData({
+      ifShowFloorChange: e.detail.value
+    })
+  },
   //选择担架上楼后记录楼层变化
   bindFloorChange:function (e) {
     this.setData({
@@ -421,6 +438,12 @@ Page({
     var ifShow = !this.data.hideNoticePage
     this.setData({
       hideNoticePage: ifShow
+    })
+  },
+  //同意医疗转运通知书
+  checkNoticePageAgreement:function (e) {
+    this.setData({
+      agreeNoticePage: !this.data.agreeNoticePage
     })
   }
 })

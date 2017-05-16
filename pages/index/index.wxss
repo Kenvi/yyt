@@ -89,6 +89,8 @@
         text-align: center;
         background: #3399f3;
         color: #fff; }
+        .other-form-wrap .ambulance-serve > view picker.hide {
+          display: none; }
   .other-form-wrap .next-step {
     padding: 30rpx;
     text-align: center; }
@@ -107,6 +109,16 @@
       height: 80rpx;
       line-height: 80rpx;
       margin-top: 50rpx; }
+  .other-form-wrap .other-serve-link {
+    display: flex;
+    padding: 30rpx; }
+    .other-form-wrap .other-serve-link.hide {
+      display: none; }
+    .other-form-wrap .other-serve-link > view {
+      width: 33.33%;
+      text-align: center;
+      font-size: 28rpx;
+      color: #2fa4e7; }
 
 .map-wrap, .end-address-wrap {
   position: absolute;

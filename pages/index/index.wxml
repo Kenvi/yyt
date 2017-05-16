@@ -38,16 +38,24 @@
   <view hidden="{{serveType!=='ambulance'}}" class="ambulance-serve">
     <view><switch bindchange="ambulanceAddRespirator"></switch><text>呼吸机</text></view>
     <view>
-      <switch></switch>
+      <switch bindchange="showFloorChange"></switch>
       <text>担架上楼</text>
-      <picker bindchange="bindFloorChange" value="{{currentFloor}}" range="{{floors}}">
+      <picker class="{{ifShowFloorChange ? '' : 'hide'}}" bindchange="bindFloorChange" value="{{currentFloor}}" range="{{floors}}">
         <view >{{floors[currentFloor]}}楼</view>
       </picker>
     </view>
   </view>
   <view class="next-step">
-    <view class="agreement"><text>同意</text><checkbox></checkbox><text bindtap="showNoticePage">医疗转运知情同意书</text></view>
+    <view class="agreement">
+      <text>同意</text>
+      <checkbox  bindtap="checkNoticePageAgreement"></checkbox>
+      <text bindtap="showNoticePage">医疗转运知情同意书</text></view>
     <button type="button" >下一步</button>
+  </view>
+  <view class="{{serveType!=='ambulance' ? 'hide' : ''}} other-serve-link" >
+    <view>接送机</view>
+    <view>接送高铁</view>
+    <view>港澳直通</view>
   </view>
 </view>
 
