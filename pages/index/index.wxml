@@ -53,7 +53,7 @@
 <view class="map-wrap" hidden="{{!isShowAddressSelect}}">
   <view class="suggestion">
     <view class="section">
-      <view bindtap="hideBeginAddressSelect" class="back"></view>
+      <view bindtap="hideAddressSelect" class="back"></view>
       <input placeholder="输入关键字" value="{{editAddress}}" type="text"  bindinput="bindKeyInput"/>
       <view bindtap="selectAddressConform" data-address="{{editAddress}}" class="edit">确定</view>
     </view>
@@ -80,10 +80,10 @@
       <view bindtap="cancelChooseHospital" class="cancel">取消</view>
     </view>
     <view hidden="{{hideUsualCity}}" class="usual-city">
-      <view class="{{currentCity===item.areaname ? 'active' : ''}}" wx:for="{{cityList.Usual}}" wx:key="{{item.areaid}}">{{item.areaname}}</view>
+      <view bindtap="chooseCity" data-item="{{item}}" class="{{currentCity===item.areaname ? 'active' : ''}}" wx:for="{{cityList.Usual}}" wx:key="{{item.areaid}}">{{item.areaname}}</view>
     </view>
     <view hidden="{{hideUsualCity}}" class="sug_info">
-      <view bindtap="" data-item="{{item}}" wx:for="{{cityList.NEIDI}}" wx:key="{{item.areaid}}">
+      <view bindtap="chooseCity" data-item="{{item}}" wx:for="{{cityList.NEIDI}}" wx:key="{{item.areaid}}">
         <view class="eqc"></view>
         <view class="content">
           <view class="province-item">{{item.areaname}}</view>

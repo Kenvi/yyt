@@ -2,14 +2,15 @@
 //获取应用实例
 var app = getApp()
 var bmap  = require('../../utils/bmap-wx.min.js')
-var AK =  '3pcGRQbqAf19GeF1lFiO7BWeofRpsnQ9'
+var config =   require('../../config/config')
 var BMap = new bmap.BMapWX({
-  ak: AK
+  ak: config.BaiDuMapAK
 })
 Page({
   data: {
     cityList:app.globalData.cityList,
     currentCity:'广州市',
+    currentCityAreaId:'',
     serveType:'ambulance',
     serveTit:'救护车预约',
     locate:{
@@ -21,6 +22,7 @@ Page({
     sugData: '',
     isShowAddressSelect:false,
     beginAddress:'',
+    beginAddressDetail:{},
     endAddress:'',
     endAddressDetail:{},
     editAddress:'',
@@ -69,6 +71,7 @@ Page({
     this.setData(params)
   },
   showAddressSelect:function (e) {
+    var that = this
     if(this.data.beginAddress === ''){
       wx.showModal({
         title:'提示',
@@ -79,27 +82,59 @@ Page({
     if(e.currentTarget.dataset.type && e.currentTarget.dataset.type==='endLocation'){
       var item = this.data.endAddressDetail
       var data = {
+        isShowAddressSelect:true,
         addressType:e.target.dataset.type
+      }
+      if(this.data.endAddress !== ''){
+        data.editAddress = this.data.endAddress
+      }else{
+        data.editAddress = ''
       }
       if(item.lat1 && item.lng1){
         data.locate = {
           lat:item.lat1,
           lng:item.lng1
         }
+        data.markers = [{
+          id:'0',
+          latitude:item.lat1,
+          longitude:item.lng1,
+          address:item.hospitalname,
+          desc:item.addr,
+          iconPath: '/images/marker.png',
+          iconTapPath: '/images/marker.png',
+          alpha:1
+        }]
         this.setData(data)
-        console.log(data)
-        this.getCenterLocation()
-        console.log(22)
       }else{
+        data.locate = {
+          lat:item.latitude,
+          lng:item.longitude
+        }
+        data.markers = [item]
         this.setData(data)
-
       }
+      console.log(data)
+    }else{
+      var data = {
+        isShowAddressSelect:true,
+        markers:[that.data.beginAddressDetail],
+        locate:{
+          lat:that.data.beginAddressDetail.latitude,
+          lng:that.data.beginAddressDetail.longitude
+        }
+      }
+      if(this.data.beginAddress !== '') {
+        data.editAddress = this.data.beginAddress
+      }else{
+        data.editAddress = ''
+      }
+
+      this.setData(data)
     }
-    this.setData({
-      isShowAddressSelect:true
-    })
+
   },
-  hideBeginAddressSelect:function () {
+  hideAddressSelect:function () {
     this.setData({
       isShowAddressSelect:false,
       addressType:''
@@ -156,19 +191,23 @@ Page({
       hideSugInfo:true
     })
   },
-  selectAddressConform:function (e) {
+  selectAddressConform:function (e) { // 确认定位地点为目标地点
     var address = e.currentTarget.dataset.address,
       type = this.data.addressType
-    if(type === 'endLocation'){
+    if(type === 'endLocation'){ // 判断是否为目的地定位地点
       this.setData({
         isShowAddressSelect:false,
         endAddress:address,
+        endAddressDetail:this.data.markers[0],
+        editAddress:'',
         addressType:''
       })
     }else{
       this.setData({
         isShowAddressSelect:false,
         beginAddress:address,
+        beginAddressDetail:this.data.markers[0],
+        editAddress:'',
         addressType:''
       })
     }
@@ -184,6 +223,7 @@ Page({
         if(setBeginAddress){
           that.setData({
             beginAddress:wxMarkerData[0].address,
+            beginAddressDetail:wxMarkerData[0],
             currentCity:data.originalData.result.addressComponent.city
           })
         }
@@ -280,13 +320,15 @@ Page({
     })
   },
   getAreaId:function () {
-    var areaId = ''
-    switch (this.data.currentCity){
-      case '广州市' : areaId = 1947;break;
-      case '北京市' : areaId = 1;break;
-      case '上海市' : areaId = 792;break;
-      case '深圳市' : areaId = 1971;break;
-      default : areaId = 1947;break;
+    var areaId = this.data.currentCityAreaId
+    if(areaId === ''){
+      switch (this.data.currentCity){
+        case '广州市' : areaId = 1947;break;
+        case '北京市' : areaId = 1;break;
+        case '上海市' : areaId = 792;break;
+        case '深圳市' : areaId = 1971;break;
+        default : areaId = 1947;break;
+      }
     }
     return areaId
   },
@@ -304,6 +346,15 @@ Page({
     this.setData({
       hideUsualCity:false
     })
+  },
+  chooseCity:function (e) {
+    var item = e.currentTarget.dataset.item
+    this.setData({
+      currentCity:item.areaname,
+      currentCityAreaId:item.areaid,
+      hideUsualCity:true
+    })
+    this.showHospitalList()
   },
   cancelChooseHospital:function () {
     this.setData({
