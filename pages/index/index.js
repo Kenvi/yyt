@@ -37,6 +37,8 @@ Page({
     ifShowFloorChange:false,
     floors:[2,3,4,5,6,7,8,9],
     currentFloor:0,
+    currentPersonNum:0,
+    personNum:[1,2,3,4,5,6,7,8,9],
     hideNoticePage:true,
     agreeNoticePage:false
   },
@@ -438,6 +440,12 @@ Page({
   bindFloorChange:function (e) {
     this.setData({
       currentFloor: e.detail.value
+    })
+  },
+  //出行人数记录变化
+  bindPersonNumChange:function (e) {
+    this.setData({
+      currentPersonNum: e.detail.value
     })
   },
   //显示医疗转运通知书
