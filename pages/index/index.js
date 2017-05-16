@@ -352,13 +352,18 @@ Page({
   //选择医院
   selectHospital:function (e) {
     var item = e.currentTarget.dataset.item
-    console.log(item)
-    this.setData({
+    var data = {
       endAddressDetail:item,
-      endAddress:item.addr + ' ' + item.hospitalname,
       hideHospitalList:true,
+      hideSugInfo:true,
       editAddress:''
-    })
+    }
+    if(item.addr && item.hospitalname){
+      data.endAddress = item.addr + ' ' + item.hospitalname
+    }else{
+      data.endAddress = item.name
+    }
+    this.setData(data)
   },
   //显示本地缓存的常用城市
   showUsualCity:function () {
@@ -372,6 +377,7 @@ Page({
     this.setData({
       currentCity:item.areaname,
       currentCityAreaId:item.areaid,
+      hideSugInfo:true,
       hideUsualCity:true
     })
     this.showHospitalList()
@@ -381,6 +387,7 @@ Page({
     this.setData({
       hideHospitalList:true,
       hideUsualCity:true,
+      hideSugInfo:true,
       editAddress:''
     })
   },

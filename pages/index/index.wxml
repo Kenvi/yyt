@@ -101,22 +101,23 @@
         <view class="right_arrow"></view>
       </view>
     </view>
+    <view hidden="{{hideSugInfo}}" class="sug_info">
+      <view bindtap="selectHospital" data-item="{{item}}" wx:for="{{sugData}}" wx:key="{{item.uid}}">
+        <view class="eqc"></view>
+        <view class="content">
+          <view class="tit">{{item.name}}</view>
+          <view class="desc">{{item.city}}{{item.district}}</view>
+        </view>
+        <view class="right_arrow"></view>
+      </view>
+    </view>
+
     <view hidden="{{hideHospitalList}}" class="sug_info">
       <view bindtap="selectHospital" data-item="{{item}}" wx:for="{{hospitalList}}" wx:key="{{item.uid}}">
         <view class="eqc"></view>
         <view class="content">
           <view class="tit">{{item.hospitalname}}</view>
           <view class="desc">{{item.addr}}</view>
-        </view>
-        <view class="right_arrow"></view>
-      </view>
-    </view>
-    <view hidden="{{hideSugInfo}}" class="sug_info">
-      <view bindtap="selectAddress" data-item="{{item}}" wx:for="{{sugData}}" wx:key="{{item.uid}}">
-        <view class="eqc"></view>
-        <view class="content">
-          <view class="tit">{{item.name}}</view>
-          <view class="desc">{{item.city}}{{item.district}}</view>
         </view>
         <view class="right_arrow"></view>
       </view>
