@@ -1,5 +1,5 @@
 //logs.js
-var bmap  = require('../../utils/bmap-wx.min.js')
+var bmap  = require('../../libs/bmap-wx.min.js')
 var AK =  '3pcGRQbqAf19GeF1lFiO7BWeofRpsnQ9'
 var wxMarkerData = [];  //定位成功回调对象
 Page({

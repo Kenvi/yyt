@@ -1,7 +1,7 @@
 //index.js
 //获取应用实例
 var app = getApp()
-var bmap  = require('../../utils/bmap-wx.min.js')
+var bmap  = require('../../libs/bmap-wx.min.js')
 var config =   require('../../config/config')
 var BMap = new bmap.BMapWX({
   ak: config.BaiDuMapAK
@@ -34,7 +34,7 @@ Page({
     date:'2017-01-01',
     time:'00:00',
     floors:[2,3,4,5,6,7,8,9],
-    currentFloor:2,
+    currentFloor:0,
     hideNoticePage:true
   },
   onReady: function () {
@@ -57,6 +57,7 @@ Page({
       }]
     })
   },
+  // 顶部tab切换
   shiftServe:function (e) {
     var params = {
       serveType:e.currentTarget.dataset.serve
@@ -70,6 +71,7 @@ Page({
     }
     this.setData(params)
   },
+  //显示，隐藏地图
   showAddressSelect:function (e) {
     var that = this
     if(this.data.beginAddress === ''){
@@ -140,6 +142,7 @@ Page({
       addressType:''
     })
   },
+  //地址输入
   bindKeyInput: function(e) {
     var that = this;
     that.setData({
@@ -165,6 +168,7 @@ Page({
       }
     });
   },
+  //选择地址
   selectAddress:function (e) {
     var item = e.currentTarget.dataset.item
     if(!item.location){
@@ -191,6 +195,7 @@ Page({
       hideSugInfo:true
     })
   },
+  //确认地址
   selectAddressConform:function (e) { // 确认定位地点为目标地点
     var address = e.currentTarget.dataset.address,
       type = this.data.addressType
@@ -212,6 +217,7 @@ Page({
       })
     }
   },
+  //获取当前定位坐标
   getLocation:function (setBeginAddress) {
     var that = this
     BMap.regeocoding({
@@ -241,20 +247,24 @@ Page({
     })
 
   },
+  //地图变换后切换标记物到中心
   regionchange:function (e) {
     if(e.type==='end'){
       this.getCenterLocation()
     }
 
   },
+  //点击标记物
   markertap : function(e) {
     console.log(e)
   },
+  //点击地图左下角按钮回到当前定位位置
   controltap : function(e) {
     console.log(e)
     // this.moveToLocation()
     this.getLocation()
   },
+  //地图变换后切换标记物到中心前获取该标记物位置信息
   getCenterLocation: function () {
     var that = this
     this.mapCtx.getCenterLocation({
@@ -282,9 +292,11 @@ Page({
       }
     })
   },
+  //移动到当前定位
   moveToLocation: function () {
     this.mapCtx.moveToLocation()
   },
+  //显示医院列表
   showHospitalList:function () {
     this.setData({
       hideHospitalList:false,
@@ -293,6 +305,7 @@ Page({
     var areaId = this.getAreaId()
     this.getHospitalList(areaId)
   },
+  //获取医院列表
   getHospitalList:function (areaid) {
     var that = this
     var params = {
@@ -319,6 +332,7 @@ Page({
       }
     })
   },
+  //获取区域id
   getAreaId:function () {
     var areaId = this.data.currentCityAreaId
     if(areaId === ''){
@@ -332,6 +346,7 @@ Page({
     }
     return areaId
   },
+  //选择医院
   selectHospital:function (e) {
     var item = e.currentTarget.dataset.item
     console.log(item)
@@ -342,11 +357,13 @@ Page({
       editAddress:''
     })
   },
+  //显示本地缓存的常用城市
   showUsualCity:function () {
     this.setData({
       hideUsualCity:false
     })
   },
+  //选择城市
   chooseCity:function (e) {
     var item = e.currentTarget.dataset.item
     this.setData({
@@ -356,6 +373,7 @@ Page({
     })
     this.showHospitalList()
   },
+  //取消选择医院
   cancelChooseHospital:function () {
     this.setData({
       hideHospitalList:true,
@@ -363,6 +381,7 @@ Page({
       editAddress:''
     })
   },
+  //获取当前时间并格式化
   getDate:function () {
     var date = new Date(),
       Y = date.getFullYear(),
@@ -379,21 +398,25 @@ Page({
       time:_format(h)+':'+_format(m)
     })
   },
+  //日期控件变换
   bindDateChange: function(e) {
     this.setData({
       date: e.detail.value
     })
   },
+  //时间控件变换
   bindTimeChange: function(e) {
     this.setData({
       time: e.detail.value
     })
   },
+  //选择担架上楼后记录楼层变化
   bindFloorChange:function (e) {
     this.setData({
       currentFloor: e.detail.value
     })
   },
+  //显示医疗转运通知书
   showNoticePage:function () {
     var ifShow = !this.data.hideNoticePage
     this.setData({

@@ -7,6 +7,7 @@
   <view bindtap="shiftServe" data-serve="helicopter" class="tab-item {{serveType==='helicopter'?'active':''}}">直升机</view>
 </view>
 
+<!--预约出发地及目的地选择-->
 <view class="main-form-wrap">
   <form class="main-form">
     <view class="form-group">
@@ -31,10 +32,11 @@
   </form>
 </view>
 
+<!--配套服务-->
 <view class="other-form-wrap">
   <view class="other-tit">配套服务</view>
-  <view class="ambulance-serve">
-    <view><switch></switch><text>呼吸机</text></view>
+  <view hidden="{{serveType!=='ambulance'}}" class="ambulance-serve">
+    <view><switch bindchange="ambulanceAddRespirator"></switch><text>呼吸机</text></view>
     <view>
       <switch></switch>
       <text>担架上楼</text>
