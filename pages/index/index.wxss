@@ -164,7 +164,6 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 1110rpx;
   z-index: 99;
   background: #fff; }
   .map-wrap .suggestion .section, .end-address-wrap .suggestion .section {
@@ -180,6 +179,7 @@
       margin: 0 auto;
       padding: 0 10rpx;
       font-size: 30rpx;
+      width: 300rpx;
       height: 60rpx;
       line-height: 60rpx;
       background: #fff;
@@ -209,6 +209,7 @@
         margin-left: 15rpx; }
     .map-wrap .suggestion .section-city > input, .end-address-wrap .suggestion .section-city > input {
       position: relative;
+      width: 300rpx;
       font-size: 28rpx;
       margin-left: 15rpx;
       top: 17rpx;
@@ -276,7 +277,7 @@
 map#startlocate {
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: 1010rpx;
   top: 100rpx; }
 
 .notice-page {

@@ -47,9 +47,9 @@
   </view>
   <view hidden="{{serveType!=='aviation'}}" class="aviation-serve">
     <view class="options">
-      <view>呼吸机</view>
-      <view>担架上机</view>
-      <view>轮椅上机</view>
+      <view bindtap="addRespirator" class="{{needRespirator?'active':''}}">呼吸机</view>
+      <view bindtap="addLitter" class="{{needLitter?'active':''}}">担架上机</view>
+      <view bindtap="addWheelChair" class="{{needWheelChair?'active':''}}">轮椅上机</view>
     </view>
     <view class="other-opts">
       <text>出行人数：</text>
@@ -60,9 +60,9 @@
   </view>
   <view hidden="{{serveType!=='highSpeedRail'}}" class="highSpeedRail-serve">
     <view class="options">
-      <view>呼吸机</view>
-      <view>担架上车</view>
-      <view>轮椅上车</view>
+      <view bindtap="addRespirator" class="{{needRespirator?'active':''}}">呼吸机</view>
+      <view bindtap="addLitter" class="{{needLitter?'active':''}}">担架上车</view>
+      <view bindtap="addWheelChair" class="{{needWheelChair?'active':''}}">轮椅上车</view>
     </view>
     <view class="other-opts">
       <text>出行人数：</text>
@@ -73,9 +73,9 @@
   </view>
   <view hidden="{{serveType!=='helicopter'}}" class="helicopter-serve">
     <view class="options">
-      <view>呼吸机</view>
-      <view>担架上机</view>
-      <view>轮椅上机</view>
+      <view bindtap="addRespirator" class="{{needRespirator?'active':''}}">呼吸机</view>
+      <view bindtap="addLitter" class="{{needLitter?'active':''}}">担架上机</view>
+      <view bindtap="addWheelChair" class="{{needWheelChair?'active':''}}">轮椅上机</view>
     </view>
     <view class="other-opts">
       <text>出行人数：</text>
@@ -90,7 +90,7 @@
       <text>同意</text>
       <checkbox  bindtap="checkNoticePageAgreement"></checkbox>
       <text bindtap="showNoticePage">医疗转运知情同意书</text></view>
-    <button type="button" >下一步</button>
+    <button bindtap="saveOrder" type="button" >下一步</button>
   </view>
   <view class="{{serveType!=='ambulance' ? 'hide' : ''}} other-serve-link" >
     <view>接送机</view>

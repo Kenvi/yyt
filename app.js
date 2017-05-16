@@ -79,6 +79,7 @@ App({
   },
   globalData:{
     userInfo:null,
+    userId:'001',
     cityList:null
   }
 })
