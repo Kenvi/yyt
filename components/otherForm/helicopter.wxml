@@ -1,0 +1,16 @@
+<template name="helicopter">
+  <view hidden="{{serveType!=='helicopter'}}" class="helicopter-serve">
+    <view class="options">
+      <view bindtap="addRespirator" class="{{needRespirator?'active':''}}">呼吸机</view>
+      <view bindtap="addLitter" class="{{needLitter?'active':''}}">担架上机</view>
+      <view bindtap="addWheelChair" class="{{needWheelChair?'active':''}}">轮椅上机</view>
+    </view>
+    <view class="other-opts">
+      <text>出行人数：</text>
+      <picker bindchange="bindPersonNumChange" value="{{currentPersonNum}}" range="{{personNum}}" class="select">
+        <view >{{personNum[currentPersonNum]}}人</view>
+      </picker>
+    </view>
+  </view>
+
+</template>

@@ -1,0 +1,67 @@
+<template name="addressSelect">
+  <!--出发地地图选择组件-->
+  <view class="map-wrap" hidden="{{!isShowAddressSelect}}">
+    <view class="suggestion">
+      <view class="section">
+        <view bindtap="hideAddressSelect" class="back"></view>
+        <input placeholder="输入关键字" value="{{editAddress}}" type="text"  bindinput="bindKeyInput"/>
+        <view bindtap="selectAddressConform" data-address="{{editAddress}}" class="edit">确定</view>
+      </view>
+      <view hidden="{{hideSugInfo}}" class="sug_info">
+        <view bindtap="selectAddress" data-item="{{item}}" wx:for="{{sugData}}" wx:key="{{item.uid}}">
+          <view class="eqc"></view>
+          <view class="content">
+            <view class="tit">{{item.name}}</view>
+            <view class="desc">{{item.city}}{{item.district}}</view>
+          </view>
+          <view class="right_arrow"></view>
+        </view>
+      </view>
+    </view>
+    <map style="height: {{mapHeight}}px;" hidden="{{!hideSugInfo}}" id="startlocate" longitude="{{locate.lng}}" latitude="{{locate.lat}}"  scale="14" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}"  bindmarkertap="markertap"  bindregionchange="regionchange" show-location ></map>
+  </view>
+  <!--目的地医院选择组件-->
+  <view class="end-address-wrap" hidden="{{hideHospitalList}}">
+    <view class="suggestion">
+      <view class="section-city">
+        <view bindtap="showUsualCity" class="city"><text>{{currentCity}}</text><view class="down_arrow"></view></view>
+        <input placeholder="输入关键字" value="{{editAddress}}" type="text"  bindinput="bindKeyInput"/>
+        <view bindtap="cancelChooseHospital" class="cancel">取消</view>
+      </view>
+      <view hidden="{{hideUsualCity}}" class="usual-city">
+        <view bindtap="chooseCity" data-item="{{item}}" class="{{currentCity===item.areaname ? 'active' : ''}}" wx:for="{{cityList.Usual}}" wx:key="{{item.areaid}}">{{item.areaname}}</view>
+      </view>
+      <view hidden="{{hideUsualCity}}" class="sug_info">
+        <view bindtap="chooseCity" data-item="{{item}}" wx:for="{{cityList.NEIDI}}" wx:key="{{item.areaid}}">
+          <view class="eqc"></view>
+          <view class="content">
+            <view class="province-item">{{item.areaname}}</view>
+          </view>
+          <view class="right_arrow"></view>
+        </view>
+      </view>
+      <view hidden="{{hideSugInfo}}" class="sug_info">
+        <view bindtap="selectHospital" data-item="{{item}}" wx:for="{{sugData}}" wx:key="{{item.uid}}">
+          <view class="eqc"></view>
+          <view class="content">
+            <view class="tit">{{item.name}}</view>
+            <view class="desc">{{item.city}}{{item.district}}</view>
+          </view>
+          <view class="right_arrow"></view>
+        </view>
+      </view>
+
+      <view hidden="{{hideHospitalList}}" class="sug_info">
+        <view bindtap="selectHospital" data-item="{{item}}" wx:for="{{hospitalList}}" wx:key="{{item.uid}}">
+          <view class="eqc"></view>
+          <view class="content">
+            <view class="tit">{{item.hospitalname}}</view>
+            <view class="desc">{{item.addr}}</view>
+          </view>
+          <view class="right_arrow"></view>
+        </view>
+      </view>
+
+    </view>
+  </view>
+</template>

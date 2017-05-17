@@ -1,0 +1,12 @@
+<template name="ambulance">
+  <view hidden="{{serveType!=='ambulance'}}" class="ambulance-serve">
+    <view><switch bindchange="ambulanceAddRespirator"></switch><text>呼吸机</text></view>
+    <view>
+      <switch bindchange="showFloorChange"></switch>
+      <text>担架上楼</text>
+      <picker class="{{ifShowFloorChange ? '' : 'hide'}} select" bindchange="bindFloorChange" value="{{currentFloor}}" range="{{floors}}">
+        <view >{{floors[currentFloor]}}楼</view>
+      </picker>
+    </view>
+  </view>
+</template>

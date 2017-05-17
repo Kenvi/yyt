@@ -1,4 +1,5 @@
 .back {
+  z-index: 999;
   position: relative;
   width: 30rpx;
   height: 60rpx;
