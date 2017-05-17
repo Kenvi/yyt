@@ -371,8 +371,16 @@ Page({
     }
     if(item.addr && item.hospitalname){
       data.endAddress = item.addr + ' ' + item.hospitalname
-    }else{
+    }else{ // 如果没有该参数则是输入关键字搜索的结果，需要对结果数据重新组装
       data.endAddress = item.name
+      data.endAddressDetail = {
+        iconPath: "/images/marker.png",
+        id: item.uid,
+        title:item.name,
+        address:item.name,
+        latitude: item.location.lat,
+        longitude: item.location.lng
+      }
     }
     this.setData(data)
   },
