@@ -50,7 +50,6 @@ Page({
     this.getDate()
     this.getLocation(true)
     var info = wx.getSystemInfoSync()
-    console.log(info)
     this.setData({
       controls: [{
         id: 1,
@@ -62,7 +61,8 @@ Page({
           height: 30
         },
         clickable: true
-      }]
+      }],
+      mapHeight:info.windowHeight - info.windowWidth/375 * 50
     })
   },
   // 顶部tab切换
@@ -130,7 +130,6 @@ Page({
         data.markers = [item]
         this.setData(data)
       }
-      console.log(data)
     }else{
       var data = {
         isShowAddressSelect:true,

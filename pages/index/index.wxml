@@ -118,7 +118,7 @@
       </view>
     </view>
   </view>
-  <map hidden="{{!hideSugInfo}}" id="startlocate" longitude="{{locate.lng}}" latitude="{{locate.lat}}"  scale="14" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}"  bindmarkertap="markertap"  bindregionchange="regionchange" show-location ></map>
+  <map style="height: {{mapHeight}}px;" hidden="{{!hideSugInfo}}" id="startlocate" longitude="{{locate.lng}}" latitude="{{locate.lat}}"  scale="14" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}"  bindmarkertap="markertap"  bindregionchange="regionchange" show-location ></map>
 </view>
 
 <!--目的地医院选择组件-->
