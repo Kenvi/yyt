@@ -1,0 +1,45 @@
+<template name="login">
+  <view class="login-mask" hidden="{{!showLoginModal}}">
+    <view class="login-wrap">
+      <view class="login-header">
+        <view wx:if="{{loginType==='regist'}}" class="title">会员注册</view>
+        <view wx:elif="{{loginType==='login'}}" class="title">会员登陆</view>
+        <view wx:else class="title">找回密码</view>
+        <view bindtap="hideLoginModal" class="close">×</view>
+      </view>
+      <view class="login-content">
+        <view class="input-group">
+          <view class="input-group-btn">
+            <view class="btn-user"></view>
+          </view>
+          <input bindinput="inputPhoneNumber" value="{{phoneNumber}}" class="form-control" type="text" placeholder="请输入手机号码" />
+        </view>
+        <view class="input-group {{loginType==='login'?'hide':''}}">
+          <view class="input-group-btn">
+            <view class="btn-message"></view>
+          </view>
+          <input bindinput="inputMessageCode" value="{{messageCode}}" class="form-control message" type="text" placeholder="请输入验证码" />
+          <button bindtap="getMessageCode" wx:if="{{countDownSeconds==='getCode'}}" type="primary">获取验证码</button>
+          <button class="count" wx:else type="primary">{{countDownSeconds}}秒</button>
+        </view>
+        <view class="input-group {{loginType==='forget'?'hide':''}}">
+          <view class="input-group-btn">
+            <view class="btn-password"></view>
+          </view>
+          <input wx:if="{{loginType==='regist'}}" bindinput="inputPassword" value="{{password}}" class="form-control" type="text" password="true" placeholder="请设置密码" />
+          <input wx:elif="{{loginType==='login'}}" bindinput="inputPassword" value="{{password}}" class="form-control" type="text" password="true" placeholder="请输入密码" />
+        </view>
+      </view>
+      <view class="login-footer">
+        <button wx:if="{{loginType==='regist'}}" bindtap="submitData">注册</button>
+        <button wx:elif="{{loginType==='login'}}" bindtap="submitData">登陆</button>
+        <button wx:else bindtap="userRegist" bindtap="submitData">找回密码</button>
+        <view class="other-type">
+          <view bindtap="changeLoginType" data-type="regist" hidden="{{loginType==='regist'}}">注册</view>
+          <view bindtap="changeLoginType" data-type="login" hidden="{{loginType==='login'}}">登陆</view>
+          <view bindtap="changeLoginType" data-type="forget" hidden="{{loginType==='forget'}}">忘记密码</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

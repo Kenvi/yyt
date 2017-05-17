@@ -50,3 +50,7 @@
 <!--医疗转运知情通知书-->
 <import src="../../components/noticePage/noticePage.wxml" />
 <template is="noticePage" data="{{hideNoticePage}}" />
+
+<!--登陆/注册/忘记密码-->
+<import src="../../components/login/login.wxml" />
+<template is="login" data="{{showLoginModal,loginType,countDownSeconds,phoneNumber,messageCode,password}}" />

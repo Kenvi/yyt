@@ -12,6 +12,7 @@ import noticePage from  '../../components/noticePage/noticePage.js'
 import mainForm from  '../../components/mainForm/mainForm.js'
 import otherForm from  '../../components/otherForm/otherForm.js'
 import addressSelect from  '../../components/addressSelect/addressSelect.js'
+import login from  '../../components/login/login.js'
 Page({
   data: {
     serveType:'ambulance',
@@ -21,7 +22,7 @@ Page({
   },
   onLoad:function () {
     var that = this
-    objAssign(this, mainForm,otherForm,noticePage,addressSelect)
+    objAssign(this, mainForm,otherForm,noticePage,addressSelect,login)
     that.setData(that.data)
   },
   onReady: function () {
@@ -44,6 +45,11 @@ Page({
       }],
       mapHeight:info.windowHeight - info.windowWidth/375 * 50
     })
+    if(!this.data.showLoginModal){
+      this.setData({
+        showLoginModal:true
+      })
+    }
   },
   // 顶部tab切换
   shiftServe:function (e) {

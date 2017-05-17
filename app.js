@@ -81,7 +81,7 @@ App({
   },
   globalData:{
     userInfo:null,
-    userId:'001',
+    userId:null,
     cityList:null
   }
 })
