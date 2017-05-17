@@ -84,7 +84,7 @@
       </picker>
     </view>
   </view>
-  <view class="total">下单后客服人员通过电话给您报价。</view>
+  <view hidden="{{hideTotalPrice}}" class="total">下单后客服人员通过电话给您报价。</view>
   <view class="next-step">
     <view class="agreement">
       <text>同意</text>

@@ -42,7 +42,8 @@ Page({
     currentPersonNum:0,
     personNum:[1,2,3,4,5,6,7,8,9],
     hideNoticePage:true,
-    agreeNoticePage:false
+    agreeNoticePage:false,
+    hideTotalPrice:true
   },
   onReady: function () {
     // 使用 wx.createMapContext 获取 map 上下文
@@ -211,23 +212,21 @@ Page({
   //确认地址
   selectAddressConform:function (e) { // 确认定位地点为目标地点
     var address = e.currentTarget.dataset.address,
-      type = this.data.addressType
+      type = this.data.addressType,
+      data = {
+        isShowAddressSelect:false,
+        editAddress:'',
+        addressType:''
+      }
     if(type === 'endLocation'){ // 判断是否为目的地定位地点
-      this.setData({
-        isShowAddressSelect:false,
-        endAddress:address,
-        endAddressDetail:this.data.markers[0],
-        editAddress:'',
-        addressType:''
-      })
+      data.hideTotalPrice = false
+      data.endAddress = address
+      data.endAddressDetail = this.data.markers[0]
+      this.setData(data)
     }else{
-      this.setData({
-        isShowAddressSelect:false,
-        beginAddress:address,
-        beginAddressDetail:this.data.markers[0],
-        editAddress:'',
-        addressType:''
-      })
+      data.beginAddress = address
+      data.beginAddressDetail = this.data.markers[0]
+      this.setData(data)
     }
   },
   //获取当前定位坐标
@@ -364,6 +363,7 @@ Page({
     var item = e.currentTarget.dataset.item
     var data = {
       endAddressDetail:item,
+      hideTotalPrice:false,
       hideHospitalList:true,
       hideSugInfo:true,
       editAddress:''
@@ -496,7 +496,25 @@ Page({
   //保存订单
   saveOrder:function () {
     var that = this
-    var data = {
+
+    if(JSON.stringify(that.data.endAddressDetail) == "{}"){
+      wx.showModal({
+        title:'提示',
+        content:'请输入目的地'
+      })
+      return
+    }
+
+    if(!that.data.agreeNoticePage){
+      wx.showModal({
+        title:'提示',
+        content:'请阅读“医疗转运知情同意书”，并勾选同意'
+      })
+      return
+    }
+
+
+      var data = {
       method:'saveOrder',
       userId:app.globalData.userId,
       uuid:that.generateOrderId(),
