@@ -12,13 +12,13 @@
           <view class="input-group-btn">
             <view class="btn-user"></view>
           </view>
-          <input bindinput="inputPhoneNumber" value="{{phoneNumber}}" class="form-control" type="text" placeholder="请输入手机号码" />
+          <input bindinput="inputPhoneNumber" value="{{phoneNumber}}" class="form-control" type="number" placeholder="请输入手机号码" />
         </view>
         <view class="input-group {{loginType==='login'?'hide':''}}">
           <view class="input-group-btn">
             <view class="btn-message"></view>
           </view>
-          <input bindinput="inputMessageCode" value="{{messageCode}}" class="form-control message" type="text" placeholder="请输入验证码" />
+          <input bindinput="inputMessageCode" value="{{messageCode}}" class="form-control message" type="number" placeholder="请输入验证码" />
           <button bindtap="getMessageCode" wx:if="{{countDownSeconds==='getCode'}}" type="primary">获取验证码</button>
           <button class="count" wx:else type="primary">{{countDownSeconds}}秒</button>
         </view>

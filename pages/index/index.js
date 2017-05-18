@@ -75,6 +75,7 @@ Page({
     if(JSON.stringify(that.data.endAddressDetail) == "{}"){
       wx.showModal({
         title:'提示',
+        showCancel:false,
         content:'请输入目的地'
       })
       return
@@ -83,6 +84,7 @@ Page({
     if(!that.data.agreeNoticePage){
       wx.showModal({
         title:'提示',
+        showCancel:false,
         content:'请阅读“医疗转运知情同意书”，并勾选同意'
       })
       return

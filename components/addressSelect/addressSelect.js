@@ -189,6 +189,9 @@ export default {
 
   //获取医院列表
   getHospitalList:function (areaid) {
+    wx.showLoading({
+      title:'加载中'
+    })
     var that = this
     var params = {
       method:'getHospitalList',
@@ -207,6 +210,7 @@ export default {
           that.setData({
             hospitalList:res.data.data.hospitalList
           })
+          wx.hideLoading()
         }
       },
       fail:function (err) {

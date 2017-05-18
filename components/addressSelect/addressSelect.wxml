@@ -12,7 +12,7 @@
           <view class="eqc"></view>
           <view class="content">
             <view class="tit">{{item.name}}</view>
-            <view class="desc">{{item.city}}{{item.district}}</view>
+            <view class="desc one-line-hide">{{item.city}}{{item.district}}</view>
           </view>
           <view class="right_arrow"></view>
         </view>
@@ -45,7 +45,7 @@
           <view class="eqc"></view>
           <view class="content">
             <view class="tit">{{item.name}}</view>
-            <view class="desc">{{item.city}}{{item.district}}</view>
+            <view class="desc one-line-hide">{{item.city}}{{item.district}}</view>
           </view>
           <view class="right_arrow"></view>
         </view>
@@ -56,7 +56,7 @@
           <view class="eqc"></view>
           <view class="content">
             <view class="tit">{{item.hospitalname}}</view>
-            <view class="desc">{{item.addr}}</view>
+            <view class="desc one-line-hide">{{item.addr}}</view>
           </view>
           <view class="right_arrow"></view>
         </view>
