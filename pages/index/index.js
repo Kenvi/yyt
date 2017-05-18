@@ -22,7 +22,7 @@ Page({
   },
   onLoad:function () {
     var that = this
-    objAssign(this, mainForm,otherForm,noticePage,addressSelect,login)
+    objAssign(that, mainForm,otherForm,noticePage,addressSelect,login)
     that.setData(that.data)
   },
   onReady: function () {
@@ -72,6 +72,15 @@ Page({
   saveOrder:function () {
     var that = this
 
+    if(JSON.stringify(that.data.beginAddressDetail) == "{}"){
+      wx.showModal({
+        title:'提示',
+        showCancel:false,
+        content:'请输入出发地'
+      })
+      return
+    }
+
     if(JSON.stringify(that.data.endAddressDetail) == "{}"){
       wx.showModal({
         title:'提示',
@@ -91,7 +100,7 @@ Page({
     }
 
 
-      var data = {
+    var data = {
       method:'saveOrder',
       userId:app.globalData.userId,
       uuid:that.generateOrderId(),

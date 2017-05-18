@@ -9,9 +9,9 @@ Page({
   onLoad: function() {
     console.log(app.globalData)
     var that = this;
-    if(app.globalData.userInfo.userInfo){
+    if(app.globalData.userInfo){
       that.setData({
-        userInfo:app.globalData.userInfo.userInfo
+        userInfo:app.globalData.userInfo
       })
     }
 

@@ -66,7 +66,8 @@ export default {
     if(!item.location){
       wx.showModal({
         title:'提示',
-        content:'该地点无明确位置，请重新选择其他地点'
+        content:'该地点无明确位置，请重新选择其他地点',
+        showCancel:false
       })
       return
     }
@@ -112,7 +113,11 @@ export default {
     var that = this
     BMap.regeocoding({
       fail: function (err) {
-        console.log(err)
+        wx.showModal({
+          title:'提示',
+          content:'用户拒绝授权，无法使用定位功能，请点击右上角->关于易医通->点击右上角->设置->允许地理位置授权',
+          showCancel:false
+        })
       },
       success: function (data) {
         var wxMarkerData = data.wxMarkerData
@@ -162,7 +167,11 @@ export default {
         BMap.regeocoding({
           location:res.latitude+','+res.longitude,
           fail: function (err) {
-            console.log(err)
+            wx.showModal({
+              title:'提示',
+              content:'用户拒绝授权，无法使用定位功能',
+              showCancel:false
+            })
           },
           success: function (data) {
             var  wxMarkerData = data.wxMarkerData

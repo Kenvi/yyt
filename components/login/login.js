@@ -74,9 +74,9 @@ export default {
         code:that.data.messageCode,
         ps:that.data.password,
         openid:'asdadad',
-        nickname:app.globalData.userInfo.userInfo.nickName,
-        photo:app.globalData.userInfo.userInfo.avatarUrl,
-        sex:app.globalData.userInfo.userInfo.gender === 1 ? '男' : '女'
+        nickname:app.globalData.userInfo.nickName,
+        photo:app.globalData.userInfo.avatarUrl,
+        sex:app.globalData.userInfo.gender === 1 ? '男' : '女'
       }
       if(that.data.loginType === 'login'){
         data.method = 'userLogin'

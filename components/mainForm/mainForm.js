@@ -15,6 +15,7 @@ export default {
     if(this.data.beginAddress === ''){
       wx.showModal({
         title:'提示',
+        showCancel:false,
         content:'正在定位，请稍后再次尝试'
       })
       return
