@@ -86,5 +86,30 @@ export default {
     }
 
     console.log(data)
+  },
+  wxLogout:function () {
+    app.globalData.userInfo = null
+    if(this.data.userInfo){
+      this.setData({
+        userInfo:{
+          avatarUrl:'https://www.emtsos.com/emt/v-v1-zh_CN-/emt/img/userheader.png',
+          nickName:'注册/登录',
+          logout:true
+        }
+      })
+      wx.showToast({
+        title: '成功',
+        icon: 'success',
+        duration: 2000
+      })
+    }
+
+  },
+  userLogin:function () {
+    if(this.data.userInfo.logout){
+      this.setData({
+        showLoginModal:true
+      })
+    }
   }
 }

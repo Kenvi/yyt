@@ -1,4 +1,8 @@
 const app = getApp()
+const objAssign = require('../../util/objectAssign')
+
+import login from  '../../components/login/login.js'
+
 Page({
   data: {
     userInfo:{
@@ -8,8 +12,10 @@ Page({
   },
   onLoad: function() {
     console.log(app.globalData)
-    var that = this;
-    if(app.globalData.userInfo){
+    var that = this
+    objAssign(that,login)
+    that.setData(that.data)
+    if(app.globalData.userInfo !== null){
       that.setData({
         userInfo:app.globalData.userInfo
       })

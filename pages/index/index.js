@@ -45,11 +45,7 @@ Page({
       }],
       mapHeight:info.windowHeight - info.windowWidth/375 * 50
     })
-    if(!this.data.showLoginModal){
-      this.setData({
-        showLoginModal:true
-      })
-    }
+
   },
   // 顶部tab切换
   shiftServe:function (e) {
@@ -95,6 +91,13 @@ Page({
         title:'提示',
         showCancel:false,
         content:'请阅读“医疗转运知情同意书”，并勾选同意'
+      })
+      return
+    }
+
+    if(app.globalData.userId === null){
+      this.setData({
+        showLoginModal:true
       })
       return
     }
