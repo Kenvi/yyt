@@ -21,6 +21,9 @@ Page({
     endAddressDetail:{},
   },
   onLoad:function () {
+    wx.redirectTo({
+      url:'/pages/confirmOrder/confirmOrder'
+    })
     var that = this
     objAssign(that, mainForm,otherForm,noticePage,addressSelect,login)
     that.setData(that.data)

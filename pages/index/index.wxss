@@ -1,11 +1,3 @@
-.page-tit {
-  height: 96rpx;
-  line-height: 96rpx;
-  background: #2fa4e7;
-  color: #fff;
-  text-align: center;
-  font-size: 36rpx; }
-
 .order-nav {
   display: flex;
   flex-direction: row;

@@ -1,7 +1,8 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/mine/mine"
+    "pages/mine/mine",
+    "pages/confirmOrder/confirmOrder"
   ],
   "tabBar": {
     "color":"#777",
