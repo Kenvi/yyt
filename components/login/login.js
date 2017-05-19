@@ -111,5 +111,12 @@ export default {
         showLoginModal:true
       })
     }
+    if(this.data.userInfo.unAuthority){
+      app.getUserInfo(function (userInfo) {
+        this.setData({
+          userInfo:userInfo
+        })
+      })
+    }
   }
 }

@@ -1,22 +1,25 @@
-<view class="page-tit">订单确认</view>
+<view class="page-tit has-back">
+  <view bindtap="backToLastPage" class="back"></view>
+  <view class="tit">订单确认</view>
+</view>
 <view class="order-detail-wrap">
   <view class="order-detail">
     <view class="row">
       <view>订单类型：</view>
-      <view hidden="{{orderDetail.otype !== '0'}}">市内转运</view>
-      <view hidden="{{orderDetail.otype !== '1'}}">接机</view>
-      <view hidden="{{orderDetail.otype !== '2'}}">送机</view>
-      <view hidden="{{orderDetail.otype !== '3'}}">接高铁</view>
-      <view hidden="{{orderDetail.otype !== '4'}}">送高铁</view>
-      <view hidden="{{orderDetail.otype !== '5'}}">港澳直达</view>
-      <view hidden="{{orderDetail.otype !== '6'}}">航空</view>
-      <view hidden="{{orderDetail.otype !== '7'}}">高铁</view>
-      <view hidden="{{orderDetail.otype !== '8'}}">直升机</view>
-      <view hidden="{{orderDetail.otype !== '9'}}">活动医疗保障</view>
-      <view hidden="{{orderDetail.otype !== '10'}}">香港</view>
-      <view hidden="{{orderDetail.otype !== '11'}}">澳门</view>
-      <view hidden="{{orderDetail.otype !== '12'}}">台湾</view>
-      <view hidden="{{orderDetail.otype !== '13'}}">国外</view>
+      <view wx:if="{{orderDetail.otype === '0'}}">市内转运</view>
+      <view wx:elif="{{orderDetail.otype === '1'}}">接机</view>
+      <view wx:elif="{{orderDetail.otype === '2'}}">送机</view>
+      <view wx:elif="{{orderDetail.otype === '3'}}">接高铁</view>
+      <view wx:elif="{{orderDetail.otype === '4'}}">送高铁</view>
+      <view wx:elif="{{orderDetail.otype === '5'}}">港澳直达</view>
+      <view wx:elif="{{orderDetail.otype === '6'}}">航空</view>
+      <view wx:elif="{{orderDetail.otype === '7'}}">高铁</view>
+      <view wx:elif="{{orderDetail.otype === '8'}}">直升机</view>
+      <view wx:elif="{{orderDetail.otype === '9'}}">活动医疗保障</view>
+      <view wx:elif="{{orderDetail.otype === '10'}}">香港</view>
+      <view wx:elif="{{orderDetail.otype === '11'}}">澳门</view>
+      <view wx:elif="{{orderDetail.otype === '12'}}">台湾</view>
+      <view wx:else>国外</view>
     </view>
     <view class="row">
       <view>预约时间：</view>

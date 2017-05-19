@@ -1,15 +1,22 @@
 .page-tit {
-  height: 96rpx;
-  line-height: 96rpx;
+  height: 100rpx;
+  line-height: 100rpx;
   background: #2fa4e7;
   color: #fff;
   text-align: center;
   font-size: 36rpx; }
+  .page-tit.has-back {
+    display: flex;
+    height: 60rpx;
+    padding: 20rpx; }
+    .page-tit.has-back .tit {
+      width: 100%;
+      line-height: 60rpx; }
 
 .back {
   z-index: 999;
   position: relative;
-  width: 30rpx;
+  width: 60rpx;
   height: 60rpx;
   left: 20rpx; }
   .back:before, .back:after {

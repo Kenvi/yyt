@@ -14,6 +14,9 @@
     .order-nav .tab-item:last-child {
       border-right: none; }
 
+.o-h {
+  overflow-y: hidden; }
+
 .main-form-wrap {
   background: #e7efed;
   padding: 10rpx 0; }

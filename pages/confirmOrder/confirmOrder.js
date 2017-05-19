@@ -9,9 +9,14 @@ Page({
     uploadImgArr:[]
   },
   onLoad:function () {
-    const orderDetail = JSON.parse(sessionStorage.orderDetail)
+    const orderDetail = JSON.parse(wx.getStorageSync('orderDetail'))
     this.setData({
       orderDetail:orderDetail
+    })
+  },
+  backToLastPage:function () {
+    wx.navigateBack({
+      delta:1
     })
   },
   inputOtherRequest:function (e) {
@@ -40,6 +45,7 @@ Page({
   },
   submitData:function () {
     const data = this.data
+    wx.removeStorageSync('orderDetail')
     console.log(data)
   }
 })

@@ -7,7 +7,8 @@ Page({
   data: {
     userInfo:{
       avatarUrl:'https://www.emtsos.com/emt/v-v1-zh_CN-/emt/img/userheader.png',
-      nickName:'注册/登录'
+      nickName:'注册/登录',
+      unAuthority:true
     }
   },
   onLoad: function() {

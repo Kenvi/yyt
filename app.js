@@ -32,6 +32,7 @@ App({
     wx.getUserInfo({
       success:function (res) {
         that.globalData.userInfo = res.userInfo
+        typeof cb == "function" && cb(res.userInfo)
       },
       fail:function () {
         wx.showModal({
@@ -93,7 +94,7 @@ App({
   },
   globalData:{
     userInfo:null,
-    userId:null,
+    userId:111,
     cityList:null
   }
 })

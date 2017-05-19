@@ -26,25 +26,8 @@ Page({
     that.setData(that.data)
   },
   onReady: function () {
-  // 使用 wx.createMapContext 获取 map 上下文
-    this.mapCtx = wx.createMapContext('startlocate')
     this.getDate()
-    this.getLocation(true)
-    var info = wx.getSystemInfoSync()
-    this.setData({
-      controls: [{
-        id: 1,
-        iconPath: '/images/aim.png',
-        position: {
-          left: 15,
-          top: info.windowHeight-100,
-          width: 30,
-          height: 30
-        },
-        clickable: true
-      }],
-      mapHeight:info.windowHeight - info.windowWidth/375 * 50
-    })
+    this.initMap()
 
   },
   // 顶部tab切换
@@ -166,8 +149,8 @@ Page({
     //价格（未完成）
     data.price1 = '600'
     console.log(data)
-    sessionStorage.orderDetail = JSON.stringify(data)
-    wx.redirectTo({
+    wx.setStorageSync('orderDetail', JSON.stringify(data))
+    wx.navigateTo({
       url:'/pages/confirmOrder/confirmOrder'
     })
 

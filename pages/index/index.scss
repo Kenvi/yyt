@@ -1,4 +1,3 @@
-
 .order-nav{
   display: flex;
   flex-direction: row;
@@ -18,6 +17,12 @@
     }
   }
 }
+
+.o-h{
+  overflow-y: hidden;
+}
+
+
 @import "../../components/mainForm/mainForm.scss";
 @import "../../components/otherForm/otherForm.scss";
 @import "../../components/addressSelect/addressSelect.scss";

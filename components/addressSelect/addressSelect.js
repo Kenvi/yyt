@@ -28,6 +28,28 @@ export default {
     currentCity:'广州市',
     currentCityAreaId:''
   },
+  initMap:function () {
+    // 使用 wx.createMapContext 获取 map 上下文
+    this.mapCtx = wx.createMapContext('startlocate')
+    this.getLocation(true)
+    var info = wx.getSystemInfoSync()
+    console.log(info)
+    this.setData({
+      controls: [{
+        id: 1,
+        iconPath: '/images/aim.png',
+        position: {
+          left: 15,
+          top: info.windowHeight-100,
+          width: 30,
+          height: 30
+        },
+        clickable: true
+      }],
+      clientHeight:info.windowHeight,
+      mapHeight:info.windowHeight - info.windowWidth/375 * 50
+    })
+  },
   hideAddressSelect:function () {
     this.setData({
       isShowAddressSelect:false,
