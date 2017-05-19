@@ -3,37 +3,37 @@
   <view class="order-detail">
     <view class="row">
       <view>订单类型：</view>
-      <view>市内转运</view>
+      <view hidden="{{orderDetail.otype !== '0'}}">市内转运</view>
     </view>
     <view class="row">
       <view>预约时间：</view>
-      <view>2017-05-17 18:51:00</view>
+      <view>{{orderDetail.departuredate}}</view>
     </view>
     <view class="row">
       <view>出发地：</view>
-      <view>广东省广州市天河区体育中心天河南二路31号</view>
+      <view>{{orderDetail.address1}}</view>
     </view>
     <view>
       <view>目的地：</view>
-      <view>广东省广州市天河区体育中心天河南二路31号</view>
+      <view>{{orderDetail.address2}}</view>
     </view>
   </view>
 </view>
 <view class="other-serve-wrap">
   <view class="serve-title">其他要求：</view>
-  <textarea placeholder="请输入您的其他需求" />
+  <textarea bindinput="inputOtherRequest" placeholder="请输入您的其他需求" />
   <view class="tips">
     <view class="content">
       特别说明：请提供住院病历、出院小结、检查报告、门诊病历等资料照片，以便医生对您的病情进行预判。
     </view>
     <view class="upload">
-      <view class="tit">相关照片：<text>已上传1张</text></view>
+      <view class="tit">相关照片：<text  hidden="{{uploadImgArr.length === 0}}">已上传{{uploadImgArr.length}}张</text></view>
       <view bindtap="uploadImage" class="upload-btn">上传照片</view>
     </view>
   </view>
-  <view class="info">确认订单后可在订单详情查看上传的照片</view>
+  <view hidden="{{uploadImgArr.length === 0}}" class="info">确认订单后可在订单详情查看上传的照片</view>
 </view>
-<view class="total-amount">约<text>600</text>元</view>
+<view class="total-amount">约<text>{{orderDetail.price1}}</text>元</view>
 <view class="confirm">
-  <button type="primary" class="confirm-btn">确认</button>
+  <button bindtap="submitData" type="primary" class="confirm-btn">确认</button>
 </view>

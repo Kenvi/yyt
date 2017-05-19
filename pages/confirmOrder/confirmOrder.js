@@ -4,16 +4,42 @@
 "use strict"
 Page({
   data:{
-
+    orderDetail:{},
+    otherRequest:'',
+    uploadImgArr:[]
+  },
+  onLoad:function () {
+    const orderDetail = JSON.parse(sessionStorage.orderDetail)
+    this.setData({
+      orderDetail:orderDetail
+    })
+  },
+  inputOtherRequest:function (e) {
+    this.setData({
+      otherRequest:e.detail.value
+    })
   },
   uploadImage:function () {
+    const that = this
     wx.chooseImage({
       success:function (res) {
-        console.log(res)
+        let arr = that.data.uploadImgArr
+        if(res.tempFilePaths){
+          res.tempFilePaths.forEach(function (item) {
+            arr.push(item)
+          })
+        }
+        that.setData({
+          uploadImgArr:arr
+        })
       },
       fail:function (err) {
         console.log(err)
       }
     })
+  },
+  submitData:function () {
+    const data = this.data
+    console.log(data)
   }
 })

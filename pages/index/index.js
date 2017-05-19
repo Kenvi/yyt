@@ -21,9 +21,6 @@ Page({
     endAddressDetail:{},
   },
   onLoad:function () {
-    wx.redirectTo({
-      url:'/pages/confirmOrder/confirmOrder'
-    })
     var that = this
     objAssign(that, mainForm,otherForm,noticePage,addressSelect,login)
     that.setData(that.data)
@@ -169,6 +166,10 @@ Page({
     //价格（未完成）
     data.price1 = '600'
     console.log(data)
+    sessionStorage.orderDetail = JSON.stringify(data)
+    wx.redirectTo({
+      url:'/pages/confirmOrder/confirmOrder'
+    })
 
   },
   //生成订单号
