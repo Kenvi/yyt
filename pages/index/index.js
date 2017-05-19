@@ -88,6 +88,7 @@ Page({
 
     var data = {
       method:'saveOrder',
+      source:'4',
       userId:app.globalData.userId,
       uuid:that.generateOrderId(),
       lat1:that.data.beginAddressDetail.latitude,

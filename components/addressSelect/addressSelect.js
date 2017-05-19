@@ -33,7 +33,6 @@ export default {
     this.mapCtx = wx.createMapContext('startlocate')
     this.getLocation(true)
     var info = wx.getSystemInfoSync()
-    console.log(info)
     this.setData({
       controls: [{
         id: 1,

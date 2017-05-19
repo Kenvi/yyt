@@ -3,17 +3,21 @@ const config = require('/config/config')
 
 App({
   onLaunch: function () {
+    const that = this
     //调用API从本地缓存中获取数据
-    var CityList = wx.getStorageSync('CityList')
+    const CityList = wx.getStorageSync('CityList')
     if(CityList === ''){
-      this.getCityList()
+      that.getCityList()
     }else{
-      this.globalData.cityList = CityList
+      that.globalData.cityList = CityList
     }
-    this.checkWxSession()
-    if(this.globalData.userInfo === null){
-      this.getUserInfo()
+    that.checkWxSession()
+    if(that.globalData.userInfo === null){
+      that.getUserInfo(function () {
+        that.getParams()
+      })
     }
+
   },
   checkWxSession:function () {
     const that = this
@@ -92,9 +96,34 @@ App({
       }
     })
   },
+  getParams:function () {
+    const that = this
+    let data = {
+      method:'getParams',
+      username:that.globalData.userId
+    }
+    if(that.globalData.userInfo !== null){
+      data.wx_nickname = that.globalData.userInfo.nickName
+      data.wx_headimgurl = that.globalData.userInfo.avatarUrl
+      data.wx_sex = that.globalData.userInfo.gender === 1 ? '男' : '女'
+    }
+    wx.request({
+      url: 'https://www.emtsos.com/emMiniApi.do',
+      data: data,
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function(res) {
+        if(res.data.ret === 1){
+          that.globalData.orderParams = res.data
+        }
+      }
+    })
+  },
   globalData:{
     userInfo:null,
-    userId:111,
-    cityList:null
+    userId:10018,
+    cityList:null,
+    orderParams:null
   }
 })
