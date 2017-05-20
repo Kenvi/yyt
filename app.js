@@ -56,12 +56,10 @@ App({
         if (res.code) {
           //发起网络请求
           wx.request({
-            url: 'https://api.weixin.qq.com/sns/jscode2session',
+            url: 'https://www.emtsos.com/emMiniApi.do',
             data: {
-              appid:config.AppId,
-              secret:config.Secret,
-              js_code: res.code,
-              grant_type:'authorization_code'
+              method:'getWXUserinfo',
+              code: res.code
             },
             success:function (data) {
              console.log(data)

@@ -145,7 +145,10 @@ Page({
     data.departuredate = that.data.date + ' ' + that.data.time + ':00'
 
     //路程（未完成）
-    data.distance = '22'
+
+    that.getDistance(data.lat1,data.lng1,data.lat2,data.lng2,function (res) {
+      data.distance = res.distance
+    })
 
     //价格（未完成）
     data.price1 = '600'
@@ -176,6 +179,27 @@ Page({
           district:data.originalData.result.addressComponent.district
         }
         typeof cb == "function" && cb(cityData)
+      }
+    })
+  },
+  //计算距离
+  getDistance:function (lat,lng,lat1,lng1,cb) {
+    wx.request({
+      url: 'https://www.emtsos.com/emMiniApi.do',
+      data: {
+        method:'getDistance',
+        lat:lat,
+        lng:lng,
+        lat1:lat1,
+        lng1:lng1
+      },
+      success:function (res) {
+        if(res.data.ret === 1){
+          typeof cb == "function" && cb(res.data.data)
+        }
+      },
+      fail:function (err) {
+        console.log(err)
       }
     })
   }
