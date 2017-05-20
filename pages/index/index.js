@@ -18,7 +18,7 @@ Page({
     serveType:'ambulance',
     serveTit:'救护车预约',
     beginAddressDetail:{},
-    endAddressDetail:{},
+    endAddressDetail:{}
   },
   onLoad:function () {
     var that = this
@@ -97,6 +97,12 @@ Page({
       lat2:that.data.endAddressDetail.latitude,
       lng2:that.data.endAddressDetail.longitude,
       address2:that.data.endAddressDetail.address || that.data.endAddressDetail.title,
+      province1:that.data.province1,
+      province2:that.data.province2,
+      city1:that.data.city1,
+      city2:that.data.city2,
+      district1:that.data.district1,
+      district2:that.data.district2
     }
 
     //订单类型
@@ -108,24 +114,12 @@ Page({
       default : data.otype = '0';break;
     }
 
-    //出发地信息
-    that.coordinateToCity(data.lat1,data.lng1,function (cityData) {
-      data.province1 = cityData.province
-      data.city1 = cityData.city
-      data.district1 = cityData.district
-    })
-
     // 目的地信息
     if(!data.lat2 || !data.lng2 || !data.address2){
       data.lat2 = that.data.endAddressDetail.lat1
       data.lng2 = that.data.endAddressDetail.lng1
       data.address2 = that.data.endAddressDetail.addr
     }
-    that.coordinateToCity(data.lat2,data.lng2,function (cityData) {
-      data.province2 = cityData.province
-      data.city2 = cityData.city
-      data.district2 = cityData.district
-    })
 
     //配套服务（未完成）
     data.servicetype = '10003,10004'
@@ -167,20 +161,29 @@ Page({
   },
   //坐标转换城市
   coordinateToCity:function (lat,lng,cb) {
-    BMap.regeocoding({
-      location:lat+','+lng,
-      fail: function (err) {
-        console.log(err)
-      },
-      success: function (data) {
-        var cityData = {
-          province:data.originalData.result.addressComponent.province,
-          city:data.originalData.result.addressComponent.city,
-          district:data.originalData.result.addressComponent.district
+    if(lat && lng){
+      BMap.regeocoding({
+        location:lat+','+lng,
+        fail: function (err) {
+          console.log(err)
+        },
+        success: function (data) {
+          var cityData = {
+            province:data.originalData.result.addressComponent.province,
+            city:data.originalData.result.addressComponent.city,
+            district:data.originalData.result.addressComponent.district
+          }
+          typeof cb == "function" && cb(cityData)
         }
-        typeof cb == "function" && cb(cityData)
-      }
-    })
+      })
+    }else{
+      wx.showModal({
+        title:'提示',
+        showCancel:false,
+        content:'坐标获取失败'
+      })
+      return
+    }
   },
   //计算距离
   getDistance:function (lat,lng,lat1,lng1,cb) {
@@ -220,7 +223,53 @@ Page({
   },
   // 计算价格
   getPrice:function (distance) {
-    let price = parseInt(distance)
-    console.log(price)
+    distance = parseInt(distance)
+    let price = 0
+    if(distance > 200){
+      price += distance * 15
+    }else{
+      price += distance * 10
+    }
+
+    const that = this,
+      begin = that.data.beginAddressDetail,
+       end = that.data.endAddressDetail,
+      lat1 = begin.latitude,
+      lng1 = begin.longitude,
+      lat2 = end.lat1 || end.latitude,
+      lng2 = end.lng1 || end.longitude
+
+    const cityList = app.globalData.orderParams.cityList2
+    const districtList = app.globalData.orderParams.cityList3
+    console.log(cityList)
+    console.log(districtList)
+
+    that.coordinateToCity(lat1,lng1,function (data) {
+      that.setData({
+        province1 : data.province,
+        city1 : data.city,
+        district1 : data.district
+      })
+      that.coordinateToCity(lat2,lng2,function (data) {
+        that.setData({
+          province2 : data.province,
+          city2 : data.city,
+          district2 : data.district
+        })
+
+        if(that.data.province1 === '广东省' && that.data.province2 === '广东省'){
+          const city1 = that.data.city1,
+            city2 = that.data.city2
+          let minPrice
+
+        }
+
+      })
+
+    })
+
+
+
+
   }
 })
