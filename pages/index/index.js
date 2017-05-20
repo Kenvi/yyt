@@ -96,7 +96,7 @@ Page({
       address1:that.data.beginAddressDetail.address,
       lat2:that.data.endAddressDetail.latitude,
       lng2:that.data.endAddressDetail.longitude,
-      address2:that.data.endAddressDetail.address,
+      address2:that.data.endAddressDetail.address || that.data.endAddressDetail.title,
     }
 
     //订单类型
