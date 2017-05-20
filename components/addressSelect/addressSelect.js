@@ -153,7 +153,8 @@ export default {
         })
       },
       success: function (data) {
-        var wxMarkerData = data.wxMarkerData
+        let wxMarkerData = data.wxMarkerData
+        wxMarkerData[0].title = wxMarkerData[0].address
         if(setBeginAddress){
           that.setData({
             beginAddress:wxMarkerData[0].address,
@@ -194,9 +195,11 @@ export default {
   },
   //地图变换后切换标记物到中心前获取该标记物位置信息
   getCenterLocation: function () {
-    var that = this
+    const that = this
     this.mapCtx.getCenterLocation({
       success: function (res) {
+        console.log(res)
+
         BMap.regeocoding({
           location:res.latitude+','+res.longitude,
           fail: function (err) {
@@ -221,6 +224,9 @@ export default {
           iconPath: '/images/marker.png',
           iconTapPath: '/images/marker.png'
         })
+      },
+      fail:function(err){
+        console.log(err)
       }
     })
   },
