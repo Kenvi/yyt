@@ -26,7 +26,8 @@ export default {
     hideHospitalList:true,
     cityList:app.globalData.cityList,
     currentCity:'广州市',
-    currentCityAreaId:''
+    currentCityAreaId:'',
+    distance:''
   },
   initMap:function () {
     // 使用 wx.createMapContext 获取 map 上下文
@@ -111,22 +112,33 @@ export default {
   },
   //确认地址
   selectAddressConform:function (e) { // 确认定位地点为目标地点
-    var address = e.currentTarget.dataset.address,
-      type = this.data.addressType,
-      data = {
-        isShowAddressSelect:false,
-        editAddress:'',
-        addressType:''
-      }
+    const address = e.currentTarget.dataset.address,
+          type = this.data.addressType
+    let data = {
+      isShowAddressSelect:false,
+      editAddress:'',
+      addressType:''
+    }
     if(type === 'endLocation'){ // 判断是否为目的地定位地点
+      if(address === '') {
+        data.endAddress = this.data.markers[0].address
+      }else{
+        data.endAddress = address
+      }
       data.hideTotalPrice = false
-      data.endAddress = address
       data.endAddressDetail = this.data.markers[0]
       this.setData(data)
     }else{
       data.beginAddress = address
       data.beginAddressDetail = this.data.markers[0]
       this.setData(data)
+    }
+    const lat = this.data.beginAddressDetail.latitude,
+      lng = this.data.beginAddressDetail.longitude,
+      lat1 = this.data.endAddressDetail.latitude,
+      lng1 = this.data.endAddressDetail.longitude
+    if(lat && lng && lat1 && lng1){
+      this.getDistance(lat,lng,lat1,lng1)
     }
   },
   //获取当前定位坐标
@@ -264,8 +276,12 @@ export default {
   },
   //选择医院
   selectHospital:function (e) {
-    var item = e.currentTarget.dataset.item
-    var data = {
+    const that = this,
+          item = e.currentTarget.dataset.item,
+          lat = that.data.beginAddressDetail.latitude,
+          lng = that.data.beginAddressDetail.longitude
+    let   lat1 ,  lng1
+    let data = {
       endAddressDetail:item,
       hideTotalPrice:false,
       hideHospitalList:true,
@@ -274,6 +290,8 @@ export default {
     }
     if(item.addr && item.hospitalname){
       data.endAddress = item.addr + ' ' + item.hospitalname
+      lat1 = item.lat1
+      lng1 = item.lng1
     }else{ // 如果没有该参数则是输入关键字搜索的结果，需要对结果数据重新组装
       data.endAddress = item.name
       data.endAddressDetail = {
@@ -284,8 +302,13 @@ export default {
         latitude: item.location.lat,
         longitude: item.location.lng
       }
+      lat1 = item.location.lat
+      lng1 = item.location.lng
     }
-    this.setData(data)
+    that.setData(data)
+
+    this.getDistance(lat,lng,lat1,lng1)
+
   },
   //显示本地缓存的常用城市
   showUsualCity:function () {

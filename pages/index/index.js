@@ -144,19 +144,19 @@ Page({
     //出发时间
     data.departuredate = that.data.date + ' ' + that.data.time + ':00'
 
-    //路程（未完成）
+    //路程
 
-    that.getDistance(data.lat1,data.lng1,data.lat2,data.lng2,function (res) {
-      data.distance = res.distance
-    })
+    // that.getDistance(data.lat1,data.lng1,data.lat2,data.lng2,function (res) {
+    //   data.distance = res.distance
+    // })
 
     //价格（未完成）
     data.price1 = '600'
     console.log(data)
-    wx.setStorageSync('orderDetail', JSON.stringify(data))
-    wx.navigateTo({
-      url:'/pages/confirmOrder/confirmOrder'
-    })
+    // wx.setStorageSync('orderDetail', JSON.stringify(data))
+    // wx.navigateTo({
+    //   url:'/pages/confirmOrder/confirmOrder'
+    // })
 
   },
   //生成订单号
@@ -184,23 +184,43 @@ Page({
   },
   //计算距离
   getDistance:function (lat,lng,lat1,lng1,cb) {
-    wx.request({
-      url: 'https://www.emtsos.com/emMiniApi.do',
-      data: {
-        method:'getDistance',
-        lat:lat,
-        lng:lng,
-        lat1:lat1,
-        lng1:lng1
-      },
-      success:function (res) {
-        if(res.data.ret === 1){
-          typeof cb == "function" && cb(res.data.data)
+    if(lat && lng && lat1 && lng1){
+      const that = this
+      wx.request({
+        url: 'https://www.emtsos.com/emMiniApi.do',
+        data: {
+          method:'getDistance',
+          lat:lat,
+          lng:lng,
+          lat1:lat1,
+          lng1:lng1
+        },
+        success:function (res) {
+          if(res.data.ret === 1){
+            that.setData({
+              distance:res.data.data.distance
+            })
+            that.getPrice(res.data.data.distance)
+            typeof cb == "function" && cb(res.data.data)
+          }
+        },
+        fail:function (err) {
+          console.log(err)
         }
-      },
-      fail:function (err) {
-        console.log(err)
-      }
-    })
+      })
+    }else{
+      wx.showModal({
+        title:'提示',
+        showCancel:false,
+        content:'坐标获取出错，请重新选择出发地或目的地'
+      })
+      return
+    }
+
+  },
+  // 计算价格
+  getPrice:function (distance) {
+    let price = parseInt(distance)
+    console.log(price)
   }
 })

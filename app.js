@@ -6,24 +6,27 @@ App({
     const that = this
     //调用API从本地缓存中获取数据
     const CityList = wx.getStorageSync('CityList')
+    const OrderParams = wx.getStorageSync('OrderParams')
     if(CityList === ''){
       that.getCityList()
     }else{
       that.globalData.cityList = CityList
     }
     that.checkWxSession()
-    if(that.globalData.userInfo === null){
-      that.getUserInfo(function () {
+    that.getUserInfo(function () {
+      if(OrderParams === ''){
         that.getParams()
-      })
-    }
+      }else{
+        that.globalData.orderParams = OrderParams
+      }
+    })
 
   },
   checkWxSession:function () {
     const that = this
     wx.checkSession({
       success:function (res) {
-        console.log(res)
+        // console.log(res)
       },
       fail:function (err) {
         console.log(err)
@@ -75,6 +78,7 @@ App({
     })
   },
   getCityList:function () {
+    const that = this
     wx.request({
       url: 'https://www.emtsos.com/emMiniApi.do',
       data: {
@@ -90,6 +94,7 @@ App({
           CityList.GANGAO = res.data.data.cityList4
           CityList.Usual = res.data.data.cityList1
           wx.setStorageSync('CityList', CityList)
+          that.globalData.cityList = CityList
         }
       }
     })
@@ -113,7 +118,8 @@ App({
       },
       success: function(res) {
         if(res.data.ret === 1){
-          that.globalData.orderParams = res.data
+          wx.setStorageSync('OrderParams', res.data.data)
+          that.globalData.orderParams = res.data.data
         }
       }
     })

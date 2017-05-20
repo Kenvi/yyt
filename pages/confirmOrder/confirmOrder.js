@@ -14,6 +14,9 @@ Page({
       orderDetail:orderDetail
     })
   },
+  onUnload:function () {
+    wx.removeStorageSync('orderDetail') // 清除缓存的订单信息
+  },
   backToLastPage:function () {
     wx.navigateBack({
       delta:1

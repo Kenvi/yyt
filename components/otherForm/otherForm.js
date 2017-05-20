@@ -12,7 +12,8 @@ export default {
     currentFloor:0,
     currentPersonNum:0,
     personNum:[1,2,3,4,5,6,7,8,9],
-    hideTotalPrice:true
+    hideTotalPrice:true,
+    totalPrice:0
   },
 
   //呼吸机选择切换
