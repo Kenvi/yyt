@@ -125,7 +125,6 @@ export default {
       }else{
         data.endAddress = address
       }
-      data.hideTotalPrice = false
       data.endAddressDetail = this.data.markers[0]
       this.setData(data)
     }else{
@@ -289,7 +288,6 @@ export default {
     let   lat1 ,  lng1
     let data = {
       endAddressDetail:item,
-      hideTotalPrice:false,
       hideHospitalList:true,
       hideSugInfo:true,
       editAddress:''

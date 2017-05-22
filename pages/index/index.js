@@ -241,8 +241,6 @@ Page({
 
     const cityList = app.globalData.orderParams.cityList2
     const districtList = app.globalData.orderParams.cityList3
-    console.log(cityList)
-    console.log(districtList)
 
     that.coordinateToCity(lat1,lng1,function (data) {
       that.setData({
@@ -257,12 +255,48 @@ Page({
           district2 : data.district
         })
 
+        // 计算最低价格
+        let minPrice
         if(that.data.province1 === '广东省' && that.data.province2 === '广东省'){
           const city1 = that.data.city1,
             city2 = that.data.city2
-          let minPrice
 
+          let price_01 = 0 , price_02 = 0
+          if(city1 === '广州市' && city2 === '广州市'){
+            districtList.forEach(function (item) {
+              if(item.areaname === that.data.district1){
+                price_01 = item.price
+              }
+              if(item.areaname === that.data.district2){
+                price_02 = item.price
+              }
+            })
+            minPrice = Math.max(price_01,price_02)
+
+          }else{
+            cityList.forEach(function (item) {
+              if(city1 === '广州市') price_01 = 600
+              if(city2 === '广州市') price_02 = 600
+              if(item.areaname === city1){
+                price_01 = item.price
+              }
+              if(item.areaname === city2){
+                price_02 = item.price
+              }
+            })
+            minPrice = Math.max(price_01,price_02)
+          }
+
+        }else{
+          //外省的需要客服报价
+          price = 0
+          minPrice = 0
         }
+
+        that.setData({
+          totalPrice:Math.max(price,minPrice)
+        })
+
 
       })
 
