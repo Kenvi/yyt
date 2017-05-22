@@ -178,12 +178,10 @@ Page({
 
     //路程
 
-    // that.getDistance(data.lat1,data.lng1,data.lat2,data.lng2,function (res) {
-    //   data.distance = res.distance
-    // })
+    data.distance = that.data.distance
 
     //价格（未完成）
-    data.price1 = '600'
+    data.price1 = that.data.totalPrice + that.data.floorPrice
     console.log(data)
     // wx.setStorageSync('orderDetail', JSON.stringify(data))
     // wx.navigateTo({
@@ -335,6 +333,7 @@ Page({
 
           minPrice = 0
         }
+        // console.log(price,minPrice)
 
         that.setData({
           totalPrice:Math.max(price,minPrice)
