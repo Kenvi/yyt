@@ -45,11 +45,16 @@ Page({
       case 'helicopter' : params.serveTit = '直升机医疗救援预约';break;
       default : params.serveTit = '救护车预约';break;
     }
+    if(params.serveTit === '救护车预约'){
+      params.customerOfferPrice = false
+    }else{
+      params.customerOfferPrice = true
+    }
     this.setData(params)
   },
   //保存订单
   saveOrder:function () {
-    var that = this
+    const that = this
 
     if(JSON.stringify(that.data.beginAddressDetail) == "{}"){
       wx.showModal({
@@ -66,6 +71,7 @@ Page({
         showCancel:false,
         content:'请输入目的地'
       })
+      that.getPrice(NaN)
       return
     }
 
@@ -107,11 +113,11 @@ Page({
 
     //订单类型
     switch (that.data.serveType){
-      case 'ambulance' : data.otype = '0';break;
-      case 'aviation' : data.otype = '6';break;
-      case 'highSpeedRail' : data.otype = '7';break;
-      case 'helicopter' : data.otype = '8';break;
-      default : data.otype = '0';break;
+      case 'ambulance' : data.otype = 0;break;
+      case 'aviation' : data.otype = 6;break;
+      case 'highSpeedRail' : data.otype = 7;break;
+      case 'helicopter' : data.otype = 8;break;
+      default : data.otype = 0;break;
     }
 
     // 目的地信息
@@ -122,7 +128,17 @@ Page({
     }
 
     //配套服务（未完成）
-    data.servicetype = '10003,10004'
+    data.servicetype = ''
+    if(!that.data.needRespirator && !that.data.needLitter && !that.data.needWheelChair){
+
+    }else{
+      app.globalData.orderParams.serviceoptiontypeList.forEach(function (item) {
+        if(item.otype === data.otype){
+          console.log(item)
+        }
+      })
+    }
+
 
     //出行人数
     data.option1 = that.data.personNum[that.data.currentPersonNum]
@@ -223,6 +239,12 @@ Page({
   },
   // 计算价格
   getPrice:function (distance) {
+    if(this.data.serveType !== 'ambulance'){ // 只计算救护车的费用
+      this.setData({
+        customerOfferPrice:true
+      })
+    }
+
     distance = parseInt(distance)
     let price = 0
     if(distance > 200){
@@ -288,8 +310,7 @@ Page({
           }
 
         }else{
-          //外省的需要客服报价
-          price = 0
+
           minPrice = 0
         }
 
