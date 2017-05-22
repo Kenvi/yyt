@@ -127,16 +127,38 @@ Page({
       data.address2 = that.data.endAddressDetail.addr
     }
 
-    //配套服务（未完成）
+    //配套服务
     data.servicetype = ''
     if(!that.data.needRespirator && !that.data.needLitter && !that.data.needWheelChair){
 
     }else{
+      let serveArr = []
       app.globalData.orderParams.serviceoptiontypeList.forEach(function (item) {
         if(item.otype === data.otype){
-          console.log(item)
+          serveArr.push(item)
         }
       })
+      if(that.data.needRespirator){
+        serveArr.forEach(function (item) {
+          if(item.needRespirator) {
+            data.servicetype += item.serviceoptiontypeid + ','
+          }
+        })
+      }
+      if(that.data.needLitter){
+        serveArr.forEach(function (item) {
+          if(item.needLitter) {
+            data.servicetype += item.serviceoptiontypeid + ','
+          }
+        })
+      }
+      if(that.data.needWheelChair){
+        serveArr.forEach(function (item) {
+          if(item.needWheelChair) {
+            data.servicetype += item.serviceoptiontypeid + ','
+          }
+        })
+      }
     }
 
 

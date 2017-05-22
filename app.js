@@ -118,8 +118,23 @@ App({
       },
       success: function(res) {
         if(res.data.ret === 1){
-          wx.setStorageSync('OrderParams', res.data.data)
-          that.globalData.orderParams = res.data.data
+          let OrderParams = res.data.data
+
+          // 器官移植 手术预约 陪诊 住院安排 专家预约 未作处理
+          OrderParams.serviceoptiontypeList.forEach(function (item) {
+            if(item.serviceoptiontypename === '呼吸机'){
+              item.needRespirator = true
+            }
+            if(item.serviceoptiontypename === '担架上机' || item.serviceoptiontypename === '担架上车'){
+              item.needLitter = true
+            }
+            if(item.serviceoptiontypename === '轮椅上机' || item.serviceoptiontypename === '轮椅上车'){
+              item.needWheelChair = true
+            }
+          })
+          console.log(OrderParams)
+          wx.setStorageSync('OrderParams', OrderParams)
+          that.globalData.orderParams = OrderParams
         }
       }
     })
