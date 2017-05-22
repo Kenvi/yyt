@@ -166,7 +166,7 @@ Page({
     data.option1 = that.data.personNum[that.data.currentPersonNum]
 
     //是否需要担架上楼
-    data.option2 = that.data.ifShowFloorChange ? '1' : '0'
+    data.option2 = that.data.ifShowFloorChange ? 1 : 0
     //担架上楼楼层
     if(that.data.ifShowFloorChange) data.option2num = that.data.floors[that.data.currentFloor]
 
@@ -183,10 +183,10 @@ Page({
     //价格（未完成）
     data.price1 = that.data.totalPrice + that.data.floorPrice
     console.log(data)
-    // wx.setStorageSync('orderDetail', JSON.stringify(data))
-    // wx.navigateTo({
-    //   url:'/pages/confirmOrder/confirmOrder'
-    // })
+    wx.setStorageSync('orderDetail', JSON.stringify(data))
+    wx.navigateTo({
+      url:'/pages/confirmOrder/confirmOrder'
+    })
 
   },
   //生成订单号

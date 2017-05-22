@@ -6,19 +6,19 @@
   <view class="order-detail">
     <view class="row">
       <view>订单类型：</view>
-      <view wx:if="{{orderDetail.otype === '0'}}">市内转运</view>
-      <view wx:elif="{{orderDetail.otype === '1'}}">接机</view>
-      <view wx:elif="{{orderDetail.otype === '2'}}">送机</view>
-      <view wx:elif="{{orderDetail.otype === '3'}}">接高铁</view>
-      <view wx:elif="{{orderDetail.otype === '4'}}">送高铁</view>
-      <view wx:elif="{{orderDetail.otype === '5'}}">港澳直达</view>
-      <view wx:elif="{{orderDetail.otype === '6'}}">航空</view>
-      <view wx:elif="{{orderDetail.otype === '7'}}">高铁</view>
-      <view wx:elif="{{orderDetail.otype === '8'}}">直升机</view>
-      <view wx:elif="{{orderDetail.otype === '9'}}">活动医疗保障</view>
-      <view wx:elif="{{orderDetail.otype === '10'}}">香港</view>
-      <view wx:elif="{{orderDetail.otype === '11'}}">澳门</view>
-      <view wx:elif="{{orderDetail.otype === '12'}}">台湾</view>
+      <view wx:if="{{orderDetail.otype === 0}}">市内转运</view>
+      <view wx:elif="{{orderDetail.otype === 1}}">接机</view>
+      <view wx:elif="{{orderDetail.otype === 2}}">送机</view>
+      <view wx:elif="{{orderDetail.otype === 3}}">接高铁</view>
+      <view wx:elif="{{orderDetail.otype === 4}}">送高铁</view>
+      <view wx:elif="{{orderDetail.otype === 5}}">港澳直达</view>
+      <view wx:elif="{{orderDetail.otype === 6}}">航空</view>
+      <view wx:elif="{{orderDetail.otype === 7}}">高铁</view>
+      <view wx:elif="{{orderDetail.otype === 8}}">直升机</view>
+      <view wx:elif="{{orderDetail.otype === 9}}">活动医疗保障</view>
+      <view wx:elif="{{orderDetail.otype === 10}}">香港</view>
+      <view wx:elif="{{orderDetail.otype === 11}}">澳门</view>
+      <view wx:elif="{{orderDetail.otype === 12}}">台湾</view>
       <view wx:else>国外</view>
     </view>
     <view class="row">
@@ -29,9 +29,21 @@
       <view>出发地：</view>
       <view>{{orderDetail.address1}}</view>
     </view>
-    <view>
+    <view class="row">
       <view>目的地：</view>
       <view>{{orderDetail.address2}}</view>
+    </view>
+    <view class="row" hidden="{{orderDetail.servicetype === ''}}">
+      <view>配套服务：</view>
+      <view>{{serve}}</view>
+    </view>
+    <view class="row" hidden="{{orderDetail.option2 === 0}}">
+      <view>担架上楼：</view>
+      <view>{{orderDetail.option2num}}楼</view>
+    </view>
+    <view >
+      <view>出行人数：</view>
+      <view>{{orderDetail.option1}}人</view>
     </view>
   </view>
 </view>

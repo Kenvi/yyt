@@ -10,9 +10,20 @@ Page({
   },
   onLoad:function () {
     const orderDetail = JSON.parse(wx.getStorageSync('orderDetail'))
-    this.setData({
+    let data = {
       orderDetail:orderDetail
-    })
+    }
+    if(orderDetail.servicetype !== ''){
+      const orderParams = wx.getStorageSync('OrderParams')
+      const serviceoptiontypeMap = orderParams.serviceoptiontypeMap
+      let arr = orderDetail.servicetype.split(','),
+        serve = ''
+      arr.forEach(function (item) {
+        if(serviceoptiontypeMap[item]) serve += serviceoptiontypeMap[item] + ' '
+      })
+      data.serve = serve
+    }
+    this.setData(data)
   },
   onUnload:function () {
     wx.removeStorageSync('orderDetail') // 清除缓存的订单信息
