@@ -111,10 +111,12 @@ export default {
                 content:'注册成功'
               });
               wx.setStorageSync('userId', res.data.data.user.userid)
+              app.globalData.userId  = res.data.data.user.userid
               break;
             case 'userLogin' :
               that.hideLoginModal();
               wx.setStorageSync('userId', res.data.data.user.userid)
+              app.globalData.userId  = res.data.data.user.userid
               break;
           }
         }else if(res.data.ret === 0){
