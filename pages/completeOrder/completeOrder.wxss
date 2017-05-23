@@ -1,0 +1,35 @@
+.success-img {
+  width: 100%;
+  height: 400rpx;
+  background: #5297ec; }
+
+.order-detail-wrap {
+  padding: 40rpx; }
+  .order-detail-wrap .order-detail {
+    border: 2rpx solid #ccc;
+    padding: 60rpx 30rpx;
+    font-size: 28rpx;
+    text-align: justify; }
+    .order-detail-wrap .order-detail .to-client {
+      font-weight: bold;
+      margin-bottom: 40rpx; }
+    .order-detail-wrap .order-detail .content {
+      line-height: 1.6; }
+
+.other-serve {
+  padding: 60rpx 30rpx 100rpx;
+  display: flex; }
+  .other-serve > view {
+    width: 50%; }
+    .other-serve > view .tel, .other-serve > view .info {
+      width: 200rpx;
+      margin: 0 auto;
+      font-size: 28rpx;
+      font-weight: bold;
+      text-align: center; }
+      .other-serve > view .tel .icon, .other-serve > view .info .icon {
+        height: 150rpx;
+        background: #eee;
+        margin-bottom: 20rpx; }
+
+/*# sourceMappingURL=completeOrder.wxss.map */

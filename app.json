@@ -2,7 +2,8 @@
   "pages":[
     "pages/index/index",
     "pages/mine/mine",
-    "pages/confirmOrder/confirmOrder"
+    "pages/confirmOrder/confirmOrder",
+    "pages/completeOrder/completeOrder"
   ],
   "tabBar": {
     "color":"#777",

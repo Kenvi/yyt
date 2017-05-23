@@ -1,0 +1,28 @@
+<view class="page-tit has-back">
+  <view bindtap="backToLastPage" class="back"></view>
+  <view class="tit">下单成功</view>
+</view>
+<view class="success-img"></view>
+<view class="order-detail-wrap">
+  <view class="order-detail">
+    <view class="to-client">尊敬的客户：</view>
+    <view class="content">
+      <text>广东省广州市天河区天河南二路31号</text>至
+      <text>广东省广州市荔湾区黄沙大道31号 广州医学院口腔医院</text>
+      的医疗转运预约下单成功，请保持电话畅通，五分钟内客服专员将与您确认预约信息。</view>
+  </view>
+</view>
+<view class="other-serve">
+  <view>
+    <view class="tel">
+      <view class="icon"></view>
+      <view class="txt">客户服务电话</view>
+    </view>
+  </view>
+  <view>
+    <view class="info">
+      <view class="icon"></view>
+      <view class="txt">本次预约信息</view>
+    </view>
+  </view>
+</view>
