@@ -15,6 +15,11 @@
     .page-tit.has-back .tit {
       width: 100%;
       line-height: 60rpx; }
+    .page-tit.has-back .cancel {
+      position: absolute;
+      line-height: 60rpx;
+      right: 30rpx;
+      font-size: 28rpx; }
 
 .back {
   z-index: 999;

@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/mine/mine",
     "pages/confirmOrder/confirmOrder",
-    "pages/completeOrder/completeOrder"
+    "pages/completeOrder/completeOrder",
+    "pages/orderDetail/orderDetail"
   ],
   "tabBar": {
     "color":"#777",

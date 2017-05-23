@@ -22,7 +22,7 @@ Page({
   },
   onLoad:function () {
     wx.navigateTo({
-      url:'/pages/completeOrder/completeOrder'
+      url:'/pages/orderDetail/orderDetail'
     })
     const that = this
     objAssign(that, mainForm,otherForm,noticePage,addressSelect,login)
