@@ -71,7 +71,6 @@ Page({
         showCancel:false,
         content:'请输入目的地'
       })
-      that.getPrice(NaN)
       return
     }
 
@@ -95,7 +94,7 @@ Page({
     var data = {
       method:'saveOrder',
       source:'4',
-      userId:app.globalData.userId,
+      userid:app.globalData.userId,
       uuid:that.generateOrderId(),
       lat1:that.data.beginAddressDetail.latitude,
       lng1:that.data.beginAddressDetail.longitude,
@@ -182,10 +181,25 @@ Page({
 
     //价格（未完成）
     data.price1 = that.data.totalPrice + that.data.floorPrice
-    console.log(data)
-    wx.setStorageSync('orderDetail', JSON.stringify(data))
-    wx.navigateTo({
-      url:'/pages/confirmOrder/confirmOrder'
+    wx.request({
+      url: 'https://www.emtsos.com/emMiniApi.do',
+      header: {
+        'Charset': 'utf-8',
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      method:'POST',
+      data: data,
+      success:function (res) {
+        if(res.data.ret === 1){
+          wx.setStorageSync('orderDetail', JSON.stringify(data))
+          wx.navigateTo({
+            url:'/pages/confirmOrder/confirmOrder'
+          })
+        }
+      },
+      fail:function (err) {
+        console.log(err)
+      }
     })
 
   },
@@ -251,7 +265,10 @@ Page({
       wx.showModal({
         title:'提示',
         showCancel:false,
-        content:'坐标获取出错，请重新选择出发地或目的地'
+        content:'坐标获取出错，下单后将由客服人员为你报价'
+      })
+      this.setData({
+        customerOfferPrice:true
       })
       return
     }

@@ -23,7 +23,14 @@ export default {
       needRespirator: e.detail.value
     }
     if(this.data.serveType === 'ambulance') {
-      let price = this.data.totalPrice + 400
+      let price
+      if(e.detail.value){
+        price = this.data.totalPrice + 400
+      }else{
+        price = this.data.totalPrice - 400
+      }
+
+      if(price === 0) price = false
       data.totalPrice = price
     }
 
