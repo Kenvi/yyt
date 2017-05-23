@@ -71,9 +71,7 @@ export default {
     }else{
       data = {
         account:that.data.phoneNumber,
-        code:that.data.messageCode,
         ps:that.data.password,
-        openid:'asdadad',
         nickname:app.globalData.userInfo.nickName,
         photo:app.globalData.userInfo.avatarUrl,
         sex:app.globalData.userInfo.gender === 1 ? '男' : '女'
@@ -82,10 +80,55 @@ export default {
         data.method = 'userLogin'
       }else{
         data.method = 'userRegist'
+        data.code = that.data.messageCode
       }
     }
 
-    console.log(data)
+    wx.request({
+      url: 'https://www.emtsos.com/emMiniApi.do',
+      header: {
+        'Charset': 'utf-8',
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      method:'POST',
+      data: data,
+      success:function (res) {
+        console.log(res)
+        if(res.data.ret === 1){
+          switch(data.method) {
+            case 'userForgetPass' :
+              wx.showModal({
+                title:'提示',
+                showCancel:false,
+                content:res.data.msg
+              });
+              break;
+            case 'userRegist' :
+              that.hideLoginModal();
+              wx.showModal({
+                title:'提示',
+                showCancel:false,
+                content:'注册成功'
+              });
+              wx.setStorageSync('userId', res.data.data.user.userid)
+              break;
+            case 'userLogin' :
+              that.hideLoginModal();
+              wx.setStorageSync('userId', res.data.data.user.userid)
+              break;
+          }
+        }else if(res.data.ret === 0){
+          wx.showModal({
+            title:'提示',
+            showCancel:false,
+            content:res.data.msg
+          })
+        }
+      },
+      fail:function (err) {
+        console.log(err)
+      }
+    })
   },
   wxLogout:function () {
     app.globalData.userInfo = null

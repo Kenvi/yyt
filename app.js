@@ -7,6 +7,7 @@ App({
     //调用API从本地缓存中获取数据
     const CityList = wx.getStorageSync('CityList')
     const OrderParams = wx.getStorageSync('OrderParams')
+    const UserId = wx.getStorageSync('userId')
     if(CityList === ''){
       that.getCityList()
     }else{
@@ -20,6 +21,9 @@ App({
         that.globalData.orderParams = OrderParams
       }
     })
+    if(UserId !== ''){
+      that.globalData.userId = UserId
+    }
 
   },
   checkWxSession:function () {
@@ -141,7 +145,7 @@ App({
   },
   globalData:{
     userInfo:null,
-    userId:10018,
+    userId:null,
     cityList:null,
     orderParams:null
   }
