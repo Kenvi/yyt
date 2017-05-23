@@ -131,7 +131,7 @@ Page({
     if(!that.data.needRespirator && !that.data.needLitter && !that.data.needWheelChair){
 
     }else{
-      let serveArr = []
+      let serveArr = [] , servicetype = ''
       app.globalData.orderParams.serviceoptiontypeList.forEach(function (item) {
         if(item.otype === data.otype){
           serveArr.push(item)
@@ -140,24 +140,25 @@ Page({
       if(that.data.needRespirator){
         serveArr.forEach(function (item) {
           if(item.needRespirator) {
-            data.servicetype += item.serviceoptiontypeid + ','
+            servicetype += item.serviceoptiontypeid + ','
           }
         })
       }
       if(that.data.needLitter){
         serveArr.forEach(function (item) {
           if(item.needLitter) {
-            data.servicetype += item.serviceoptiontypeid + ','
+            servicetype += item.serviceoptiontypeid + ','
           }
         })
       }
       if(that.data.needWheelChair){
         serveArr.forEach(function (item) {
           if(item.needWheelChair) {
-            data.servicetype += item.serviceoptiontypeid + ','
+            servicetype += item.serviceoptiontypeid + ','
           }
         })
       }
+      data.servicetype = servicetype.replace(/,$/,'')
     }
 
 
@@ -181,6 +182,8 @@ Page({
 
     //价格（未完成）
     data.price1 = that.data.totalPrice + that.data.floorPrice
+
+
     wx.request({
       url: 'https://www.emtsos.com/emMiniApi.do',
       header: {

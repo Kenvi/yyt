@@ -58,8 +58,44 @@ Page({
     })
   },
   submitData:function () {
-    const data = this.data
+    const that = this
+    let data = {
+      method:'submitOrder',
+      uuid:that.data.orderDetail.uuid
+    }
+    if(that.data.otherRequest !== ''){
+      data.note = that.data.otherRequest
+    }
+    if(that.data.uploadImgArr.length > 0){
+      let imgs = ''
+      that.data.uploadImgArr.forEach(function (item) {
+        imgs += item + ','
+      })
+      data.imgs = imgs.replace(/,$/,'')
+    }
+
     wx.removeStorageSync('orderDetail')
-    console.log(data)
+
+    wx.request({
+      url: 'https://www.emtsos.com/emMiniApi.do',
+      header: {
+        'Charset': 'utf-8',
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      method:'POST',
+      data: data,
+      success:function (res) {
+        console.log(res)
+        if(res.data.ret === 1){
+          // wx.setStorageSync('orderDetail', JSON.stringify(data))
+          // wx.navigateTo({
+          //   url:'/pages/confirmOrder/confirmOrder'
+          // })
+        }
+      },
+      fail:function (err) {
+        console.log(err)
+      }
+    })
   }
 })
