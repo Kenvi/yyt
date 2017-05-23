@@ -1,7 +1,8 @@
 .success-img {
   width: 100%;
   height: 400rpx;
-  background: #5297ec; }
+  background: url("https://www.emtsos.com/image/ordersta1.png") center top no-repeat;
+  background-size: 100%; }
 
 .order-detail-wrap {
   padding: 40rpx; }
@@ -30,8 +31,16 @@
       font-weight: bold;
       text-align: center; }
       .other-serve > view .tel .icon, .other-serve > view .info .icon {
-        height: 150rpx;
+        height: 100rpx;
         background: #eee;
         margin-bottom: 20rpx; }
+        .other-serve > view .tel .icon.tel_ico, .other-serve > view .info .icon.tel_ico {
+          background: url("https://www.emtsos.com/emt/v-v1-zh_CN-/emt/img/icon_quick_call.png") center top no-repeat;
+          background-size: 102rpx 100rpx; }
+          .other-serve > view .tel .icon.tel_ico + .txt, .other-serve > view .info .icon.tel_ico + .txt {
+            color: #2fa4e7; }
+        .other-serve > view .tel .icon.info_ico, .other-serve > view .info .icon.info_ico {
+          background: url("https://www.emtsos.com/emt/v-v1-zh_CN-/emt/img/wd_02.png") center top no-repeat;
+          background-size: 100rpx 100rpx; }
 
 /*# sourceMappingURL=completeOrder.wxss.map */

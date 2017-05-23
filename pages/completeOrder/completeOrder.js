@@ -11,12 +11,17 @@ Page({
     this.setData({
       orderInfo:orderDetail
     })
-    wx.removeStorageSync('orderDetail')
+    // wx.removeStorageSync('orderDetail')
 
   },
   backToLastPage:function () {
     wx.navigateBack({
       delta:1
+    })
+  },
+  callCustomer:function () {
+    wx.makePhoneCall({
+      phoneNumber: '4000966120'
     })
   }
 })

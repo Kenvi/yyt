@@ -14,14 +14,14 @@
 </view>
 <view class="other-serve">
   <view>
-    <view class="tel">
-      <view class="icon"></view>
+    <view bindtap="callCustomer" class="tel">
+      <view class="icon tel_ico"></view>
       <view class="txt">客户服务电话</view>
     </view>
   </view>
   <view>
     <view class="info">
-      <view class="icon"></view>
+      <view class="icon info_ico"></view>
       <view class="txt">本次预约信息</view>
     </view>
   </view>

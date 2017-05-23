@@ -13,28 +13,31 @@ App({
     }else{
       that.globalData.cityList = CityList
     }
-    that.checkWxSession()
-    that.getUserInfo(function () {
-      if(OrderParams === ''){
-        that.getParams()
-      }else{
-        that.globalData.orderParams = OrderParams
-      }
+    that.checkWxSession(function () {
+      that.getUserInfo(function () {
+        if(OrderParams === ''){
+          that.getParams()
+        }else{
+          that.globalData.orderParams = OrderParams
+        }
+      })
     })
+
     if(UserId !== ''){
       that.globalData.userId = UserId
     }
 
   },
-  checkWxSession:function () {
+  checkWxSession:function (cb) {
     const that = this
     wx.checkSession({
       success:function (res) {
         // console.log(res)
+        typeof cb == "function" && cb()
       },
       fail:function (err) {
         console.log(err)
-        that.getUserInfo()
+        that.wxLogin()
       }
     })
   },
