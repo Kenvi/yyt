@@ -74,7 +74,6 @@ Page({
       data.imgs = imgs.replace(/,$/,'')
     }
 
-    wx.removeStorageSync('orderDetail')
 
     wx.request({
       url: 'https://www.emtsos.com/emMiniApi.do',
@@ -87,10 +86,9 @@ Page({
       success:function (res) {
         console.log(res)
         if(res.data.ret === 1){
-          // wx.setStorageSync('orderDetail', JSON.stringify(data))
-          // wx.navigateTo({
-          //   url:'/pages/confirmOrder/confirmOrder'
-          // })
+          wx.navigateTo({
+            url:'/pages/completeOrder/completeOrder'
+          })
         }
       },
       fail:function (err) {

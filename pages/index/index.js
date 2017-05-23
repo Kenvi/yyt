@@ -21,10 +21,8 @@ Page({
     endAddressDetail:{}
   },
   onLoad:function () {
-    wx.navigateTo({
-      url:'/pages/completeOrder/completeOrder'
-    })
-    var that = this
+
+    const that = this
     objAssign(that, mainForm,otherForm,noticePage,addressSelect,login)
     that.setData(that.data)
   },

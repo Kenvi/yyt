@@ -4,6 +4,14 @@
 "use strict"
 Page({
   data:{
+    orderInfo:{}
+  },
+  onLoad:function () {
+    const orderDetail = JSON.parse(wx.getStorageSync('orderDetail'))
+    this.setData({
+      orderInfo:orderDetail
+    })
+    wx.removeStorageSync('orderDetail')
 
   },
   backToLastPage:function () {
