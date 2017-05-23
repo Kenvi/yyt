@@ -20,6 +20,9 @@
     }
     .row{
       margin-bottom: 40rpx;
+      &:last-child{
+        margin-bottom: 0;
+      }
     }
   }
 }

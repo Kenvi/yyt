@@ -33,15 +33,15 @@
       <view>目的地：</view>
       <view>{{orderDetail.address2}}</view>
     </view>
-    <view class="row" hidden="{{orderDetail.servicetype === ''}}">
+    <view class="row" wx:if="{{orderDetail.servicetype !== ''}}">
       <view>配套服务：</view>
       <view>{{serve}}</view>
     </view>
-    <view class="row" hidden="{{orderDetail.option2 === 0}}">
+    <view class="row" wx:if="{{orderDetail.option2 === 1}}">
       <view>担架上楼：</view>
       <view>{{orderDetail.option2num}}楼</view>
     </view>
-    <view >
+    <view class="row" wx:if="{{orderDetail.otype !== 0}}">
       <view>出行人数：</view>
       <view>{{orderDetail.option1}}人</view>
     </view>

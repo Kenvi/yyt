@@ -16,6 +16,8 @@
           padding-left: 30rpx; }
     .order-detail-wrap .order-detail .row {
       margin-bottom: 40rpx; }
+      .order-detail-wrap .order-detail .row:last-child {
+        margin-bottom: 0; }
 
 .other-serve-wrap {
   margin-top: 30rpx;
