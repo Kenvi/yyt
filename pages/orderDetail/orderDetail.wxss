@@ -44,6 +44,8 @@
           background: #3399f3; }
       .order-detail-wrap .order-detail > view view {
         color: #555; }
+        .order-detail-wrap .order-detail > view view.c-o {
+          color: #FFAF3D; }
         .order-detail-wrap .order-detail > view view:first-child {
           width: 150rpx;
           font-weight: bold; }

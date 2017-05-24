@@ -12,14 +12,30 @@ Page({
     }
   },
   onLoad: function() {
-    console.log(app.globalData)
-    var that = this
+    const that = this
     objAssign(that,login)
     that.setData(that.data)
     if(app.globalData.userInfo !== null){
       that.setData({
         userInfo:app.globalData.userInfo
       })
+    }
+    if(app.globalData.userId === null){
+      that.setData({
+        showLoginModal:true
+      })
+
+    }
+
+
+  },
+  toPageOrderList:function () {
+    if(app.globalData.userId !== null){
+      wx.navigateTo({
+        url:'/pages/orderList/orderList'
+      })
+    }else{
+      this.userLogin()
     }
 
   }

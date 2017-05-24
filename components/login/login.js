@@ -133,35 +133,38 @@ export default {
     })
   },
   wxLogout:function () {
+    const that = this
     app.globalData.userInfo = null
-    if(this.data.userInfo){
-      this.setData({
-        userInfo:{
-          avatarUrl:'https://www.emtsos.com/emt/v-v1-zh_CN-/emt/img/userheader.png',
-          nickName:'注册/登录',
-          logout:true
-        }
-      })
+    if(that.data.userInfo){
+
       wx.showToast({
         title: '成功',
         icon: 'success',
-        duration: 2000
+        duration: 2000,
+        success:function () {
+          wx.removeStorageSync('userId')
+          app.globalData.userId = null
+          that.setData({
+            userInfo:{
+              avatarUrl:'https://www.emtsos.com/emt/v-v1-zh_CN-/emt/img/userheader.png',
+              nickName:'注册/登录',
+              logout:true
+            }
+          })
+        }
       })
+
     }
 
   },
   userLogin:function () {
-    if(this.data.userInfo.logout){
-      this.setData({
-        showLoginModal:true
+    const that = this
+    app.getUserInfo(function (userInfo) {
+      that.setData({
+        showLoginModal:true,
+        userInfo:userInfo
       })
-    }
-    if(this.data.userInfo.unAuthority){
-      app.getUserInfo(function (userInfo) {
-        this.setData({
-          userInfo:userInfo
-        })
-      })
-    }
+    })
+
   }
 }

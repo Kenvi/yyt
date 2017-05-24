@@ -19,7 +19,7 @@
   </view>
 </view>
 <view class="menu-list">
-  <view class="list-item">
+  <view bindtap="toPageOrderList" class="list-item">
     <view class="item-name">救援订单</view>
     <view class="item-count">0</view>
     <view class="right_arrow"></view>

@@ -57,6 +57,9 @@
       }
       view{
         color: #555;
+        &.c-o{
+          color: #FFAF3D;
+        }
         &:first-child{
           width: 150rpx;
           font-weight: bold;

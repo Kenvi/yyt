@@ -17,7 +17,7 @@ Page({
         showCancel:false,
         content:'您未登陆，请先登陆',
         success:function () {
-
+          that.backToLastPage()
         }
       })
     }
@@ -40,6 +40,16 @@ Page({
       fail:function (err) {
         console.log(err)
       }
+    })
+  },
+  backToLastPage:function () {
+    wx.navigateBack({
+      delta:1
+    })
+  },
+  toPageOrderDetail:function (e) {
+    wx.navigateTo({
+      url:'/pages/orderDetail/orderDetail?uuid=' + e.currentTarget.dataset.uuid
     })
   }
 })

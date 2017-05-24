@@ -3,7 +3,7 @@
   <view class="tit">救援订单</view>
 </view>
 <view class="order-list-wrap">
-  <view wx:for="{{orderList}}" wx:key="{{item.uuid}}" class="order-item">
+  <view bindtap="toPageOrderDetail" data-uuid="{{item.uuid}}" wx:for="{{orderList}}" wx:key="{{item.uuid}}" class="order-item">
     <view>
       <view>时间：{{item.departuredate}}</view>
       <view class="status">{{orderStatus[item.status]}}</view>
