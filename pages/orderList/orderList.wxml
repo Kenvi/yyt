@@ -1,0 +1,19 @@
+<view class="page-tit has-back">
+  <view bindtap="backToLastPage" class="back"></view>
+  <view class="tit">救援订单</view>
+</view>
+<view class="order-list-wrap">
+  <view class="order-item">
+    <view>
+      <view>时间：2017-05-23 18:33:51</view>
+      <view class="status">正在处理</view>
+    </view>
+    <view>
+      出发地：广东省广州市越秀区府前路广东省广州市越秀区府前路广东省广州市越秀区府前路
+    </view>
+    <view>
+      <view>目的地：</view><view>广东省广州市越秀区府前路</view>
+    </view>
+    <view class="right_arrow abs"></view>
+  </view>
+</view>

@@ -57,6 +57,14 @@
   width: 30rpx;
   height: 60rpx;
   left: 20rpx;
+  &.abs{
+    position: absolute;
+    left: auto;
+    right: 0;
+    top: 50%;
+    margin-top: -30rpx;
+  }
+
   &:before,&:after{
     position: absolute;
     content: '';

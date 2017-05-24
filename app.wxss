@@ -47,6 +47,12 @@
   width: 30rpx;
   height: 60rpx;
   left: 20rpx; }
+  .right_arrow.abs {
+    position: absolute;
+    left: auto;
+    right: 0;
+    top: 50%;
+    margin-top: -30rpx; }
   .right_arrow:before, .right_arrow:after {
     position: absolute;
     content: '';

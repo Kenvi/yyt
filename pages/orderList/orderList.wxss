@@ -1,0 +1,22 @@
+.order-list-wrap {
+  padding: 0 30rpx;
+  border-bottom: 20rpx solid #eee; }
+  .order-list-wrap .order-item {
+    position: relative;
+    padding: 40rpx 0;
+    font-size: 28rpx;
+    line-height: 1.6;
+    border-bottom: 2rpx solid #ccc; }
+    .order-list-wrap .order-item:last-child {
+      border: none; }
+    .order-list-wrap .order-item > view {
+      display: flex;
+      padding-right: 60rpx;
+      margin-bottom: 20rpx; }
+      .order-list-wrap .order-item > view:last-child {
+        margin-bottom: 0; }
+      .order-list-wrap .order-item > view .status {
+        color: #f05b48;
+        padding-left: 50rpx; }
+
+/*# sourceMappingURL=orderList.wxss.map */

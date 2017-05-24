@@ -4,6 +4,7 @@
     "pages/mine/mine",
     "pages/confirmOrder/confirmOrder",
     "pages/completeOrder/completeOrder",
+    "pages/orderList/orderList",
     "pages/orderDetail/orderDetail"
   ],
   "tabBar": {
