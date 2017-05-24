@@ -57,7 +57,44 @@ Page({
       }
     })
   },
+  saveTempImg:function () {
+    wx.showLoading({
+      title:'上传图片',
+      mask:true
+    })
+
+    const that = this
+    let data = {
+      method:'updateOrderImage',
+      uuid:that.data.orderDetail.uuid,
+      imgs:that.data.uploadImgArr
+    }
+    wx.request({
+      url: 'https://www.emtsos.com/emMiniApi.do',
+      header: {
+        'Charset': 'utf-8',
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      method:'POST',
+      data: data,
+      success:function (res) {
+        if(res.data.ret === 1){
+          wx.hideLoading()
+          wx.navigateTo({
+            url:'/pages/completeOrder/completeOrder'
+          })
+        }
+      },
+      fail:function (err) {
+        console.log(err)
+      }
+    })
+  },
   submitData:function () {
+    wx.showLoading({
+      title:'提交订单',
+      mask:true
+    })
     const that = this
     let data = {
       method:'submitOrder',
@@ -86,9 +123,8 @@ Page({
       success:function (res) {
         console.log(res)
         if(res.data.ret === 1){
-          wx.navigateTo({
-            url:'/pages/completeOrder/completeOrder'
-          })
+          wx.hideLoading()
+          that.saveTempImg()
         }
       },
       fail:function (err) {
