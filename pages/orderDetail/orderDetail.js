@@ -27,6 +27,7 @@ Page({
             orderStatus:JSON.parse(orderstatusMap)
           })
           that.getOrderImageList()
+          console.log(that.data.orderDetail)
 
         }else {
           console.log(data.data)
@@ -58,6 +59,48 @@ Page({
       },
       fail:function (err) {
         console.log(err)
+      }
+    })
+  },
+  cancelOrder:function () {
+    const that = this
+    wx.showModal({
+      title:'提示',
+      content:'确认取消订单吗',
+
+      success:function (res) {
+        if(res.confirm){
+          wx.request({
+            url: 'https://www.emtsos.com/emMiniApi.do',
+            data: {
+              method:'cancelOrder',
+              uuid:that.data.orderDetail.uuid
+            },
+            success:function (data) {
+              if(data.data.ret === 1){
+
+                wx.showModal({
+                  title:'提示',
+                  content:'取消成功',
+                  showCancel:false,
+                  success:function (res) {
+                    if(res.confirm){
+                      wx.navigateTo({
+                        url:'/pages/orderList/orderList'
+                      })
+                    }
+                  }
+                })
+
+              }else {
+                console.log(data.data)
+              }
+            },
+            fail:function (err) {
+              console.log(err)
+            }
+          })
+        }
       }
     })
   },
