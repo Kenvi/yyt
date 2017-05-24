@@ -8,6 +8,9 @@ App({
     const CityList = wx.getStorageSync('CityList')
     const OrderParams = wx.getStorageSync('OrderParams')
     const UserId = wx.getStorageSync('userId')
+    if(UserId !== ''){
+      that.globalData.userId = UserId
+    }
     if(CityList === ''){
       that.getCityList()
     }else{
@@ -23,9 +26,7 @@ App({
       })
     })
 
-    if(UserId !== ''){
-      that.globalData.userId = UserId
-    }
+
 
   },
   checkWxSession:function (cb) {
