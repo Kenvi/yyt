@@ -93,7 +93,6 @@ export default {
       method:'POST',
       data: data,
       success:function (res) {
-        console.log(res)
         if(res.data.ret === 1){
           switch(data.method) {
             case 'userForgetPass' :
@@ -110,13 +109,15 @@ export default {
                 showCancel:false,
                 content:'注册成功'
               });
-              wx.setStorageSync('userId', res.data.data.user.userid)
+              wx.setStorageSync('Account', res.data.data.user.account)
               app.globalData.userId  = res.data.data.user.userid
               break;
             case 'userLogin' :
               that.hideLoginModal();
-              wx.setStorageSync('userId', res.data.data.user.userid)
+              wx.setStorageSync('Account', res.data.data.user.account)
               app.globalData.userId  = res.data.data.user.userid
+              app.globalData.menuList  = res.data.data.menuList
+              if(that.data.menuList) that.setMenuList()
               break;
           }
         }else if(res.data.ret === 0){
@@ -142,7 +143,7 @@ export default {
         icon: 'success',
         duration: 2000,
         success:function () {
-          wx.removeStorageSync('userId')
+          wx.removeStorageSync('Account')
           app.globalData.userId = null
           that.setData({
             userInfo:{

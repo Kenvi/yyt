@@ -21,9 +21,6 @@ Page({
     endAddressDetail:{}
   },
   onLoad:function () {
-    wx.navigateTo({
-      url:'/pages/orderDetail/orderDetail?uuid=1495630839300'
-    })
 
     const that = this
     objAssign(that, mainForm,otherForm,noticePage,addressSelect,login)

@@ -6,37 +6,37 @@
 </view>
 <view class="data-count">
   <view class="content">
-    <view class="count">0</view>
+    <view class="count">{{myInfo.userScore1}}</view>
     <view class="title">消费金额</view>
   </view>
   <view class="content">
-    <view class="count">0</view>
+    <view class="count">{{myInfo.userScore2}}</view>
     <view class="title">订单数量</view>
   </view>
   <view class="content">
-    <view class="count">0</view>
+    <view class="count">{{myInfo.userScore3}}</view>
     <view class="title">救援金券</view>
   </view>
 </view>
 <view class="menu-list">
   <view bindtap="toPageOrderList" class="list-item">
     <view class="item-name">救援订单</view>
-    <view class="item-count">0</view>
+    <view class="item-count">{{menuList.orderlist}}</view>
     <view class="right_arrow"></view>
   </view>
   <view class="list-item">
     <view class="item-name">商场订单</view>
-    <view class="item-count">0</view>
+    <view class="item-count">{{menuList.productorderlist}}</view>
     <view class="right_arrow"></view>
   </view>
   <view class="list-item">
     <view class="item-name">救援金券</view>
-    <view class="item-count">0</view>
+    <view class="item-count">{{menuList.couponlist}}</view>
     <view class="right_arrow"></view>
   </view>
   <view class="list-item">
     <view class="item-name">余额</view>
-    <view class="item-count">0元</view>
+    <view class="item-count">{{menuList.balance}}</view>
     <view class="right_arrow"></view>
   </view>
   <view class="list-item">
@@ -44,14 +44,14 @@
     <view class="item-count"></view>
     <view class="right_arrow"></view>
   </view>
-  <view class="list-item">
+  <view wx:if="{{menuList.downline}}" class="list-item">
     <view class="item-name">下线查看</view>
-    <view class="item-count">0</view>
+    <view class="item-count">{{menuList.downline}}</view>
     <view class="right_arrow"></view>
   </view>
-  <view class="list-item">
+  <view wx:if="{{menuList.performance}}" class="list-item">
     <view class="item-name">业绩查询</view>
-    <view class="item-count">0</view>
+    <view class="item-count">{{menuList.performance}}</view>
     <view class="right_arrow"></view>
   </view>
   <view class="list-item">

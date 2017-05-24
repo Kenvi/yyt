@@ -20,7 +20,7 @@
     </view>
   </view>
   <view>
-    <view class="info">
+    <view bindtap="toPageOrderDetail" data-uuid="{{orderInfo.uuid}}" class="info">
       <view class="icon info_ico"></view>
       <view class="txt">本次预约信息</view>
     </view>

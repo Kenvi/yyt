@@ -6,11 +6,7 @@ App({
     const that = this
     //调用API从本地缓存中获取数据
     const CityList = wx.getStorageSync('CityList')
-    const OrderParams = wx.getStorageSync('OrderParams')
-    const UserId = wx.getStorageSync('userId')
-    if(UserId !== ''){
-      that.globalData.userId = UserId
-    }
+
     if(CityList === ''){
       that.getCityList()
     }else{
@@ -18,11 +14,8 @@ App({
     }
     that.checkWxSession(function () {
       that.getUserInfo(function () {
-        if(OrderParams === ''){
-          that.getParams()
-        }else{
-          that.globalData.orderParams = OrderParams
-        }
+        that.getParams()
+
       })
     })
 
@@ -108,10 +101,11 @@ App({
     })
   },
   getParams:function () {
+    const Account = wx.getStorageSync('Account')
     const that = this
     let data = {
       method:'getParams',
-      username:that.globalData.userId
+      account:Account
     }
     if(that.globalData.userInfo !== null){
       data.wx_nickname = that.globalData.userInfo.nickName
@@ -140,9 +134,12 @@ App({
               item.needWheelChair = true
             }
           })
-          console.log(OrderParams)
-          wx.setStorageSync('OrderParams', OrderParams)
           that.globalData.orderParams = OrderParams
+          that.globalData.menuList = OrderParams.menuList
+          console.log(OrderParams)
+          if(OrderParams.user !== null){
+            that.globalData.userId = OrderParams.user.userid
+          }
         }
       }
     })
@@ -151,6 +148,7 @@ App({
     userInfo:null,
     userId:null,
     cityList:null,
-    orderParams:null
+    orderParams:null,
+    menuList:null
   }
 })

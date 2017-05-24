@@ -9,6 +9,14 @@ Page({
       avatarUrl:'https://www.emtsos.com/emt/v-v1-zh_CN-/emt/img/userheader.png',
       nickName:'注册/登录',
       unAuthority:true
+    },
+    myInfo:{
+      userScore1:0,
+      userScore2:0,
+      userScore3:0
+    },
+    menuList:{
+
     }
   },
   onLoad: function() {
@@ -25,9 +33,23 @@ Page({
         showLoginModal:true
       })
 
+    }else{
+      that.setData({
+        myInfo:app.globalData.orderParams.user
+      })
     }
 
-
+    that.setMenuList()
+  },
+  setMenuList:function () {
+    const that = this
+    let menuList = {}
+    app.globalData.menuList.forEach(function (item) {
+      menuList[item.menuname] = item.menusub
+    })
+    that.setData({
+      menuList:menuList
+    })
   },
   toPageOrderList:function () {
     if(app.globalData.userId !== null){

@@ -27,7 +27,6 @@ Page({
             orderStatus:JSON.parse(orderstatusMap)
           })
           that.getOrderImageList()
-          console.log(that.data.orderDetail)
 
         }else {
           console.log(data.data)
