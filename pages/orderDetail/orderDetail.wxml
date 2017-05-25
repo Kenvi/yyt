@@ -41,7 +41,13 @@
     </view>
     <view>
       <view>预算金额</view>
-      <view class="c-o">{{orderDetail.price1}}</view>
+      <view class="c-o">{{orderDetail.price1}}元</view>
+    </view>
+    <view wx:if="{{orderDetail.status === 3}}" id="six-row">
+      <view>实付金额</view>
+      <view class="c-o">{{orderDetail.price3}}元</view>
+      <view class="t-c">预付</view>
+      <view class="c-o">{{orderDetail.price4}}元</view>
     </view>
     <view>
       <view>其他要求</view>
@@ -54,6 +60,12 @@
     </view>
   </view>
 </view>
+
+<view wx:if="{{orderDetail.status === 3}}" class="pay-info">需支付预付款：<text>{{orderDetail.price4}}</text>元</view>
+<view wx:if="{{orderDetail.status === 3}}" class="confirm">
+  <button bindtap="wxPaySubmit" type="primary" class="confirm-btn">微信支付</button>
+</view>
+
 
 <view class="other-serve">
   <view>

@@ -20,7 +20,7 @@
       &:last-child{
         margin-bottom: 0;
       }
-      &#first-row{
+      &#first-row,&#six-row{
         view{
           width: auto;
           &.t-c{
@@ -71,6 +71,21 @@
       }
     }
 
+  }
+}
+
+.confirm{
+  padding-bottom: 40rpx;
+}
+
+.pay-info{
+  margin: 40rpx auto;
+  padding-bottom: 40rpx;
+  text-align: center;
+  font-size: 32rpx;
+  text{
+    padding: 0 10rpx;
+    color: #FFAF3D;
   }
 }
 

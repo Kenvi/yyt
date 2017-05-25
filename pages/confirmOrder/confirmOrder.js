@@ -42,6 +42,7 @@ Page({
     const that = this
     wx.chooseImage({
       success:function (res) {
+        // console.log(res)
         let arr = that.data.uploadImgArr
         if(res.tempFilePaths){
           res.tempFilePaths.forEach(function (item) {

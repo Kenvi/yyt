@@ -112,4 +112,14 @@
   white-space: nowrap;
 }
 
+.confirm{
+  padding-bottom: 120rpx;
+
+  button.confirm-btn{
+    width: 400rpx;
+    margin: 0 auto;
+    background: #ea5d2a;
+  }
+}
+
 @import "./components/login/login";

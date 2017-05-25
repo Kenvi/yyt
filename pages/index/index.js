@@ -21,7 +21,10 @@ Page({
     endAddressDetail:{}
   },
   onLoad:function () {
-
+    wx.navigateTo({
+      url:'/pages/orderDetail/orderDetail?uuid=' + 1495644516721
+      // url:'/pages/orderDetail/orderDetail?uuid=' + 1495644441609
+    })
     const that = this
     objAssign(that, mainForm,otherForm,noticePage,addressSelect,login)
     that.setData(that.data)

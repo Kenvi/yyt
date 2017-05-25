@@ -91,6 +91,13 @@
   text-overflow: ellipsis;
   white-space: nowrap; }
 
+.confirm {
+  padding-bottom: 120rpx; }
+  .confirm button.confirm-btn {
+    width: 400rpx;
+    margin: 0 auto;
+    background: #ea5d2a; }
+
 .login-mask {
   position: fixed;
   top: 0;

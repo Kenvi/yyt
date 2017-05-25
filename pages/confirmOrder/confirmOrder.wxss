@@ -77,11 +77,4 @@
     padding: 0 10rpx;
     color: #f3b255; }
 
-.confirm {
-  padding-bottom: 120rpx; }
-  .confirm button.confirm-btn {
-    width: 400rpx;
-    margin: 0 auto;
-    background: #ea5d2a; }
-
 /*# sourceMappingURL=confirmOrder.wxss.map */

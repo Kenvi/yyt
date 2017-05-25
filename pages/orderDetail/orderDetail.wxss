@@ -17,16 +17,16 @@
       margin-bottom: 40rpx; }
       .order-detail-wrap .order-detail > view:last-child {
         margin-bottom: 0; }
-      .order-detail-wrap .order-detail > view#first-row view {
+      .order-detail-wrap .order-detail > view#first-row view, .order-detail-wrap .order-detail > view#six-row view {
         width: auto; }
-        .order-detail-wrap .order-detail > view#first-row view.t-c {
+        .order-detail-wrap .order-detail > view#first-row view.t-c, .order-detail-wrap .order-detail > view#six-row view.t-c {
           text-align: center; }
-        .order-detail-wrap .order-detail > view#first-row view:nth-child(2n+1) {
+        .order-detail-wrap .order-detail > view#first-row view:nth-child(2n+1), .order-detail-wrap .order-detail > view#six-row view:nth-child(2n+1) {
           font-weight: bold;
           width: 150rpx; }
-        .order-detail-wrap .order-detail > view#first-row view:nth-child(2n) {
+        .order-detail-wrap .order-detail > view#first-row view:nth-child(2n), .order-detail-wrap .order-detail > view#six-row view:nth-child(2n) {
           padding: 0 30rpx; }
-        .order-detail-wrap .order-detail > view#first-row view:last-child {
+        .order-detail-wrap .order-detail > view#first-row view:last-child, .order-detail-wrap .order-detail > view#six-row view:last-child {
           padding: 0;
           color: #FFAF3D; }
       .order-detail-wrap .order-detail > view.photo-item {
@@ -52,6 +52,18 @@
         .order-detail-wrap .order-detail > view view:last-child {
           width: 420rpx;
           padding-left: 30rpx; }
+
+.confirm {
+  padding-bottom: 40rpx; }
+
+.pay-info {
+  margin: 40rpx auto;
+  padding-bottom: 40rpx;
+  text-align: center;
+  font-size: 32rpx; }
+  .pay-info text {
+    padding: 0 10rpx;
+    color: #FFAF3D; }
 
 .other-serve {
   padding: 60rpx 30rpx 100rpx;
