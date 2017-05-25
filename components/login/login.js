@@ -59,7 +59,7 @@ export default {
       password:e.detail.value
     })
   },
-  submitData:function () {
+  submitData:function (cb) {
     const that = this
     let data = {}
     if(that.data.loginType === 'forget'){
@@ -72,8 +72,8 @@ export default {
       data = {
         account:that.data.phoneNumber,
         ps:that.data.password,
-        nickname:app.globalData.userInfo.nickName,
-        photo:app.globalData.userInfo.avatarUrl,
+        nickname:app.globalData.userInfo.nickName || '',
+        photo:app.globalData.userInfo.avatarUrl || '',
         sex:app.globalData.userInfo.gender === 1 ? '男' : '女'
       }
       if(that.data.loginType === 'login'){
@@ -115,9 +115,12 @@ export default {
             case 'userLogin' :
               that.hideLoginModal();
               wx.setStorageSync('Account', res.data.data.user.account)
-              app.globalData.userId  = res.data.data.user.userid
-              app.globalData.menuList  = res.data.data.menuList
-              if(that.data.menuList) that.setMenuList()
+              app.getParams(function () {
+                if(that.data.menuList) that.setMenuList()
+                if(that.data.userInfo) that.setData({userInfo:app.globalData.userInfo})
+                if(that.data.myInfo) that.setMyInfo()
+              })
+
               break;
           }
         }else if(res.data.ret === 0){
@@ -148,9 +151,14 @@ export default {
           that.setData({
             userInfo:{
               avatarUrl:'https://www.emtsos.com/emt/v-v1-zh_CN-/emt/img/userheader.png',
-              nickName:'注册/登录',
-              logout:true
-            }
+              nickName:'注册/登录'
+            },
+            myInfo:{
+              userScore1:0,
+              userScore2:0,
+              userScore3:0
+            },
+            menuList:{}
           })
         }
       })
@@ -160,11 +168,11 @@ export default {
   },
   userLogin:function () {
     const that = this
-    app.getUserInfo(function (userInfo) {
-      that.setData({
-        showLoginModal:true,
-        userInfo:userInfo
-      })
+    if(that.data.userInfo.gender){
+      return
+    }
+    that.setData({
+      showLoginModal:true
     })
 
   }

@@ -100,7 +100,7 @@ App({
       }
     })
   },
-  getParams:function () {
+  getParams:function (cb) {
     const Account = wx.getStorageSync('Account')
     const that = this
     let data = {
@@ -136,10 +136,10 @@ App({
           })
           that.globalData.orderParams = OrderParams
           that.globalData.menuList = OrderParams.menuList
-          console.log(OrderParams)
           if(OrderParams.user !== null){
             that.globalData.userId = OrderParams.user.userid
           }
+          typeof cb == "function" && cb()
         }
       }
     })

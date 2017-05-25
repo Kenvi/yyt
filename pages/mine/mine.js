@@ -15,31 +15,34 @@ Page({
       userScore2:0,
       userScore3:0
     },
-    menuList:{
-
-    }
+    menuList:{}
   },
   onLoad: function() {
     const that = this
     objAssign(that,login)
     that.setData(that.data)
-    if(app.globalData.userInfo !== null){
-      that.setData({
-        userInfo:app.globalData.userInfo
-      })
-    }
+
     if(app.globalData.userId === null){
       that.setData({
         showLoginModal:true
       })
 
     }else{
-      that.setData({
-        myInfo:app.globalData.orderParams.user
-      })
+      that.setUserInfo()
+      that.setMyInfo()
     }
 
     that.setMenuList()
+  },
+  setUserInfo:function () {
+    this.setData({
+      userInfo:app.globalData.userInfo
+    })
+  },
+  setMyInfo:function () {
+    this.setData({
+      myInfo:app.globalData.orderParams.user
+    })
   },
   setMenuList:function () {
     const that = this
