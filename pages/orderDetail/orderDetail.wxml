@@ -55,8 +55,8 @@
     </view>
     <view class="photo-item">
       <view>相关照片</view>
-      <view class="pl30">{{imageList.length}} 张</view>
-      <button type="primary">查看/上传</button>
+      <view class="pl30">{{orderStatus.photoCount}} 张</view>
+      <button bindtap="previewOrderImage" type="primary">查看/上传</button>
     </view>
   </view>
 </view>

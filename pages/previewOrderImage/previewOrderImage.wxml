@@ -1,0 +1,16 @@
+<view class="img-wrap" style="height: {{clientHeight}}px;">
+  <swiper hidden="{{imageList.length === 0}}" indicator-dots autoplay interval="3000" duration="500">
+    <block wx:for="{{imageList}}" wx:key="{{index}}">
+      <swiper-item>
+        <view bindtap="previewImage" data-index="{{index}}" class="slide-image" style="background: url({{'https://www.emtsos.com'+item.photo}}) center no-repeat;background-size: 100%;"></view>
+      </swiper-item>
+    </block>
+  </swiper>
+  <view wx:if="{{imageList.length === 0}}" class="no-data">未上传图片</view>
+</view>
+<view class="upload-wrap">
+  <view class="upload">
+    <view class="tit">相关照片：<text>已上传{{imageList.length}}张</text></view>
+    <view bindtap="uploadImage" class="upload-btn">上传照片</view>
+  </view>
+</view>

@@ -33,7 +33,7 @@ export default {
     // 使用 wx.createMapContext 获取 map 上下文
     this.mapCtx = wx.createMapContext('startlocate')
     this.getLocation(true)
-    var info = wx.getSystemInfoSync()
+    const info = wx.getSystemInfoSync()
     this.setData({
       controls: [{
         id: 1,

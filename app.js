@@ -18,8 +18,6 @@ App({
 
       })
     })
-    that.wxLogin()
-
 
   },
   checkWxSession:function (cb) {

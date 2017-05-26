@@ -5,7 +5,8 @@
     "pages/confirmOrder/confirmOrder",
     "pages/completeOrder/completeOrder",
     "pages/orderList/orderList",
-    "pages/orderDetail/orderDetail"
+    "pages/orderDetail/orderDetail",
+    "pages/previewOrderImage/previewOrderImage"
   ],
   "tabBar": {
     "color":"#777",

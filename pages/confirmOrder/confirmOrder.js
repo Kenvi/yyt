@@ -43,15 +43,18 @@ Page({
     wx.chooseImage({
       success:function (res) {
         // console.log(res)
-        let arr = that.data.uploadImgArr
+        let uploadArr = []
+
         if(res.tempFilePaths){
           res.tempFilePaths.forEach(function (item) {
-            that.saveTempImg(item)
-            arr.push(item)
+            uploadArr.push(that.saveTempImg(item))
           })
         }
-        that.setData({
-          uploadImgArr:arr
+        Promise.all(uploadArr).then(function (res) {
+          console.log(res)
+          that.setData({
+            uploadImgArr:res[0]
+          })
         })
       },
       fail:function (err) {
@@ -60,35 +63,38 @@ Page({
     })
   },
   saveTempImg:function (path) {
-    wx.showLoading({
-      title:'上传图片',
-      mask:true
-    })
-
     const that = this
-    let data = {
-      uuid:that.data.orderDetail.uuid,
-      returnList:0
-    }
-    wx.uploadFile({
-      url: 'https://www.emtsos.com/emMiniUpload.do',
-      header: {
-        'content-type': 'multipart/form-data'
-      },
-      filePath:path,
-      name:'orderImages',
-      formData: data,
-      success:function (res) {
-        const msg = JSON.parse(res.data)
-        if(msg.ret === 1){
-          wx.hideLoading()
 
-        }
-      },
-      fail:function (err) {
-        console.log(222)
-        console.log(err)
+    return new Promise(function (resolve,reject) {
+      wx.showLoading({
+        title:'上传图片',
+        mask:true
+      })
+      let data = {
+        uuid:that.data.orderDetail.uuid,
+        returnList:1
       }
+      wx.uploadFile({
+        url: 'https://www.emtsos.com/emMiniUpload.do',
+        header: {
+          'content-type': 'multipart/form-data'
+        },
+        filePath:path,
+        name:'orderImages',
+        formData: data,
+        success:function (res) {
+          const msg = JSON.parse(res.data)
+          if(msg.ret === 1){
+            wx.hideLoading()
+            resolve(msg.data.orderImageList)
+          }
+        },
+        fail:function (err) {
+          console.log(222)
+          console.log(err)
+          reject(err)
+        }
+      })
     })
   },
   submitData:function () {

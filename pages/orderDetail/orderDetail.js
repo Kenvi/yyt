@@ -11,7 +11,6 @@ Page({
   },
   onLoad:function (opt) {
     const that = this
-    let orderstatusMap = JSON.stringify(app.globalData.orderParams.orderstatusMap)
     wx.request({
       url: 'https://www.emtsos.com/emMiniApi.do',
       data: {
@@ -25,31 +24,6 @@ Page({
           that.setData({
             orderDetail:data.data.data.order,
             orderStatus:data.data.data
-          })
-          that.getOrderImageList()
-
-        }else {
-          console.log(data.data)
-        }
-      },
-      fail:function (err) {
-        console.log(err)
-      }
-    })
-  },
-  getOrderImageList:function () {
-    const that = this
-    wx.request({
-      url: 'https://www.emtsos.com/emMiniApi.do',
-      data: {
-        method:'getOrderImageList',
-        orderid:that.data.orderDetail.orderid
-      },
-      success:function (data) {
-        if(data.data.ret === 1){
-
-          that.setData({
-            imageList:data.data.data.orderImageList
           })
 
         }else {
@@ -153,6 +127,12 @@ Page({
 
 
 
+  },
+  previewOrderImage:function () {
+    const that = this
+    wx.navigateTo({
+      url:'/pages/previewOrderImage/previewOrderImage?orderid=' + that.data.orderDetail.orderid + '&uuid=' + that.data.orderDetail.uuid
+    })
   },
   backToLastPage:function () {
     wx.navigateBack({
