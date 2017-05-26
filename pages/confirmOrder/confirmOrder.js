@@ -46,7 +46,7 @@ Page({
         let arr = that.data.uploadImgArr
         if(res.tempFilePaths){
           res.tempFilePaths.forEach(function (item) {
-            arr.push(item)
+            that.saveTempImg(item)
           })
         }
         that.setData({
@@ -58,7 +58,7 @@ Page({
       }
     })
   },
-  saveTempImg:function () {
+  saveTempImg:function (path) {
     wx.showLoading({
       title:'上传图片',
       mask:true
@@ -66,27 +66,27 @@ Page({
 
     const that = this
     let data = {
-      method:'updateOrderImage',
       uuid:that.data.orderDetail.uuid,
-      imgs:that.data.uploadImgArr
+      returnList:1
     }
-    wx.request({
-      url: 'https://www.emtsos.com/emMiniApi.do',
+    wx.uploadFile({
+      url: 'https://www.emtsos.com/emMiniUpload.do',
       header: {
-        'Charset': 'utf-8',
-        'content-type': 'application/x-www-form-urlencoded'
+        'content-type': 'multipart/form-data'
       },
-      method:'POST',
-      data: data,
+      filePath:path,
+      name:'orderImages',
+      formData: data,
       success:function (res) {
+        console.log(1111)
+        console.log(res)
         if(res.data.ret === 1){
           wx.hideLoading()
-          wx.navigateTo({
-            url:'/pages/completeOrder/completeOrder'
-          })
+
         }
       },
       fail:function (err) {
+        console.log(222)
         console.log(err)
       }
     })
@@ -122,10 +122,11 @@ Page({
       method:'POST',
       data: data,
       success:function (res) {
-        console.log(res)
         if(res.data.ret === 1){
           wx.hideLoading()
-          that.saveTempImg()
+          wx.navigateTo({
+            url:'/pages/completeOrder/completeOrder'
+          })
         }
       },
       fail:function (err) {
