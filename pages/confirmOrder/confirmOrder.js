@@ -47,6 +47,7 @@ Page({
         if(res.tempFilePaths){
           res.tempFilePaths.forEach(function (item) {
             that.saveTempImg(item)
+            arr.push(item)
           })
         }
         that.setData({
@@ -67,7 +68,7 @@ Page({
     const that = this
     let data = {
       uuid:that.data.orderDetail.uuid,
-      returnList:1
+      returnList:0
     }
     wx.uploadFile({
       url: 'https://www.emtsos.com/emMiniUpload.do',
@@ -78,9 +79,8 @@ Page({
       name:'orderImages',
       formData: data,
       success:function (res) {
-        console.log(1111)
-        console.log(res)
-        if(res.data.ret === 1){
+        const msg = JSON.parse(res.data)
+        if(msg.ret === 1){
           wx.hideLoading()
 
         }
