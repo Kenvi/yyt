@@ -31,6 +31,14 @@ export default {
     that.setData({
       countDownSeconds:60
     })
+    wx.showToast({
+      title: '验证码发送成功',
+      icon: 'success',
+      duration: 2000,
+      success:function () {
+
+      }
+    })
     let inter = setInterval(function () {
       that.setData({
         countDownSeconds:that.data.countDownSeconds-1
@@ -61,6 +69,10 @@ export default {
   },
   submitData:function (cb) {
     const that = this
+    wx.showLoading({
+      title:'Loading',
+      mask:true
+    })
     let data = {}
     if(that.data.loginType === 'forget'){
       data = {
@@ -71,11 +83,14 @@ export default {
     }else{
       data = {
         account:that.data.phoneNumber,
-        ps:that.data.password,
-        nickname:app.globalData.userInfo.nickName || '',
-        photo:app.globalData.userInfo.avatarUrl || '',
-        sex:app.globalData.userInfo.gender === 1 ? '男' : '女'
+        ps:that.data.password
       }
+      if(app.globalData.userInfo !== null){
+        data.nickname = app.globalData.userInfo.nickName
+        data.photo = app.globalData.userInfo.avatarUrl
+        data.sex = app.globalData.userInfo.gender
+      }
+
       if(that.data.loginType === 'login'){
         data.method = 'userLogin'
       }else{
@@ -94,6 +109,7 @@ export default {
       data: data,
       success:function (res) {
         if(res.data.ret === 1){
+          wx.hideLoading()
           switch(data.method) {
             case 'userForgetPass' :
               wx.showModal({
@@ -111,19 +127,25 @@ export default {
               });
               wx.setStorageSync('Account', res.data.data.user.account)
               app.globalData.userId  = res.data.data.user.userid
+              if(that.data.userInfo) that.setData({userInfo:res.data.data.user})
+              app.getParams(function () {
+                if(that.data.menuList) that.setMenuList()
+                if(that.data.myInfo) that.setMyInfo()
+              })
               break;
             case 'userLogin' :
               that.hideLoginModal();
               wx.setStorageSync('Account', res.data.data.user.account)
+              if(that.data.userInfo) that.setData({userInfo:res.data.data.user})
               app.getParams(function () {
                 if(that.data.menuList) that.setMenuList()
-                if(that.data.userInfo) that.setData({userInfo:app.globalData.userInfo})
                 if(that.data.myInfo) that.setMyInfo()
               })
 
               break;
           }
         }else if(res.data.ret === 0){
+          wx.hideLoading()
           wx.showModal({
             title:'提示',
             showCancel:false,
@@ -138,32 +160,42 @@ export default {
   },
   wxLogout:function () {
     const that = this
-    app.globalData.userInfo = null
-    if(that.data.userInfo){
+    wx.showModal({
+      title:'提示',
+      content:'确认退出登陆吗',
 
-      wx.showToast({
-        title: '成功',
-        icon: 'success',
-        duration: 2000,
-        success:function () {
-          wx.removeStorageSync('Account')
-          app.globalData.userId = null
-          that.setData({
-            userInfo:{
-              avatarUrl:'https://www.emtsos.com/emt/v-v1-zh_CN-/emt/img/userheader.png',
-              nickName:'注册/登录'
-            },
-            myInfo:{
-              userScore1:0,
-              userScore2:0,
-              userScore3:0
-            },
-            menuList:{}
-          })
+      success:function (res) {
+        if(res.confirm){
+          app.globalData.userInfo = null
+          if(that.data.userInfo){
+
+            wx.showToast({
+              title: '成功',
+              icon: 'success',
+              duration: 2000,
+              success:function () {
+                wx.removeStorageSync('Account')
+                app.globalData.userId = null
+                that.setData({
+                  userInfo:{
+                    avatarUrl:'https://www.emtsos.com/emt/v-v1-zh_CN-/emt/img/userheader.png',
+                    nickName:'注册/登录'
+                  },
+                  myInfo:{
+                    userScore1:0,
+                    userScore2:0,
+                    userScore3:0
+                  },
+                  menuList:{}
+                })
+              }
+            })
+
+          }
         }
-      })
+      }
+    })
 
-    }
 
   },
   userLogin:function () {

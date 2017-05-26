@@ -8,7 +8,6 @@ Page({
     imageList:[]
   },
   onLoad:function (opt) {
-    console.log(opt)
     const that = this
     that.setWindowHeight()
     that.getOrderImageList(opt.orderid)
