@@ -24,7 +24,7 @@ Page({
 
           that.setData({
             orderDetail:data.data.data.order,
-            orderStatus:JSON.parse(orderstatusMap)
+            orderStatus:data.data.data
           })
           that.getOrderImageList()
 
@@ -134,14 +134,15 @@ Page({
               paySign: payMsg.paySign,
               success:function(res){
                 console.log(111)
-                console.log(res)
+                wx.navigateTo({
+                  url:'/pages/orderDetail/orderDetail?uuid=' + that.data.orderDetail.uuid
+                })
               },
               fail:function(err){
                 console.log(222)
                 console.log(err)
               }
             })
-            console.log(res.data.data.platformData)
           }
         },
         fail:function (err) {

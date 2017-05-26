@@ -4,7 +4,7 @@
   <view bindtap="cancelOrder" hidden="{{orderDetail.status > 5}}" class="cancel">取消订单</view>
 </view>
 <view hidden="{{orderDetail.status === 11}}" class="progress-wrap">
-  <image src="https://www.emtsos.com/image/timeline101.png" mode="aspectFit"></image>
+  <image src="{{'https://www.emtsos.com'+orderStatus.statusImage}}" mode="aspectFit"></image>
 </view>
 <view class="order-detail-wrap">
   <view class="order-detail">
@@ -25,7 +25,7 @@
       <view wx:elif="{{orderDetail.otype === 12}}">台湾</view>
       <view wx:else>国外</view>
       <view class="t-c">状态</view>
-      <view>{{orderStatus[orderDetail.status]}}</view>
+      <view>{{orderDetail.orderstatusname}}</view>
     </view>
     <view>
       <view>预约时间</view>
@@ -43,7 +43,7 @@
       <view>预算金额</view>
       <view class="c-o">{{orderDetail.price1}}元</view>
     </view>
-    <view wx:if="{{orderDetail.status === 3}}" id="six-row">
+    <view wx:if="{{orderStatus.pricePay > 0}}" id="six-row">
       <view>实付金额</view>
       <view class="c-o">{{orderDetail.price3}}元</view>
       <view class="t-c">预付</view>
@@ -61,8 +61,8 @@
   </view>
 </view>
 
-<view wx:if="{{orderDetail.status === 3}}" class="pay-info">需支付预付款：<text>{{orderDetail.price4}}</text>元</view>
-<view wx:if="{{orderDetail.status === 3}}" class="confirm">
+<view wx:if="{{orderStatus.pricePay > 0}}" class="pay-info">{{orderStatus.pricePayTxt}}<text>{{orderStatus.pricePay}}</text>元</view>
+<view wx:if="{{orderStatus.pricePay > 0}}" class="confirm">
   <button bindtap="wxPaySubmit" type="primary" class="confirm-btn">微信支付</button>
 </view>
 
