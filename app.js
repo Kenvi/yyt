@@ -18,7 +18,7 @@ App({
 
       })
     })
-
+    that.wxLogin()
 
 
   },
@@ -66,7 +66,9 @@ App({
               code: res.code
             },
             success:function (data) {
-             console.log(data)
+              if(data.data.ret === 1){
+                typeof cb == "function" && cb(data.data.data.userinfo.openid)
+              }
             },
             fail:function (err) {
               console.log(err)
@@ -116,8 +118,9 @@ App({
       url: 'https://www.emtsos.com/emMiniApi.do',
       data: data,
       header: {
-        'content-type': 'application/json'
+        'content-type': 'application/x-www-form-urlencoded'
       },
+      method:'POST',
       success: function(res) {
         if(res.data.ret === 1){
           let OrderParams = res.data.data
