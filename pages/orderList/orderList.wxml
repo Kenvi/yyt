@@ -6,7 +6,7 @@
   <view bindtap="toPageOrderDetail" data-uuid="{{item.uuid}}" wx:for="{{orderList}}" wx:key="{{item.uuid}}" class="order-item">
     <view>
       <view>时间：{{item.departuredate}}</view>
-      <view class="status">{{orderStatus[item.status]}}</view>
+      <view class="status">{{item.orderstatusname}}</view>
     </view>
     <view>出发地：{{item.address1}}</view>
     <view>目的地：{{item.address2}}</view>

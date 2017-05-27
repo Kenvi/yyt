@@ -22,17 +22,24 @@ Page({
     objAssign(that,login)
     that.setData(that.data)
 
-    if(app.globalData.userId === null){
-      that.setData({
-        showLoginModal:true
+    app.getUserInfo()
+      .then(function () {
+        app.getParams()
+          .then(function () {
+            if(app.globalData.userId === null){
+              that.setData({
+                showLoginModal:true
+              })
+
+            }else{
+              that.setUserInfo()
+              that.setMyInfo()
+            }
+
+            that.setMenuList()
+          })
       })
 
-    }else{
-      that.setUserInfo()
-      that.setMyInfo()
-    }
-
-    that.setMenuList()
   },
   setUserInfo:function () {
     this.setData({

@@ -3,8 +3,6 @@
  */
 "use strict"
 module.exports = {
-  AppId:'wx124c238afb015486',
-  Secret:'d5091a4fdbe6abdd000a8160471dc89c',
   // BaiDuMapAK:'3pcGRQbqAf19GeF1lFiO7BWeofRpsnQ9',
   BaiDuMapAK:'xeelEZKRvmoq8bu1V4bqTsAlcf1wckMj'
 }

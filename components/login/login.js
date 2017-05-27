@@ -128,19 +128,21 @@ export default {
               wx.setStorageSync('Account', res.data.data.user.account)
               app.globalData.userId  = res.data.data.user.userid
               if(that.data.userInfo) that.setData({userInfo:res.data.data.user})
-              app.getParams(function () {
-                if(that.data.menuList) that.setMenuList()
-                if(that.data.myInfo) that.setMyInfo()
-              })
+              app.getParams()
+                .then(function () {
+                  if(that.data.menuList) that.setMenuList()
+                  if(that.data.myInfo) that.setMyInfo()
+                })
               break;
             case 'userLogin' :
               that.hideLoginModal();
               wx.setStorageSync('Account', res.data.data.user.account)
               if(that.data.userInfo) that.setData({userInfo:res.data.data.user})
-              app.getParams(function () {
-                if(that.data.menuList) that.setMenuList()
-                if(that.data.myInfo) that.setMyInfo()
-              })
+              app.getParams()
+                .then(function () {
+                  if(that.data.menuList) that.setMenuList()
+                  if(that.data.myInfo) that.setMyInfo()
+                })
 
               break;
           }

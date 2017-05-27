@@ -12,41 +12,51 @@ App({
     }else{
       that.globalData.cityList = CityList
     }
-    that.checkWxSession(function () {
-      that.getUserInfo(function () {
-        that.getParams()
-
+    that.checkWxSession()
+      .then(function () {
+        that.getUserInfo()
       })
-    })
+      .then(function () {
+        that.getParams()
+      })
 
   },
   checkWxSession:function (cb) {
     const that = this
-    wx.checkSession({
-      success:function (res) {
-        // console.log(res)
-        typeof cb == "function" && cb()
-      },
-      fail:function (err) {
-        console.log(err)
-        that.wxLogin()
-      }
+    return new Promise(function (resolve,reject) {
+      wx.checkSession({
+        success:function (res) {
+          // console.log(res)
+          // typeof cb == "function" && cb()
+          resolve()
+        },
+        fail:function (err) {
+          console.log(err)
+          that.wxLogin()
+          reject(err)
+        }
+      })
     })
+
   },
   getUserInfo:function(cb){
     var that = this
-    wx.getUserInfo({
-      success:function (res) {
-        that.globalData.userInfo = res.userInfo
-        typeof cb == "function" && cb(res.userInfo)
-      },
-      fail:function () {
-        wx.showModal({
-          title:'提示',
-          content:'用户拒绝授权，无法获取微信信息，请点击右上角->关于易医通->点击右上角->设置->允许获取用户信息授权',
-          showCancel:false
-        })
-      }
+    return new Promise(function (resolve,reject) {
+      wx.getUserInfo({
+        success:function (res) {
+          that.globalData.userInfo = res.userInfo
+          // typeof cb == "function" && cb(res.userInfo)
+          resolve()
+        },
+        fail:function () {
+          wx.showModal({
+            title:'提示',
+            content:'用户拒绝授权，无法获取微信信息，请点击右上角->关于易医通->点击右上角->设置->允许获取用户信息授权',
+            showCancel:false
+          })
+          reject()
+        }
+      })
     })
   },
   wxLogin:function (cb) {
@@ -101,49 +111,62 @@ App({
     })
   },
   getParams:function (cb) {
-    const Account = wx.getStorageSync('Account')
     const that = this
-    let data = {
-      method:'getParams',
-      account:Account
-    }
-    if(that.globalData.userInfo !== null){
-      data.wx_nickname = that.globalData.userInfo.nickName
-      data.wx_headimgurl = that.globalData.userInfo.avatarUrl
-      data.wx_sex = that.globalData.userInfo.gender === 1 ? '男' : '女'
-    }
-    wx.request({
-      url: 'https://www.emtsos.com/emMiniApi.do',
-      data: data,
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      method:'POST',
-      success: function(res) {
-        if(res.data.ret === 1){
-          let OrderParams = res.data.data
-
-          // 器官移植 手术预约 陪诊 住院安排 专家预约 未作处理
-          OrderParams.serviceoptiontypeList.forEach(function (item) {
-            if(item.serviceoptiontypename === '呼吸机'){
-              item.needRespirator = true
-            }
-            if(item.serviceoptiontypename === '担架上机' || item.serviceoptiontypename === '担架上车'){
-              item.needLitter = true
-            }
-            if(item.serviceoptiontypename === '轮椅上机' || item.serviceoptiontypename === '轮椅上车'){
-              item.needWheelChair = true
-            }
-          })
-          that.globalData.orderParams = OrderParams
-          that.globalData.menuList = OrderParams.menuList
-          if(OrderParams.user !== null){
-            that.globalData.userId = OrderParams.user.userid
-          }
-          typeof cb == "function" && cb()
-        }
+    return new Promise(function (resolve,reject) {
+      wx.showLoading({
+        title:'加载中',
+        mask:true
+      })
+      const Account = wx.getStorageSync('Account')
+      let data = {
+        method:'getParams',
+        account:Account
       }
+      if(that.globalData.userInfo !== null){
+        data.wx_nickname = that.globalData.userInfo.nickName
+        data.wx_headimgurl = that.globalData.userInfo.avatarUrl
+        data.wx_sex = that.globalData.userInfo.gender === 1 ? '男' : '女'
+      }
+      wx.request({
+        url: 'https://www.emtsos.com/emMiniApi.do',
+        data: data,
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        method:'POST',
+        success: function(res) {
+          if(res.data.ret === 1){
+            wx.hideLoading()
+
+            let OrderParams = res.data.data
+
+            // 器官移植 手术预约 陪诊 住院安排 专家预约 未作处理
+            OrderParams.serviceoptiontypeList.forEach(function (item) {
+              if(item.serviceoptiontypename === '呼吸机'){
+                item.needRespirator = true
+              }
+              if(item.serviceoptiontypename === '担架上机' || item.serviceoptiontypename === '担架上车'){
+                item.needLitter = true
+              }
+              if(item.serviceoptiontypename === '轮椅上机' || item.serviceoptiontypename === '轮椅上车'){
+                item.needWheelChair = true
+              }
+            })
+            that.globalData.orderParams = OrderParams
+            that.globalData.menuList = OrderParams.menuList
+            if(OrderParams.user !== null){
+              that.globalData.userId = OrderParams.user.userid
+            }
+            // typeof cb == "function" && cb()
+            resolve()
+          }
+        },
+        fail:function (err) {
+          reject(err)
+        }
+      })
     })
+
   },
   globalData:{
     userInfo:null,

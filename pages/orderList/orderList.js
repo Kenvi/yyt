@@ -5,12 +5,10 @@
 const app = getApp()
 Page({
   data:{
-    orderList:[],
-    orderStatus:{}
+    orderList:[]
   },
   onLoad:function () {
     const that = this
-    let orderstatusMap = JSON.stringify(app.globalData.orderParams.orderstatusMap)
     if(app.globalData.userId === null){
       wx.showModal({
         title:'提示',
@@ -21,6 +19,17 @@ Page({
         }
       })
     }
+
+    that.getorderList()
+
+  },
+  getorderList:function () {
+    const that = this
+
+    wx.showLoading({
+      title:'加载中',
+      mask:true
+    })
     wx.request({
       url: 'https://www.emtsos.com/emMiniApi.do',
       data: {
@@ -31,8 +40,8 @@ Page({
         if(data.data.ret === 1){
           that.setData({
             orderList:data.data.data.orderList,
-            orderStatus:JSON.parse(orderstatusMap)
           })
+          wx.hideLoading()
         }else {
           console.log(data.data)
         }
