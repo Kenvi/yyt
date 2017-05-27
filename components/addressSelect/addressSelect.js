@@ -339,5 +339,9 @@ export default {
       hideSugInfo:true,
       editAddress:''
     })
+  },
+  // 检查地址是否输入
+  checkAddressInput:function () {
+    return JSON.stringify(this.data.beginAddressDetail) !== "{}" && JSON.stringify(this.data.endAddressDetail) !== "{}"
   }
 }

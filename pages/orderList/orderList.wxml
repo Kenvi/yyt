@@ -9,7 +9,7 @@
       <view class="status">{{item.orderstatusname}}</view>
     </view>
     <view>出发地：{{item.address1}}</view>
-    <view>目的地：{{item.address2}}</view>
+    <view class="mb0">目的地：{{item.address2}}</view>
     <view class="right_arrow abs"></view>
   </view>
 </view>

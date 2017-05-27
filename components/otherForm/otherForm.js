@@ -14,6 +14,7 @@ export default {
     currentPersonNum:0,
     personNum:[1,2,3,4,5,6,7,8,9],
     customerOfferPrice:false,
+    showPrice:false,
     totalPrice:false
   },
 

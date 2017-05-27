@@ -2,11 +2,12 @@
  * Created by Administrator on 2017/5/18/018.
  */
 "use strict"
+const app = getApp()
 Page({
   data:{
     orderDetail:{},
     otherRequest:'',
-    uploadImgArr:[]
+    uploadImgNum:0
   },
   onLoad:function () {
     const orderDetail = JSON.parse(wx.getStorageSync('orderDetail'))
@@ -14,7 +15,7 @@ Page({
       orderDetail:orderDetail
     }
     if(orderDetail.servicetype !== ''){
-      const orderParams = wx.getStorageSync('OrderParams')
+      const orderParams = app.globalData.orderParams
       const serviceoptiontypeMap = orderParams.serviceoptiontypeMap
       let arr = orderDetail.servicetype.split(','),
         serve = ''
@@ -43,7 +44,7 @@ Page({
     wx.chooseImage({
       success:function (res) {
         // console.log(res)
-        let uploadArr = []
+        let uploadArr = [] , num = that.data.uploadImgNum
 
         if(res.tempFilePaths){
           res.tempFilePaths.forEach(function (item) {
@@ -53,7 +54,7 @@ Page({
         Promise.all(uploadArr).then(function (res) {
           console.log(res)
           that.setData({
-            uploadImgArr:res[0]
+            uploadImgNum:num + uploadArr.length
           })
         })
       },
@@ -110,13 +111,7 @@ Page({
     if(that.data.otherRequest !== ''){
       data.note = that.data.otherRequest
     }
-    if(that.data.uploadImgArr.length > 0){
-      let imgs = ''
-      that.data.uploadImgArr.forEach(function (item) {
-        imgs += item + ','
-      })
-      data.imgs = imgs.replace(/,$/,'')
-    }
+
 
 
     wx.request({

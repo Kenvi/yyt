@@ -16,6 +16,9 @@
       display: flex;
       padding-right: 60rpx;
       margin-bottom: 20rpx;
+      &.mb0{
+        margin-bottom: 0;
+      }
       &:last-child{
         margin-bottom: 0;
       }

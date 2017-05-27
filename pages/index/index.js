@@ -51,8 +51,10 @@ Page({
     }
     if(params.serveTit === '救护车预约'){
       params.customerOfferPrice = false
+      if(this.checkAddressInput()) params.showPrice = true
     }else{
-      params.customerOfferPrice = true
+      if(this.checkAddressInput()) params.customerOfferPrice = true
+      params.showPrice = false
     }
     this.setData(params)
   },
@@ -359,9 +361,13 @@ Page({
         }
         // console.log(price,minPrice)
 
-        that.setData({
+        let priceData = {
           totalPrice:Math.max(price,minPrice)
-        })
+        }
+
+        if(that.data.serveType === 'ambulance') priceData.showPrice = true
+
+        that.setData(priceData)
 
 
       })

@@ -10,13 +10,16 @@ Page({
     imageList:[]
   },
   onLoad:function (opt) {
+    this.getDetail(opt.uuid)
+  },
+  getDetail:function (uuid) {
     const that = this
     wx.request({
       url: 'https://www.emtsos.com/emMiniApi.do',
       data: {
         method:'getOrderDetail',
         userid: app.globalData.userId,
-        uuid:opt.uuid
+        uuid:uuid
       },
       success:function (data) {
         if(data.data.ret === 1){

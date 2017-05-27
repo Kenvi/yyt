@@ -13,6 +13,8 @@
       display: flex;
       padding-right: 60rpx;
       margin-bottom: 20rpx; }
+      .order-list-wrap .order-item > view.mb0 {
+        margin-bottom: 0; }
       .order-list-wrap .order-item > view:last-child {
         margin-bottom: 0; }
       .order-list-wrap .order-item > view .status {

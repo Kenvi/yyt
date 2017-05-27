@@ -5,6 +5,7 @@
 Page({
   data:{
     uuid:null,
+    orderid:null,
     imageList:[]
   },
   onLoad:function (opt) {
@@ -12,7 +13,14 @@ Page({
     that.setWindowHeight()
     that.getOrderImageList(opt.orderid)
     that.setData({
-      uuid:opt.uuid
+      uuid:opt.uuid,
+      orderid:opt.orderid
+    })
+  },
+  onUnload:function () {
+    const that = this
+    wx.redirectTo({
+      url:'/pages/orderDetail/orderDetail?uuid=' + that.data.uuid
     })
   },
   setWindowHeight:function () {
@@ -57,9 +65,7 @@ Page({
           })
         }
         Promise.all(uploadArr).then(function (res) {
-          that.setData({
-            imageList:res[0]
-          })
+          that.getOrderImageList(that.data.orderid)
         })
       },
       fail:function (err) {
@@ -112,7 +118,7 @@ Page({
     })
 
     wx.previewImage({
-      current:e.currentTarget.dataset.index,
+      current:imgArr[e.currentTarget.dataset.index],
       urls:imgArr
     })
   }

@@ -55,11 +55,11 @@
       特别说明：请提供住院病历、出院小结、检查报告、门诊病历等资料照片，以便医生对您的病情进行预判。
     </view>
     <view class="upload">
-      <view class="tit">相关照片：<text  hidden="{{uploadImgArr.length === 0}}">已上传{{uploadImgArr.length}}张</text></view>
+      <view class="tit">相关照片：<text  hidden="{{uploadImgNum === 0}}">已上传{{uploadImgNum}}张</text></view>
       <view bindtap="uploadImage" class="upload-btn">上传照片</view>
     </view>
   </view>
-  <view hidden="{{uploadImgArr.length === 0}}" class="info">确认订单后可在订单详情查看上传的照片</view>
+  <view hidden="{{uploadImgNum === 0}}" class="info">确认订单后可在订单详情查看上传的照片</view>
 </view>
 <view class="total-amount">约<text>{{orderDetail.price1}}</text>元</view>
 <view class="confirm">

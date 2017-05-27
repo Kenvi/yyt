@@ -29,7 +29,7 @@
     <template is="helicopter" data="{{serveType,needRespirator,needLitter,needWheelChair,currentPersonNum,personNum}}" />
 
     <view wx:if="{{customerOfferPrice || totalPrice===0}}" class="total">下单后客服人员通过电话给您报价。</view>
-    <view wx:if="{{!customerOfferPrice && totalPrice > 0}}" class="total">约{{totalPrice+floorPrice}}元</view>
+    <view wx:if="{{!customerOfferPrice && showPrice}}" class="total">约{{totalPrice+floorPrice}}元</view>
 
     <view class="next-step">
       <view class="agreement">
@@ -38,7 +38,7 @@
         <text bindtap="showNoticePage">医疗转运知情同意书</text></view>
       <button bindtap="saveOrder" type="button" >下一步</button>
     </view>
-    <view class="{{serveType!=='ambulance' ? 'hide' : ''}} other-serve-link" >
+    <view class="hide other-serve-link" >
       <view>接送机</view>
       <view>接送高铁</view>
       <view>港澳直通</view>
