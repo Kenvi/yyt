@@ -1,0 +1,67 @@
+<view class="banner-wrap">
+  <swiper indicator-dots autoplay interval="3000" duration="500" indicator-active-color="#fff" circular>
+    <block wx:for="{{imageList}}" wx:key="{{index}}">
+      <swiper-item>
+        <view bindtap="previewImage" data-index="{{index}}" class="slide-image" style="background: url({{'https://www.emtsos.com'+item}}) center no-repeat;background-size: 100%;"></view>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+
+<view class="serve-list-wrap">
+  <view class="serve-item">
+    <view class="s1"></view>
+    <view class="tit">救护车</view>
+  </view>
+  <view class="serve-item">
+    <view class="s2"></view>
+    <view class="tit">航空</view>
+  </view>
+  <view class="serve-item">
+    <view class="s3"></view>
+    <view class="tit">高铁</view>
+  </view>
+  <view class="serve-item">
+    <view class="s4"></view>
+    <view class="tit">直升机</view>
+  </view>
+</view>
+
+<view class="other-serve-wrap">
+  <div class="other-serve">
+    <view>
+      <view class="icon i1"></view>
+      <view class="tit">港澳医疗直通</view>
+    </view>
+    <view>
+      <view class="icon i3"></view>
+      <view class="tit">医疗接机送站</view>
+    </view>
+  </div>
+  <div class="other-serve">
+    <view>
+      <view class="icon i2"></view>
+      <view class="tit">VIP定制</view>
+    </view>
+    <view>
+      <view class="icon i4"></view>
+      <view class="tit">大型活动医疗保障</view>
+    </view>
+  </div>
+</view>
+
+<view class="news-wrap">
+  <view class="news-header">
+    <view class="fl">资讯</view>
+    <view class="fr">更多></view>
+  </view>
+  <view class="news-list">
+    <view wx:for="{{5}}" class="news-item">
+      <view style="background: url('http://www.emtsos.com/upload/images/information3.png') center no-repeat;background-size: 100%" class="img"></view>
+      <view class="content">
+        <view class="tit">喜讯！易医通与中国人保健康战略合作今日正式达成</view>
+        <view>易医通与民航医疗快线在白云区民航医疗......05-05</view>
+      </view>
+    </view>
+  </view>
+</view>
