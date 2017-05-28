@@ -36,11 +36,14 @@ Page({
   onReady: function () {
     this.getDate()
     this.initMap()
-
+  },
+  onShow:function () {
+    const orderType = wx.getStorageSync('orderType')
+    if(orderType !== '') this.shiftServe(orderType)
   },
   // 顶部tab切换
   shiftServe:function (e) {
-    var params = {
+    let params = {
       needRespirator:false,
       needLitter:false,
       needWheelChair:false,
@@ -61,6 +64,7 @@ Page({
       params.showPrice = false
     }
     this.setData(params)
+    wx.removeStorageSync('orderType')
   },
   //保存订单
   saveOrder:function () {

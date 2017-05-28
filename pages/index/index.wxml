@@ -9,19 +9,19 @@
 </view>
 
 <view class="serve-list-wrap">
-  <view class="serve-item">
+  <view bindtap="toPageOrder" data-serve="ambulance" class="serve-item">
     <view class="s1"></view>
     <view class="tit">救护车</view>
   </view>
-  <view class="serve-item">
+  <view bindtap="toPageOrder" data-serve="aviation" class="serve-item">
     <view class="s2"></view>
     <view class="tit">航空</view>
   </view>
-  <view class="serve-item">
+  <view bindtap="toPageOrder" data-serve="highSpeedRail" class="serve-item">
     <view class="s3"></view>
     <view class="tit">高铁</view>
   </view>
-  <view class="serve-item">
+  <view bindtap="toPageOrder" data-serve="helicopter" class="serve-item">
     <view class="s4"></view>
     <view class="tit">直升机</view>
   </view>
@@ -56,7 +56,7 @@
     <view class="fr">更多></view>
   </view>
   <view class="news-list">
-    <view wx:for="{{5}}" class="news-item">
+    <view wx:for="{{5}}" wx:key="{{index}}" class="news-item">
       <view style="background: url('http://www.emtsos.com/upload/images/information3.png') center no-repeat;background-size: 100%" class="img"></view>
       <view class="content">
         <view class="tit">喜讯！易医通与中国人保健康战略合作今日正式达成</view>
