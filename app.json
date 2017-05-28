@@ -7,7 +7,8 @@
     "pages/completeOrder/completeOrder",
     "pages/orderList/orderList",
     "pages/orderDetail/orderDetail",
-    "pages/previewOrderImage/previewOrderImage"
+    "pages/previewOrderImage/previewOrderImage",
+    "pages/newsList/newsList"
   ],
   "tabBar": {
     "color":"#777",

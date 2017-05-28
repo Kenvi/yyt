@@ -78,8 +78,9 @@
         font-weight: bold; }
 
 .news-wrap {
-  padding: 0 20rpx 30rpx;
-  border-bottom: 2rpx solid #e7efed; }
+  padding: 0 20rpx;
+  border-bottom: 2rpx solid #e7efed;
+  margin-bottom: 50rpx; }
   .news-wrap .news-header {
     height: 80rpx;
     line-height: 80rpx;
@@ -106,12 +107,12 @@
       margin-right: 20rpx; }
     .news-wrap .news-list .news-item .content {
       width: 460rpx;
-      font-size: 28rpx;
+      font-size: 26rpx;
       line-height: 1.4;
       color: #555;
       text-align: justify; }
       .news-wrap .news-list .news-item .content .tit {
         font-weight: bold;
-        padding-bottom: 20rpx; }
+        padding-bottom: 10rpx; }
 
 /*# sourceMappingURL=index.wxss.map */

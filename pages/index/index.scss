@@ -119,8 +119,9 @@
 }
 
 .news-wrap{
-  padding: 0 20rpx 30rpx;
+  padding: 0 20rpx;
   border-bottom: 2rpx solid #e7efed;
+  margin-bottom: 50rpx;
 
   .news-header{
     height: 80rpx;
@@ -159,14 +160,14 @@
 
       .content{
         width: 460rpx;
-        font-size: 28rpx;
+        font-size: 26rpx;
         line-height: 1.4;
         color: #555;
         text-align: justify;
 
         .tit{
           font-weight: bold;
-          padding-bottom: 20rpx;
+          padding-bottom: 10rpx;
         }
       }
 

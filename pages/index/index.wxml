@@ -53,7 +53,7 @@
 <view class="news-wrap">
   <view class="news-header">
     <view class="fl">资讯</view>
-    <view class="fr">更多></view>
+    <view class="fr"><navigator url="/pages/newsList/newsList" hover-class="none">更多></navigator></view>
   </view>
   <view class="news-list">
     <view wx:for="{{5}}" wx:key="{{index}}" class="news-item">
