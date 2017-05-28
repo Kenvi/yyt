@@ -1,0 +1,59 @@
+<!--index.wxml-->
+<view style="height: {{clientHeight}}px;" class="{{isShowAddressSelect ? 'o-h' : ''}}">
+  <view class="page-tit">{{serveTit}}</view>
+  <view class="order-nav">
+    <view bindtap="shiftServe" data-serve="ambulance" class="tab-item {{serveType==='ambulance'?'active':''}}">救护车</view>
+    <view bindtap="shiftServe" data-serve="aviation" class="tab-item {{serveType==='aviation'?'active':''}}">航空</view>
+    <view bindtap="shiftServe" data-serve="highSpeedRail" class="tab-item {{serveType==='highSpeedRail'?'active':''}}">高铁</view>
+    <view bindtap="shiftServe" data-serve="helicopter" class="tab-item {{serveType==='helicopter'?'active':''}}">直升机</view>
+  </view>
+
+  <!--预约出发地及目的地选择-->
+  <import src="../../components/mainForm/mainForm.wxml" />
+  <template is="mainForm" data="{{beginAddress,endAddress,date,time}}" />
+
+  <!--配套服务-->
+  <view class="other-form-wrap">
+    <view class="other-tit">配套服务</view>
+    <!--救护车配套服务-->
+    <import src="../../components/otherForm/ambulance.wxml" />
+    <template is="ambulance" data="{{serveType,ifShowFloorChange,floors,currentFloor}}" />
+    <!--航空配套服务-->
+    <import src="../../components/otherForm/aviation.wxml" />
+    <template is="aviation" data="{{serveType,needRespirator,needLitter,needWheelChair,currentPersonNum,personNum}}" />
+    <!--高铁配套服务-->
+    <import src="../../components/otherForm/highSpeedRail.wxml" />
+    <template is="highSpeedRail" data="{{serveType,needRespirator,needLitter,needWheelChair,currentPersonNum,personNum}}" />
+    <!--直升机配套服务-->
+    <import src="../../components/otherForm/helicopter.wxml" />
+    <template is="helicopter" data="{{serveType,needRespirator,needLitter,needWheelChair,currentPersonNum,personNum}}" />
+
+    <view wx:if="{{customerOfferPrice || totalPrice===0}}" class="total">下单后客服人员通过电话给您报价。</view>
+    <view wx:if="{{!customerOfferPrice && showPrice}}" class="total">约{{totalPrice+floorPrice}}元</view>
+
+    <view class="next-step">
+      <view class="agreement">
+        <text>同意</text>
+        <checkbox  bindtap="checkNoticePageAgreement"></checkbox>
+        <text bindtap="showNoticePage">医疗转运知情同意书</text></view>
+      <button bindtap="saveOrder" type="button" >下一步</button>
+    </view>
+    <view class="hide other-serve-link" >
+      <view>接送机</view>
+      <view>接送高铁</view>
+      <view>港澳直通</view>
+    </view>
+  </view>
+
+  <!--地点选择组件-->
+  <import src="../../components/addressSelect/addressSelect.wxml" />
+  <template is="addressSelect" data="{{isShowAddressSelect,editAddress,hideSugInfo,sugData,mapHeight,locate,controls,markers,hideHospitalList,currentCity,cityList,hideUsualCity,hospitalList}}" />
+
+  <!--医疗转运知情通知书-->
+  <import src="../../components/noticePage/noticePage.wxml" />
+  <template is="noticePage" data="{{hideNoticePage}}" />
+
+  <!--登陆/注册/忘记密码-->
+  <import src="../../components/login/login.wxml" />
+  <template is="login" data="{{showLoginModal,loginType,countDownSeconds,phoneNumber,messageCode,password}}" />
+</view>

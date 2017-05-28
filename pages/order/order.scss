@@ -1,0 +1,28 @@
+.order-nav{
+  display: flex;
+  flex-direction: row;
+  height: 43rpx;
+  line-height: 43rpx;
+  margin: 22rpx 10rpx;
+  .tab-item{
+    width: 25%;
+    text-align: center;
+    font-size: 30rpx;
+    border-right: 2rpx solid #ccc;
+    &.active{
+      color: #3399f3;
+    }
+    &:last-child{
+      border-right: none;
+    }
+  }
+}
+
+.o-h{
+  overflow-y: hidden;
+}
+
+@import "../../components/mainForm/mainForm.scss";
+@import "../../components/otherForm/otherForm.scss";
+@import "../../components/addressSelect/addressSelect.scss";
+@import "../../components/noticePage/noticePage.scss";

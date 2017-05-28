@@ -1,6 +1,7 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/order/order",
     "pages/mine/mine",
     "pages/confirmOrder/confirmOrder",
     "pages/completeOrder/completeOrder",
@@ -15,6 +16,12 @@
     "list": [
       {
         "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath":"images/icon1a.png",
+        "selectedIconPath":"images/icon1.png"
+      },
+      {
+        "pagePath": "pages/order/order",
         "text": "预约",
         "iconPath":"images/icon2a.png",
         "selectedIconPath":"images/icon2.png"
