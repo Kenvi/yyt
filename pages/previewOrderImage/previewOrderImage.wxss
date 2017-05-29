@@ -47,4 +47,16 @@
       border-radius: 8rpx;
       text-align: center; }
 
+.back-btn {
+  position: fixed;
+  top: 50rpx;
+  left: 50rpx;
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 40rpx;
+  background: rgba(231, 231, 231, 0.4);
+  z-index: 999; }
+  .back-btn .back {
+    top: 10rpx; }
+
 /*# sourceMappingURL=previewOrderImage.wxss.map */

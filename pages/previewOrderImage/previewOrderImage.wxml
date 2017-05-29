@@ -1,3 +1,4 @@
+<view bindtap="backToLastPage" class="back-btn"><view class="back"></view></view>
 <view class="img-wrap" style="height: {{clientHeight}}px;">
   <swiper hidden="{{imageList.length === 0}}" indicator-dots autoplay interval="3000" duration="500">
     <block wx:for="{{imageList}}" wx:key="{{index}}">

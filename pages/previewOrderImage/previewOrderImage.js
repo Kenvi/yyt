@@ -2,6 +2,8 @@
  * Created by Administrator on 2017/5/26/026.
  */
 "use strict"
+const objAssign = require('../../util/objectAssign')
+import headTitle from  '../../components/headTitle/headTitle.js'
 Page({
   data:{
     uuid:null,
@@ -10,6 +12,7 @@ Page({
   },
   onLoad:function (opt) {
     const that = this
+    objAssign(that, headTitle)
     that.setWindowHeight()
     that.getOrderImageList(opt.orderid)
     that.setData({
