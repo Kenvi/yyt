@@ -13,14 +13,14 @@ Page({
   onLoad:function (opt) {
     const that = this
     objAssign(that, headTitle)
-    const orderDetail = JSON.parse(wx.getStorageSync('orderDetail'))
 
 
-    if(!opt || !opt.type || orderDetail===''){
+    if(!opt || !opt.type || wx.getStorageSync('orderDetail')===''){
       wx.redirectTo({
         url:'/pages/orderList/orderList'
       })
     }else{
+      const orderDetail = JSON.parse(wx.getStorageSync('orderDetail'))
       const Account = wx.getStorageSync('Account')
 
       that.setData({
