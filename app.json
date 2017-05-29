@@ -38,7 +38,7 @@
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "易医通",
+    "navigationBarTitleText": "易医通-医疗救援",
     "navigationBarTextStyle":"black"
   }
 }

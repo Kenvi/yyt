@@ -65,7 +65,7 @@
 }
 
 .other-serve-wrap{
-  height: 380rpx;
+  height: 340rpx;
   padding: 20rpx;
   border-bottom: 10rpx solid #E7EFED;
   display: flex;
@@ -77,15 +77,15 @@
     }
 
     >view{
-      height: 170rpx;
+      height: 160rpx;
       &:first-child{
         border-bottom: 2rpx solid #ccc;
       }
 
       .icon{
-        margin: 22rpx auto 20rpx;
-        width: 70rpx;
-        height: 70rpx;
+        margin: 10rpx auto 10rpx;
+        width: 80rpx;
+        height: 80rpx;
 
         &.i1{
           background: url("https://www.emtsos.com/emt/v-v1-zh_CN-/emt/img/mainpic1.png") center no-repeat;

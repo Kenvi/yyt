@@ -44,7 +44,7 @@
         text-align: center; }
 
 .other-serve-wrap {
-  height: 380rpx;
+  height: 340rpx;
   padding: 20rpx;
   border-bottom: 10rpx solid #E7EFED;
   display: flex; }
@@ -53,13 +53,13 @@
     .other-serve-wrap .other-serve:first-child {
       border-right: 2rpx solid #ccc; }
     .other-serve-wrap .other-serve > view {
-      height: 170rpx; }
+      height: 160rpx; }
       .other-serve-wrap .other-serve > view:first-child {
         border-bottom: 2rpx solid #ccc; }
       .other-serve-wrap .other-serve > view .icon {
-        margin: 22rpx auto 20rpx;
-        width: 70rpx;
-        height: 70rpx; }
+        margin: 10rpx auto 10rpx;
+        width: 80rpx;
+        height: 80rpx; }
         .other-serve-wrap .other-serve > view .icon.i1 {
           background: url("https://www.emtsos.com/emt/v-v1-zh_CN-/emt/img/mainpic1.png") center no-repeat;
           background-size: 100%; }
