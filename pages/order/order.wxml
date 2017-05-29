@@ -1,6 +1,9 @@
 <!--index.wxml-->
 <view style="height: {{clientHeight}}px;" class="{{isShowAddressSelect ? 'o-h' : ''}}">
-  <view class="page-tit">{{serveTit}}</view>
+  <view class="page-tit has-back">
+    <view bindtap="backToIndex" class="back"></view>
+    <view class="tit">{{serveTit}}</view>
+  </view>
   <view class="order-nav">
     <view bindtap="shiftServe" data-serve="ambulance" class="tab-item {{serveType==='ambulance'?'active':''}}">救护车</view>
     <view bindtap="shiftServe" data-serve="aviation" class="tab-item {{serveType==='aviation'?'active':''}}">航空</view>

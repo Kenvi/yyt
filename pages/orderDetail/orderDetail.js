@@ -3,6 +3,9 @@
  */
 "use strict"
 const app = getApp()
+const objAssign = require('../../util/objectAssign')
+import headTitle from  '../../components/headTitle/headTitle.js'
+
 Page({
   data:{
     orderDetail:{},
@@ -10,7 +13,9 @@ Page({
     imageList:[]
   },
   onLoad:function (opt) {
-    this.getDetail(opt.uuid)
+    const that = this
+    objAssign(that, headTitle)
+    that.getDetail(opt.uuid)
   },
   getDetail:function (uuid) {
     const that = this

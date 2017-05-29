@@ -17,6 +17,7 @@ import mainForm from  '../../components/mainForm/mainForm.js'
 import otherForm from  '../../components/otherForm/otherForm.js'
 import addressSelect from  '../../components/addressSelect/addressSelect.js'
 import login from  '../../components/login/login.js'
+import headTitle from  '../../components/headTitle/headTitle.js'
 Page({
   data: {
     serveType:'ambulance',
@@ -30,7 +31,7 @@ Page({
     //   // url:'/pages/previewOrderImage/previewOrderImage'
     // })
     const that = this
-    objAssign(that, mainForm,otherForm,noticePage,addressSelect,login)
+    objAssign(that, mainForm,otherForm,noticePage,addressSelect,login,headTitle)
     that.setData(that.data)
   },
   onReady: function () {

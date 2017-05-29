@@ -1,29 +1,6 @@
 view, text {
   color: #555; }
 
-.page-tit {
-  height: 100rpx;
-  line-height: 100rpx;
-  background: #2fa4e7;
-  color: #fff;
-  text-align: center;
-  font-size: 36rpx; }
-  .page-tit.has-back {
-    position: relative;
-    display: flex;
-    height: 60rpx;
-    padding: 20rpx; }
-    .page-tit.has-back .back {
-      position: absolute; }
-    .page-tit.has-back .tit {
-      width: 100%;
-      line-height: 60rpx; }
-    .page-tit.has-back .cancel {
-      position: absolute;
-      line-height: 60rpx;
-      right: 30rpx;
-      font-size: 28rpx; }
-
 .back {
   z-index: 999;
   position: relative;
@@ -215,5 +192,31 @@ view, text {
           color: #2fa4e7;
           text-align: center;
           font-size: 28rpx; }
+
+.page-tit {
+  height: 100rpx;
+  line-height: 100rpx;
+  background: #2fa4e7;
+  color: #fff;
+  text-align: center;
+  font-size: 36rpx; }
+  .page-tit.has-back {
+    position: relative;
+    display: flex;
+    height: 60rpx;
+    padding: 20rpx; }
+    .page-tit.has-back .back {
+      position: absolute; }
+    .page-tit.has-back .tit {
+      color: #fff;
+      font-weight: 400;
+      width: 100%;
+      line-height: 60rpx; }
+    .page-tit.has-back .cancel {
+      color: #fff;
+      position: absolute;
+      line-height: 60rpx;
+      right: 30rpx;
+      font-size: 28rpx; }
 
 /*# sourceMappingURL=app.wxss.map */

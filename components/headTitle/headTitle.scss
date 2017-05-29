@@ -1,0 +1,30 @@
+.page-tit{
+  height: 100rpx;
+  line-height: 100rpx;
+  background: #2fa4e7;
+  color: #fff;
+  text-align: center;
+  font-size: 36rpx;
+  &.has-back{
+    position: relative;
+    display: flex;
+    height: 60rpx;
+    padding: 20rpx;
+    .back{
+      position: absolute;
+    }
+    .tit{
+      color: #fff;
+      font-weight: 400;
+      width: 100%;
+      line-height: 60rpx;
+    }
+    .cancel{
+      color: #fff;
+      position: absolute;
+      line-height: 60rpx;
+      right: 30rpx;
+      font-size: 28rpx;
+    }
+  }
+}

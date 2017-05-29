@@ -3,33 +3,6 @@ view,text{
 
 }
 
-.page-tit{
-  height: 100rpx;
-  line-height: 100rpx;
-  background: #2fa4e7;
-  color: #fff;
-  text-align: center;
-  font-size: 36rpx;
-  &.has-back{
-    position: relative;
-    display: flex;
-    height: 60rpx;
-    padding: 20rpx;
-    .back{
-      position: absolute;
-    }
-    .tit{
-      width: 100%;
-      line-height: 60rpx;
-    }
-    .cancel{
-      position: absolute;
-      line-height: 60rpx;
-      right: 30rpx;
-      font-size: 28rpx;
-    }
-  }
-}
 
 .back{
   z-index: 999;
@@ -128,3 +101,4 @@ view,text{
 }
 
 @import "./components/login/login";
+@import "./components/headTitle/headTitle";

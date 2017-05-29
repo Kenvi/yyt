@@ -3,6 +3,8 @@
  */
 "use strict"
 const app = getApp()
+const objAssign = require('../../util/objectAssign')
+import headTitle from  '../../components/headTitle/headTitle.js'
 Page({
   data:{
     orderDetail:{},
@@ -10,6 +12,8 @@ Page({
     uploadImgNum:0
   },
   onLoad:function () {
+    const that = this
+    objAssign(that, headTitle)
     const orderDetail = JSON.parse(wx.getStorageSync('orderDetail'))
     let data = {
       orderDetail:orderDetail
@@ -24,15 +28,10 @@ Page({
       })
       data.serve = serve
     }
-    this.setData(data)
+    that.setData(data)
   },
   onUnload:function () {
     wx.removeStorageSync('orderDetail') // 清除缓存的订单信息
-  },
-  backToLastPage:function () {
-    wx.navigateBack({
-      delta:1
-    })
   },
   inputOtherRequest:function (e) {
     this.setData({

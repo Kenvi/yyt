@@ -3,12 +3,15 @@
  */
 "use strict"
 const app = getApp()
+const objAssign = require('../../util/objectAssign')
+import headTitle from  '../../components/headTitle/headTitle.js'
 Page({
   data:{
     orderList:[]
   },
   onLoad:function () {
     const that = this
+    objAssign(that, headTitle)
     if(app.globalData.userId === null){
       wx.showModal({
         title:'提示',
@@ -49,11 +52,6 @@ Page({
       fail:function (err) {
         console.log(err)
       }
-    })
-  },
-  backToLastPage:function () {
-    wx.navigateBack({
-      delta:1
     })
   },
   toPageOrderDetail:function (e) {

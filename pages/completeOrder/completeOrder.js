@@ -3,14 +3,18 @@
  */
 "use strict"
 const app = getApp()
+const objAssign = require('../../util/objectAssign')
+import headTitle from  '../../components/headTitle/headTitle.js'
 Page({
   data:{
     orderInfo:{}
   },
   onLoad:function () {
+    const that = this
+    objAssign(that, headTitle)
     const orderDetail = JSON.parse(wx.getStorageSync('orderDetail'))
     const Account = wx.getStorageSync('Account')
-    this.setData({
+    that.setData({
       orderInfo:orderDetail
     })
     // wx.removeStorageSync('orderDetail')
@@ -35,11 +39,6 @@ Page({
     })
 
 
-  },
-  backToLastPage:function () {
-    wx.navigateBack({
-      delta:1
-    })
   },
   callCustomer:function () {
     wx.makePhoneCall({
