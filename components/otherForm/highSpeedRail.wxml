@@ -8,7 +8,7 @@
     <view class="other-opts">
       <text>出行人数：</text>
       <picker bindchange="bindPersonNumChange" value="{{currentPersonNum}}" range="{{personNum}}" class="select">
-        <view >{{personNum[currentPersonNum]}}人</view>
+        <view class="c-f">{{personNum[currentPersonNum]}}人</view>
       </picker>
     </view>
   </view>

@@ -23,15 +23,15 @@
     padding-bottom: 30rpx;
     .options{
       padding: 30rpx 15rpx 0;
-      height: 100rpx;
+      height: 184rpx;
       >view{
         width: 231rpx;
         border: 1rpx solid #ededed;
-        height: 78rpx;
+        height: 140rpx;
+        line-height: 140rpx;
         float: left;
         margin: 10rpx 10rpx 0 0;
         font-size: 26rpx;
-        line-height: 78rpx;
         font-weight: bold;
         text-align: center;
         &:nth-child(3n){

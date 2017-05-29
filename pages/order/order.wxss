@@ -90,15 +90,15 @@
     padding-bottom: 30rpx; }
     .other-form-wrap .aviation-serve .options, .other-form-wrap .highSpeedRail-serve .options, .other-form-wrap .helicopter-serve .options {
       padding: 30rpx 15rpx 0;
-      height: 100rpx; }
+      height: 184rpx; }
       .other-form-wrap .aviation-serve .options > view, .other-form-wrap .highSpeedRail-serve .options > view, .other-form-wrap .helicopter-serve .options > view {
         width: 231rpx;
         border: 1rpx solid #ededed;
-        height: 78rpx;
+        height: 140rpx;
+        line-height: 140rpx;
         float: left;
         margin: 10rpx 10rpx 0 0;
         font-size: 26rpx;
-        line-height: 78rpx;
         font-weight: bold;
         text-align: center; }
         .other-form-wrap .aviation-serve .options > view:nth-child(3n), .other-form-wrap .highSpeedRail-serve .options > view:nth-child(3n), .other-form-wrap .helicopter-serve .options > view:nth-child(3n) {
@@ -302,6 +302,7 @@ map#startlocate {
     background: #2fa4e7;
     color: #fff; }
     .notice-page .title .content {
+      color: #fff;
       width: 80%;
       margin: 0 auto;
       text-align: center;

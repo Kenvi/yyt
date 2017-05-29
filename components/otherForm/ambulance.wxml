@@ -5,7 +5,7 @@
       <switch bindchange="showFloorChange"></switch>
       <text>担架上楼</text>
       <picker class="{{ifShowFloorChange ? '' : 'hide'}} select" bindchange="bindFloorChange" value="{{currentFloor}}" range="{{floors}}">
-        <view >{{floors[currentFloor]}}楼</view>
+        <view class="c-f">{{floors[currentFloor]}}楼</view>
       </picker>
     </view>
   </view>

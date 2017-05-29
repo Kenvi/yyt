@@ -1,5 +1,7 @@
 view, text {
   color: #555; }
+  view.c-f, text.c-f {
+    color: #fff; }
 
 .back {
   z-index: 999;
