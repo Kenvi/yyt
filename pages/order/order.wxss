@@ -174,13 +174,15 @@
   background: #fff; }
   .map-wrap .suggestion .section, .end-address-wrap .suggestion .section {
     display: flex;
+    position: relative;
     flex-direction: row;
     height: 60rpx;
     padding: 20rpx 0;
     background: #2fa4e7;
     color: #fff; }
     .map-wrap .suggestion .section .back, .end-address-wrap .suggestion .section .back {
-      z-index: 100; }
+      z-index: 100;
+      position: absolute; }
     .map-wrap .suggestion .section > input, .end-address-wrap .suggestion .section > input {
       text-align: center;
       display: block;

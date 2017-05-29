@@ -50,7 +50,7 @@
 
   <!--地点选择组件-->
   <import src="../../components/addressSelect/addressSelect.wxml" />
-  <template is="addressSelect" data="{{isShowAddressSelect,editAddress,hideSugInfo,sugData,mapHeight,locate,controls,markers,hideHospitalList,currentCity,cityList,hideUsualCity,hospitalList}}" />
+  <template is="addressSelect" data="{{isShowAddressSelect,editAddress,hideSugInfo,sugData,mapHeight,clientHeight,locate,controls,markers,hideHospitalList,currentCity,cityList,hideUsualCity,hospitalList}}" />
 
   <!--医疗转运知情通知书-->
   <import src="../../components/noticePage/noticePage.wxml" />

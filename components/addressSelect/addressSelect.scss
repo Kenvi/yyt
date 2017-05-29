@@ -8,6 +8,7 @@
   .suggestion{
     .section{
       display: flex;
+      position: relative;
       flex-direction: row;
       height: 60rpx;
       padding: 20rpx 0;
@@ -15,6 +16,7 @@
       color: #fff;
       .back{
         z-index: 100;
+        position: absolute;
       }
       >input{
         text-align: center;
