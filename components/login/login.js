@@ -28,16 +28,61 @@ export default {
   },
   getMessageCode:function () {
     const that = this
+
+    if(!that.checkPhoneNumber(that.data.phoneNumber)){
+      wx.showModal({
+        title:'提示',
+        showCancel:false,
+        content:'请输入正确的手机号'
+      })
+      return
+    }
+
+    let data = {
+      method:'sendCode',
+      mobile:that.data.phoneNumber
+    }
+
+    switch (that.data.loginType){
+      case 'regist' : data.stype = 1 ; break;
+      case 'forget' : data.stype = 2 ; break;
+    }
+
+    wx.request({
+      url: 'https://www.emtsos.com/emApp.do',
+      header: {
+        'Charset': 'utf-8',
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      method:'POST',
+      data: data,
+      success:function (res) {
+        console.log(res)
+        if(res.data.ret === 1){
+          wx.showToast({
+            title: '验证码发送成功',
+            icon: 'success',
+            duration: 2000
+          })
+          that.countDownFunc()
+        }else if(res.data.ret === 0){
+          wx.showModal({
+            title:'提示',
+            showCancel:false,
+            content:res.data.msg
+          })
+        }
+      },
+      fail:function (err) {
+        console.log(err)
+      }
+    })
+
+  },
+  countDownFunc:function () {
+    const that = this
     that.setData({
       countDownSeconds:60
-    })
-    wx.showToast({
-      title: '验证码发送成功',
-      icon: 'success',
-      duration: 2000,
-      success:function () {
-
-      }
     })
     let inter = setInterval(function () {
       that.setData({
@@ -50,7 +95,6 @@ export default {
         })
       }
     },1000)
-
   },
   inputPhoneNumber:function (e) {
     this.setData({
@@ -69,6 +113,25 @@ export default {
   },
   submitData:function (cb) {
     const that = this
+
+    if(!that.checkPhoneNumber(that.data.phoneNumber)){
+      wx.showModal({
+        title:'提示',
+        showCancel:false,
+        content:'请输入正确的手机号'
+      })
+      return
+    }
+
+    if(that.data.password === ''){
+      wx.showModal({
+        title:'提示',
+        showCancel:false,
+        content:'请输入密码'
+      })
+      return
+    }
+
     wx.showLoading({
       title:'Loading',
       mask:true
@@ -209,5 +272,8 @@ export default {
       showLoginModal:true
     })
 
+  },
+  checkPhoneNumber:function (phone) {
+    return /^1[34578][0-9]{9}$/.test(phone)
   }
 }
