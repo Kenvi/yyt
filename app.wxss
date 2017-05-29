@@ -1,3 +1,6 @@
+view, text {
+  color: #555; }
+
 .page-tit {
   height: 100rpx;
   line-height: 100rpx;
