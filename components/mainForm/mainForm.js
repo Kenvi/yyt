@@ -12,14 +12,14 @@ export default {
   //显示，隐藏地图
   showAddressSelect:function (e) {
     var that = this
-    if(this.data.beginAddress === ''){
-      wx.showModal({
-        title:'提示',
-        showCancel:false,
-        content:'正在定位，请稍后再次尝试'
-      })
-      return
-    }
+    // if(this.data.beginAddress === ''){
+    //   wx.showModal({
+    //     title:'提示',
+    //     showCancel:false,
+    //     content:'正在定位，请稍后再次尝试'
+    //   })
+    //   return
+    // }
     if(e.currentTarget.dataset.type && e.currentTarget.dataset.type==='endLocation'){
       var item = this.data.endAddressDetail
       var data = {
