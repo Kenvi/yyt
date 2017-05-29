@@ -2,21 +2,22 @@
   <view class="main-form-wrap">
     <form class="main-form">
       <view class="form-group">
-        <text >出发地</text>
+        <text class="b">出发地</text>
         <view bindtap="showAddressSelect" id="startLocation" class="one-line-hide">{{beginAddress}}</view>
         <text bindtap="showAddressSelect" class="locate"></text>
       </view>
       <view class="form-group">
-        <text >目的地</text>
+        <text class="b">目的地</text>
         <view bindtap="showHospitalList" id="endLocation" class="one-line-hide" >{{endAddress}}</view>
         <text bindtap="showAddressSelect" data-type="endLocation" class="locate"></text>
       </view>
-      <view class="form-group">
-        <view>用车时间</view>
-        <picker mode="date" value="{{date}}" start="2017-01-01" bindchange="bindDateChange">
+      <view class="form-group pt10">
+        <view class="b">用车时间</view>
+        <picker mode="date" value="{{date}}" start="{{date}}" bindchange="bindDateChange">
+          <view  class="icon-date"></view>
           <view>{{date}}</view>
         </picker>
-        <picker mode="time" value="{{time}}" bindchange="bindTimeChange">
+        <picker mode="time" value="{{time}}" start="{{time}}" bindchange="bindTimeChange">
           <view>{{time}}</view>
         </picker>
       </view>

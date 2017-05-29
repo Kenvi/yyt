@@ -142,11 +142,6 @@ Page({
       url:'/pages/previewOrderImage/previewOrderImage?orderid=' + that.data.orderDetail.orderid + '&uuid=' + that.data.orderDetail.uuid
     })
   },
-  backToLastPage:function () {
-    wx.navigateBack({
-      delta:1
-    })
-  },
   callCustomer:function () {
     wx.makePhoneCall({
       phoneNumber: '4000966120'
