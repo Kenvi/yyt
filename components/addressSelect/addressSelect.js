@@ -40,14 +40,14 @@ export default {
         iconPath: '/images/aim.png',
         position: {
           left: 15,
-          top: info.windowHeight-100,
+          top: info.windowHeight-150,
           width: 30,
           height: 30
         },
         clickable: true
       }],
       clientHeight:info.windowHeight,
-      mapHeight:info.windowHeight - info.windowWidth/375 * 50
+      mapHeight:info.windowHeight - info.windowWidth/375 * 90
     })
   },
   hideAddressSelect:function () {
@@ -142,9 +142,14 @@ export default {
   },
   //获取当前定位坐标
   getLocation:function (setBeginAddress) {
+    wx.showLoading({
+      title:'正在定位',
+      mask:true
+    })
     var that = this
     BMap.regeocoding({
       fail: function (err) {
+        wx.hideLoading()
         wx.showModal({
           title:'提示',
           content:'用户拒绝授权，无法使用定位功能，请点击右上角->关于易医通->点击右上角->设置->允许地理位置授权',
@@ -152,6 +157,8 @@ export default {
         })
       },
       success: function (data) {
+        wx.hideLoading()
+
         let wxMarkerData = data.wxMarkerData
         wxMarkerData[0].title = wxMarkerData[0].address
         if(setBeginAddress){

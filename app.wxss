@@ -4,7 +4,6 @@ view, text {
     color: #fff; }
 
 .back {
-  z-index: 999;
   position: relative;
   width: 60rpx;
   height: 60rpx;

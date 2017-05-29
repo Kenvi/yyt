@@ -19,6 +19,10 @@
       </view>
     </view>
     <map style="height: {{mapHeight}}px;" hidden="{{!hideSugInfo}}" id="startlocate" longitude="{{locate.lng}}" latitude="{{locate.lat}}"  scale="14" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}"  bindmarkertap="markertap"  bindregionchange="regionchange" show-location ></map>
+    <view class="edit-address-wrap">
+      <view class="one-line-hide">{{editAddress}}</view>
+      <button bindtap="selectAddressConform" type="primary">确定</button>
+    </view>
   </view>
   <!--目的地医院选择组件-->
   <view class="end-address-wrap" hidden="{{hideHospitalList}}">
