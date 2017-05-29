@@ -17,5 +17,10 @@ export default {
     wx.redirectTo({
       url:'/pages/orderList/orderList'
     })
+  },
+  backToPageMine:function () {
+    wx.switchTab({
+      url:'/pages/mine/mine'
+    })
   }
 }

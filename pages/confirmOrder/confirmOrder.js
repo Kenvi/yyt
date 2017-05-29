@@ -30,9 +30,6 @@ Page({
     }
     that.setData(data)
   },
-  onUnload:function () {
-    wx.removeStorageSync('orderDetail') // 清除缓存的订单信息
-  },
   inputOtherRequest:function (e) {
     this.setData({
       otherRequest:e.detail.value

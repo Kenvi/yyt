@@ -1,5 +1,5 @@
 <view class="page-tit has-back">
-  <view bindtap="backToLastPage" class="back"></view>
+  <view bindtap="backToPageMine" class="back"></view>
   <view class="tit">救援订单</view>
 </view>
 <view class="order-list-wrap">

@@ -61,7 +61,8 @@
   </view>
   <view hidden="{{uploadImgNum === 0}}" class="info">确认订单后可在订单详情查看上传的照片</view>
 </view>
-<view class="total-amount">约<text>{{orderDetail.price1}}</text>元</view>
+<view wx:if="{{orderDetail.otype === 0}}" class="total-amount">约<text>{{orderDetail.price1}}</text>元</view>
+<view wx:else class="total-amount"><text>确认订单后客服人员会给您报价</text></view>
 <view class="confirm">
   <button bindtap="submitData" type="primary" class="confirm-btn">确认</button>
 </view>

@@ -66,7 +66,7 @@ Page({
         data = {
           statusTitle:'预付款支付成功',
           statusImage:'https://www.emtsos.com/image/ordersta4.png',
-          statusText:'转运预约'+ that.data.orderInfo.price4 +'元预付款支付成功，客服人员会尽快处理您的订单。'
+          statusText:'转运预约，'+ that.data.orderInfo.price4 +'元预付款支付成功，客服人员会尽快处理您的订单。'
         }
         break
       case '7' :
@@ -80,15 +80,28 @@ Page({
     that.setData(data)
   },
   onShow:function () {
+    console.log(222)
     if(wx.getStorageSync('orderDetail') === ''){
-      wx.redirectTo({
-        url:'/pages/orderList/orderList'
+      wx.showModal({
+        title:'提示',
+        showCancel:false,
+        content:'订单状态已改变，请在订单列表页重新查看订单',
+        success:function (res) {
+          if(res.confirm){
+            wx.navigateTo({
+              url:'/pages/orderList/orderList'
+            })
+          }
+        }
       })
     }
   },
   onUnload:function () {
     console.log(111)
-    wx.removeStorageSync('orderDetail')
+    if(wx.getStorageSync('orderDetail') !=='' ){
+      wx.removeStorageSync('orderDetail')
+    }
+
   },
   callCustomer:function () {
     wx.makePhoneCall({
