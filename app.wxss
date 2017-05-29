@@ -210,7 +210,7 @@ view, text {
       position: absolute; }
     .page-tit.has-back .tit {
       color: #fff;
-      font-weight: 400;
+      font-weight: bold;
       width: 100%;
       line-height: 60rpx; }
     .page-tit.has-back .cancel {
