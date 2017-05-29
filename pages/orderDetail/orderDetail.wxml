@@ -74,7 +74,7 @@
       <view class="txt">客服热线</view>
     </view>
   </view>
-  <view>
+  <view hidden>
     <view class="info">
       <view class="icon info_ico"></view>
       <view class="txt">在线咨询</view>

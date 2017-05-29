@@ -12,5 +12,10 @@ export default {
     wx.switchTab({
       url:'/pages/index/index'
     })
+  },
+  toPageOrderList:function () {
+    wx.redirectTo({
+      url:'/pages/orderList/orderList'
+    })
   }
 }

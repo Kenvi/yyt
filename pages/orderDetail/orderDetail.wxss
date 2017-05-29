@@ -69,7 +69,8 @@
   padding: 60rpx 30rpx 100rpx;
   display: flex; }
   .other-serve > view {
-    width: 50%; }
+    width: 50%;
+    margin: 0 auto; }
     .other-serve > view .tel, .other-serve > view .info {
       width: 200rpx;
       margin: 0 auto;

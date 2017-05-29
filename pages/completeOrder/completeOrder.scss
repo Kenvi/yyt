@@ -1,8 +1,11 @@
 .success-img{
   width: 100%;
   height: 400rpx;
-  background: url("https://www.emtsos.com/image/ordersta1.png") center top no-repeat;
-  background-size: 100%;
+
+  image{
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .order-detail-wrap{

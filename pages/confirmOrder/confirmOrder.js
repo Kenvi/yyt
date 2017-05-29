@@ -125,7 +125,7 @@ Page({
         if(res.data.ret === 1){
           wx.hideLoading()
           wx.navigateTo({
-            url:'/pages/completeOrder/completeOrder'
+            url:'/pages/completeOrder/completeOrder?type=3'
           })
         }
       },

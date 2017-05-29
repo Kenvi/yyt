@@ -15,6 +15,21 @@ Page({
   onLoad:function (opt) {
     const that = this
     objAssign(that, headTitle)
+
+    if(!opt || !opt.uuid){
+      wx.showModal({
+        title:'提示',
+        showCancel:false,
+        content:'订单状态已改变，请在订单列表页重新查看订单',
+        success:function (res) {
+          if(res.confirm){
+            wx.redirectTo({
+              url:'/pages/orderList/orderList'
+            })
+          }
+        }
+      })
+    }
     that.getDetail(opt.uuid)
   },
   getDetail:function (uuid) {
@@ -115,9 +130,16 @@ Page({
               signType: 'MD5',
               paySign: payMsg.paySign,
               success:function(res){
-                console.log(111)
+                wx.setStorageSync('orderDetail', JSON.stringify(that.data.orderDetail))
+                let type
+                if(that.data.orderDetail.status === 3){
+                  type = 5
+                }else{
+                  type = 7
+                }
+
                 wx.navigateTo({
-                  url:'/pages/orderDetail/orderDetail?uuid=' + that.data.orderDetail.uuid
+                  url:'/pages/completeOrder/completeOrder?type=' + type
                 })
               },
               fail:function(err){
