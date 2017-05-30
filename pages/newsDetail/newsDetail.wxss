@@ -12,5 +12,8 @@
   .news-detail-wrap .content-item image {
     width: 100%;
     height: auto; }
+    .news-detail-wrap .content-item image > view {
+      width: 100%;
+      height: 100%; }
 
 /*# sourceMappingURL=newsDetail.wxss.map */
