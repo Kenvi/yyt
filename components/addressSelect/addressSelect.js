@@ -34,20 +34,23 @@ export default {
     this.mapCtx = wx.createMapContext('startlocate')
     this.getLocation(true)
     const info = wx.getSystemInfoSync()
+    console.log(info)
     this.setData({
       controls: [{
         id: 1,
         iconPath: '/images/aim.png',
         position: {
           left: 15,
-          top: info.windowHeight-150,
+          top: info.windowHeight-200,
           width: 30,
           height: 30
         },
         clickable: true
       }],
-      clientHeight:info.windowHeight,
-      mapHeight:info.windowHeight - info.windowWidth/375 * 90
+      // clientWidth:info.windowWidth,
+      clientHeight:info.screenHeight - info.windowWidth/375 * 112,
+      mapHeight:info.screenHeight - info.windowWidth/375 * (90+112),
+      // confirmTop:info.windowHeight - info.windowWidth/375 * 40
     })
   },
   hideAddressSelect:function () {

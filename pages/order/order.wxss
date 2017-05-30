@@ -170,6 +170,8 @@
   top: 0;
   left: 0;
   width: 100%;
+  height: 100%;
+  overflow-y: hidden;
   z-index: 99;
   background: #fff; }
   .map-wrap .suggestion .section, .end-address-wrap .suggestion .section {
@@ -292,7 +294,7 @@ map#startlocate {
   top: 100rpx; }
 
 .edit-address-wrap {
-  position: absolute;
+  position: fixed;
   display: flex;
   bottom: 0;
   padding: 0 15rpx 0 30rpx;
