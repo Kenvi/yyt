@@ -22,5 +22,10 @@ export default {
     wx.switchTab({
       url:'/pages/mine/mine'
     })
+  },
+  toAbout:function () {
+    wx.navigateTo({
+      url:'/pages/about/about'
+    })
   }
 }

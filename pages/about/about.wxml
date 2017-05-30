@@ -1,0 +1,11 @@
+<view class="page-tit has-back">
+  <view bindtap="backToLastPage" class="back"></view>
+  <view class="tit">关于我们</view>
+</view>
+<view class="about-content">　　广东民航医疗快线有限公司唯一授权的医疗转运线上平台，开展医疗救援预约和相关医疗陪护服务：救护车救援、航空医疗护送、高铁医疗护送、直升机救援等立体救援服务体系，随行配备专业担架，轮椅，无障碍上下车/机，配备血袋、便携式医疗设备，受过专业空中医疗转运培训的医护人员全程医疗陪护，可直接抵达机场停机坪、高铁站台，通达全国各省及港澳各口岸，一键预约，快速响应。
+</view>
+
+<view class="copy-right">
+  <view>Copyright 2016-2017 Emtsos, All Rights Reserved</view>
+  <view>广州市易医通互联网科技有限公司</view>
+</view>

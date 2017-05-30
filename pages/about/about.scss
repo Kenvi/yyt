@@ -1,0 +1,18 @@
+.about-content{
+  padding: 100rpx 30rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+  line-height:1.42857143;
+  text-align: justify;
+}
+
+.copy-right{
+  margin-top: 150rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+  text-align: center;
+  >view{
+    color: #ddd;
+    margin-bottom: 10rpx;
+  }
+}

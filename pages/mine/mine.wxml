@@ -54,11 +54,13 @@
     <view class="item-count">{{menuList.performance || 0}}</view>
     <view class="right_arrow"></view>
   </view>
-  <view class="list-item">
-    <view class="item-name">关于我们</view>
-    <view class="item-count"></view>
-    <view class="right_arrow"></view>
-  </view>
+  <navigator url="/pages/about/about">
+    <view class="list-item">
+      <view class="item-name">关于我们</view>
+      <view class="item-count"></view>
+      <view class="right_arrow"></view>
+    </view>
+  </navigator>
 </view>
 <view class="logout">
   <button bindtap="wxLogout" type="button">退出登录</button>

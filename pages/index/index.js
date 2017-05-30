@@ -7,7 +7,8 @@ Page({
   },
   onLoad:function () {
     // wx.navigateTo({
-    //   url:'/pages/completeOrder/completeOrder?type=' + 7
+    //   url:'/pages/about/about'
+    //   // url:'/pages/completeOrder/completeOrder?type=' + 7
     //   // url:'/pages/orderDetail/orderDetail?uuid=' + 1495802018468
     //   // url:'/pages/previewOrderImage/previewOrderImage'
     // })
