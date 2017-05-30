@@ -292,7 +292,7 @@ map#startlocate {
   top: 100rpx; }
 
 .edit-address-wrap {
-  position: fixed;
+  position: absolute;
   display: flex;
   bottom: 0;
   padding: 0 15rpx 0 30rpx;
