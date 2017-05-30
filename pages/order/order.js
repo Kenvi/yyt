@@ -29,10 +29,11 @@ Page({
     const that = this
     objAssign(that, mainForm,otherForm,noticePage,addressSelect,login,headTitle)
     that.setData(that.data)
-  },
-  onReady: function () {
-    this.getDate()
-    this.initMap()
+    that.getDate()
+    that.initMap()
+    console.log(11111)
+    console.log(that.data.mapHeight,that.data.clientHeight)
+    console.log(11111)
   },
   onShow:function () {
     const orderType = wx.getStorageSync('orderType')

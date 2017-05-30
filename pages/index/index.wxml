@@ -1,8 +1,8 @@
 <view class="banner-wrap">
   <swiper indicator-dots autoplay interval="3000" duration="500" indicator-active-color="#fff" circular>
-    <block wx:for="{{imageList}}" wx:key="{{index}}">
+    <block wx:for="{{bannerList}}" wx:key="{{index}}">
       <swiper-item>
-        <view bindtap="previewImage" data-index="{{index}}" class="slide-image" style="background: url({{'https://www.emtsos.com'+item}}) center no-repeat;background-size: 100%;"></view>
+        <view class="slide-image" style="background: url({{item.photo}}) center no-repeat;background-size: 100%;"></view>
       </swiper-item>
     </block>
   </swiper>
@@ -57,7 +57,7 @@
   </view>
   <view class="news-list">
     <view bindtap="toPageNewsDetail" data-id="{{item.informationid}}" data-title="{{item.title}}" wx:for="{{informationList}}" wx:key="{{item.informationid}}" class="news-item">
-      <view style="background: url('http://www.emtsos.com/upload/images/information3.png') center no-repeat;background-size: 100%" class="img"></view>
+      <view style="background: url({{item.photo}}) center no-repeat;background-size: 100%" class="img"></view>
       <view class="content">
         <view class="tit">{{item.title}}</view>
         <view>{{item.content}}<text>{{item.createdate_}}</text></view>

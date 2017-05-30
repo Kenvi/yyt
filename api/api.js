@@ -3,7 +3,25 @@
  */
 "use strict"
 export default {
-
+  getIndexInformation:function () {
+    return new Promise(function (resolve,reject) {
+      wx.request({
+        url: 'https://www.emtsos.com/emMiniApi.do',
+        data: {
+          method:'getMainData',
+        },
+        success:function (res) {
+          if(res.data.ret === 1){
+            resolve(res.data.data)
+          }
+        },
+        fail:function (err) {
+          console.log(err)
+          reject(err)
+        }
+      })
+    })
+  },
   getInformationList:function () {
     return new Promise(function (resolve,reject) {
       wx.request({

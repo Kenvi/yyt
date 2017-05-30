@@ -2,7 +2,7 @@
 const app = getApp()
 Page({
   data:{
-    imageList:[
+    bannerList:[
       '/image/banner01.jpg',
       '/image/banner02.jpg'
     ],
@@ -17,14 +17,12 @@ Page({
     //   // url:'/pages/previewOrderImage/previewOrderImage'
     // })
     const that = this
-    app.api.getInformationList()
-      .then(function (list) {
-        let arr = []
-        for(let i=0;i<5;i++){
-          arr.push(list[i])
-        }
+    app.api.getIndexInformation()
+      .then(function (data) {
+
         that.setData({
-          informationList:arr
+          informationList:data.informationList,
+          bannerList:data.bannerList
         })
       })
   },
