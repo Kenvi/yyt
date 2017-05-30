@@ -11,9 +11,19 @@ Page({
   onLoad:function (opts) {
     const that = this
     if(!opts || !opts.id || !opts.title){
-      wx.navigateTo({
-        url:'/pages/newsList/newsList'
+      wx.showModal({
+        title:'提示',
+        showCancel:false,
+        content:'无法找到该资讯，请在资讯中心页重新查找',
+        success:function (res) {
+          if(res.confirm){
+            wx.navigateTo({
+              url:'/pages/newsList/newsList'
+            })
+          }
+        }
       })
+
     }else{
       app.api.getInformationContent(opts.id)
         .then(function (content) {

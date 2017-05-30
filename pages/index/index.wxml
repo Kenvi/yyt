@@ -56,8 +56,8 @@
     <view class="fr"><navigator url="/pages/newsList/newsList" hover-class="none">更多></navigator></view>
   </view>
   <view class="news-list">
-    <view wx:for="{{informationList}}" wx:key="{{index}}" class="news-item">
-      <view style="background: url('http://www.emtsos.com/upload/images/{{item.photo}}') center no-repeat;background-size: 100%" class="img"></view>
+    <view bindtap="toPageNewsDetail" data-id="{{item.informationid}}" data-title="{{item.title}}" wx:for="{{informationList}}" wx:key="{{item.informationid}}" class="news-item">
+      <view style="background: url('http://www.emtsos.com/upload/images/information3.png') center no-repeat;background-size: 100%" class="img"></view>
       <view class="content">
         <view class="tit">{{item.title}}</view>
         <view>{{item.content}}<text>{{item.createdate_}}</text></view>
