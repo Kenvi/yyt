@@ -1,9 +1,10 @@
 //app.js
 const config = require('/config/config')
-
+import api from 'api/api'
 App({
   onLaunch: function () {
     const that = this
+    that.api = api
     //调用API从本地缓存中获取数据
     const CityList = wx.getStorageSync('CityList')
 
