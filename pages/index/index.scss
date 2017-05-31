@@ -82,6 +82,11 @@
         border-bottom: 2rpx solid #ccc;
       }
 
+      &:last-child{
+        position: relative;
+        top:10rpx;
+      }
+
       .icon{
         margin: 10rpx auto 10rpx;
         width: 80rpx;

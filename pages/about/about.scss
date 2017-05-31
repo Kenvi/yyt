@@ -1,13 +1,17 @@
 .about-content{
-  padding: 100rpx 30rpx;
+  padding: 60rpx 30rpx;
   font-size: 28rpx;
   font-weight: bold;
   line-height:1.42857143;
   text-align: justify;
+
+  .mt40{
+    margin-top: 40rpx;
+  }
 }
 
 .copy-right{
-  margin-top: 150rpx;
+  margin-top: 40rpx;
   font-size: 28rpx;
   font-weight: bold;
   text-align: center;

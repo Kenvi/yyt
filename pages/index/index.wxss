@@ -56,6 +56,9 @@
       height: 160rpx; }
       .other-serve-wrap .other-serve > view:first-child {
         border-bottom: 2rpx solid #ccc; }
+      .other-serve-wrap .other-serve > view:last-child {
+        position: relative;
+        top: 10rpx; }
       .other-serve-wrap .other-serve > view .icon {
         margin: 10rpx auto 10rpx;
         width: 80rpx;

@@ -292,13 +292,15 @@ export default {
   },
   //获取区域id
   getAreaId:function () {
-    var areaId = this.data.currentCityAreaId
+    let areaId = this.data.currentCityAreaId
     if(areaId === ''){
       switch (this.data.currentCity){
         case '广州市' : areaId = 1947;break;
         case '北京市' : areaId = 1;break;
         case '上海市' : areaId = 792;break;
         case '深圳市' : areaId = 1971;break;
+        case '珠海市' : areaId = 1978;break;
+        case '佛山市' : areaId = 1990;break;
         default : areaId = 1947;break;
       }
     }

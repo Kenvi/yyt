@@ -1,5 +1,7 @@
 
 const app = getApp()
+const objAssign = require('../../util/objectAssign')
+import headTitle from  '../../components/headTitle/headTitle.js'
 Page({
   data:{
     bannerList:[
@@ -17,6 +19,7 @@ Page({
     //   // url:'/pages/previewOrderImage/previewOrderImage'
     // })
     const that = this
+    objAssign(that, headTitle)
     app.api.getIndexInformation()
       .then(function (data) {
 

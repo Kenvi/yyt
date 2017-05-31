@@ -29,21 +29,21 @@
 
 <view class="other-serve-wrap">
   <div class="other-serve">
-    <view>
+    <view bindtap="toAbout">
       <view class="icon i1"></view>
       <view class="tit">港澳医疗直通</view>
     </view>
-    <view>
+    <view bindtap="toAbout">
       <view class="icon i3"></view>
       <view class="tit">医疗接机送站</view>
     </view>
   </div>
   <div class="other-serve">
-    <view>
+    <view bindtap="toAbout">
       <view class="icon i2"></view>
       <view class="tit">VIP定制</view>
     </view>
-    <view>
+    <view bindtap="toAbout">
       <view class="icon i4"></view>
       <view class="tit">大型活动医疗保障</view>
     </view>
