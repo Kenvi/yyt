@@ -5,7 +5,7 @@
       <view class="section">
         <view bindtap="hideAddressSelect" class="back"></view>
         <input placeholder="输入关键字" value="{{editAddress}}" type="text"  bindinput="bindKeyInput"/>
-        <view hidden bindtap="selectAddressConform" data-address="{{editAddress}}" class="edit">确定</view>
+        <view bindtap="selectAddressConform" data-address="{{editAddress}}" class="edit">确定</view>
       </view>
       <view hidden="{{hideSugInfo}}" class="sug_info">
         <view bindtap="selectAddress" data-item="{{item}}" wx:for="{{sugData}}" wx:key="{{item.uid}}">
@@ -19,7 +19,7 @@
       </view>
     </view>
     <map style="height: {{mapHeight}}px;" hidden="{{!hideSugInfo}}" id="startlocate" longitude="{{locate.lng}}" latitude="{{locate.lat}}"  scale="14" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}"  bindmarkertap="markertap"  bindregionchange="regionchange" show-location ></map>
-    <view class="edit-address-wrap">
+    <view hidden class="edit-address-wrap">
       <view class="one-line-hide">{{editAddress}}</view>
       <button bindtap="selectAddressConform" data-address="{{editAddress}}" type="primary">确定</button>
     </view>

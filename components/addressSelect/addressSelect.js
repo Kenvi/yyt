@@ -34,22 +34,24 @@ export default {
     this.mapCtx = wx.createMapContext('startlocate')
     this.getLocation(true)
     const info = wx.getSystemInfoSync()
-    console.log(info)
+    // console.log(info)
     this.setData({
       controls: [{
         id: 1,
         iconPath: '/images/aim.png',
         position: {
           left: 15,
-          top: info.windowHeight-200,
+          top: info.windowHeight-150,
           width: 30,
           height: 30
         },
         clickable: true
       }],
       // clientWidth:info.windowWidth,
-      clientHeight:info.screenHeight - info.windowWidth/375 * 112,
-      mapHeight:info.screenHeight - info.windowWidth/375 * (90+112),
+      // clientHeight:info.screenHeight - info.windowWidth/375 * 112,
+      // mapHeight:info.screenHeight - info.windowWidth/375 * (90+112),
+      clientHeight:info.windowHeight,
+      mapHeight:info.windowHeight - info.windowWidth/375 * 50,
       // confirmTop:info.windowHeight - info.windowWidth/375 * 40
     })
   },
@@ -207,7 +209,7 @@ export default {
     const that = this
     this.mapCtx.getCenterLocation({
       success: function (res) {
-        console.log(res)
+        // console.log(res)
 
         BMap.regeocoding({
           location:res.latitude+','+res.longitude,

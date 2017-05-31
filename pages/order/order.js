@@ -31,9 +31,7 @@ Page({
     that.setData(that.data)
     that.getDate()
     that.initMap()
-    console.log(11111)
-    console.log(that.data.mapHeight,that.data.clientHeight)
-    console.log(11111)
+    console.log('mapHeight',that.data.mapHeight,'clientHeight',that.data.clientHeight)
   },
   onShow:function () {
     const orderType = wx.getStorageSync('orderType')
