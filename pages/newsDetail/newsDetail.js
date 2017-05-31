@@ -6,11 +6,12 @@ const app = getApp()
 Page({
   data:{
     newsDetail:[],
-    detailTitle:''
+    detailTitle:'',
+    detailDate:''
   },
   onLoad:function (opts) {
     const that = this
-    if(!opts || !opts.id || !opts.title){
+    if(!opts || !opts.id || !opts.title || !opts.date){
       wx.showModal({
         title:'提示',
         showCancel:false,
@@ -52,7 +53,8 @@ Page({
           // }
           that.setData({
             newsDetail:content,
-            detailTitle:opts.title
+            detailTitle:opts.title,
+            detailDate:opts.date
           })
         })
 

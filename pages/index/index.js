@@ -40,7 +40,7 @@ Page({
   },
   toPageNewsDetail:function (e) {
     wx.navigateTo({
-      url:'/pages/newsDetail/newsDetail?id=' + e.currentTarget.dataset.id + '&title=' + e.currentTarget.dataset.title
+      url:'/pages/newsDetail/newsDetail?id=' + e.currentTarget.dataset.id + '&title=' + e.currentTarget.dataset.title + '&date=' +e.currentTarget.dataset.date
     })
   }
 })
