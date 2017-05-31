@@ -196,7 +196,9 @@ export default {
   },
   //点击标记物
   markertap : function(e) {
-    console.log(e)
+    if(e.markerId !== 0){
+      this.getCenterLocation('notChangeEditAddress')
+    }
   },
   //点击地图左下角按钮回到当前定位位置
   controltap : function(e) {
@@ -205,7 +207,7 @@ export default {
     this.getLocation()
   },
   //地图变换后切换标记物到中心前获取该标记物位置信息
-  getCenterLocation: function () {
+  getCenterLocation: function (change) {
     const that = this
     this.mapCtx.getCenterLocation({
       success: function (res) {
@@ -221,16 +223,27 @@ export default {
             })
           },
           success: function (data) {
-            var  wxMarkerData = data.wxMarkerData
-            wxMarkerData[0].title = wxMarkerData[0].address
-            that.setData({
+            let  wxMarkerData = data.wxMarkerData
+            const province = data.originalData.result.addressComponent.province
+            const city = data.originalData.result.addressComponent.city
+            const address = wxMarkerData[0].address
+            wxMarkerData[0].title = address.replace(province,'').replace(city,'')
+
+            let settings = {
               locate:{
                 lat:wxMarkerData[0].latitude,
                 lng:wxMarkerData[0].longitude
               },
-              markers: wxMarkerData,
-              editAddress:wxMarkerData[0].address
-            })
+              markers: wxMarkerData
+            }
+
+            if(change && change === 'notChangeEditAddress'){
+
+            }else{
+              settings.editAddress = wxMarkerData[0].address
+            }
+
+            that.setData(settings)
           },
           iconPath: '/images/marker.png',
           iconTapPath: '/images/marker.png'
