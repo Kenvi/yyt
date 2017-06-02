@@ -18,7 +18,7 @@
         </view>
       </view>
     </view>
-    <map style="height: {{mapHeight}}px;" hidden="{{!hideSugInfo}}" id="startlocate" longitude="{{locate.lng}}" latitude="{{locate.lat}}"  scale="14" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}"  bindmarkertap="markertap"  bindregionchange="regionchange" show-location ></map>
+    <map style="height: {{clientHeight}}px;" hidden="{{!hideSugInfo}}" id="startlocate" longitude="{{locate.lng}}" latitude="{{locate.lat}}"  scale="14" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}"  bindmarkertap="markertap"  bindregionchange="regionchange" show-location ></map>
     <view hidden class="edit-address-wrap">
       <view class="one-line-hide">{{editAddress}}</view>
       <button bindtap="selectAddressConform" data-address="{{editAddress}}" type="primary">确定</button>
