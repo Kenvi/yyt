@@ -34,6 +34,10 @@ Page({
   },
   getDetail:function (uuid) {
     const that = this
+    wx.showLoading({
+      title:'加载中',
+      mask:true
+    })
     wx.request({
       url: 'https://www.emtsos.com/emMiniApi.do',
       data: {
@@ -42,6 +46,7 @@ Page({
         uuid:uuid
       },
       success:function (data) {
+        wx.hideLoading()
         if(data.data.ret === 1){
 
           that.setData({
@@ -54,6 +59,7 @@ Page({
         }
       },
       fail:function (err) {
+        wx.hideLoading()
         console.log(err)
       }
     })

@@ -18,7 +18,7 @@ Page({
         content:'无法找到该资讯，请在资讯中心页重新查找',
         success:function (res) {
           if(res.confirm){
-            wx.navigateTo({
+            wx.redirectTo({
               url:'/pages/newsList/newsList'
             })
           }
@@ -26,31 +26,13 @@ Page({
       })
 
     }else{
+      wx.showLoading({
+        title:'加载中',
+        mask:true
+      })
       app.api.getInformationContent(opts.id)
         .then(function (content) {
-          // let imgList = [] , indexArr = []
-          // if(content.informationContentList){
-          //   content.informationContentList.forEach(function (item,index) {
-          //
-          //     if(item.type === 1){
-          //       imgList.push(that.getImageOpts(item,index,item.content))
-          //       indexArr.push(index)
-          //     }
-          //   })
-          //   Promise.all(imgList)
-          //     .then(function (res) {
-          //       res.forEach(function (item) {
-          //         content.informationContentList[item.index] = item
-          //       })
-          //       return content
-          //     })
-          //     .then(function (final) {
-          //       that.setData({
-          //         newsDetail:final,
-          //         detailTitle:opts.title
-          //       })
-          //     })
-          // }
+          wx.hideLoading()
           that.setData({
             newsDetail:content,
             detailTitle:opts.title,
