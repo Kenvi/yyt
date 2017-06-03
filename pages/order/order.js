@@ -108,7 +108,7 @@ Page({
       uuid:that.generateOrderId(),
       lat1:that.data.beginAddressDetail.latitude,
       lng1:that.data.beginAddressDetail.longitude,
-      address1:that.data.beginAddressDetail.address,
+      address1:that.data.beginAddressDetail.address || that.data.beginAddressDetail.title,
       lat2:that.data.endAddressDetail.latitude,
       lng2:that.data.endAddressDetail.longitude,
       address2:that.data.endAddressDetail.address || that.data.endAddressDetail.title,
@@ -266,6 +266,7 @@ Page({
             that.setData({
               distance:res.data.data.distance
             })
+            // console.log('getDistance')
             that.getPrice(res.data.data.distance)
             typeof cb == "function" && cb(res.data.data)
           }
@@ -370,6 +371,7 @@ Page({
         }
 
         if(that.data.serveType === 'ambulance') priceData.showPrice = true
+        // console.log('getPrice')
 
         that.setData(priceData)
 

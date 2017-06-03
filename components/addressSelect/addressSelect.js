@@ -137,10 +137,12 @@ export default {
       data.beginAddressDetail = this.data.markers[0]
       this.setData(data)
     }
+    // console.log('confirmAddress')
     const lat = this.data.beginAddressDetail.latitude,
       lng = this.data.beginAddressDetail.longitude,
-      lat1 = this.data.endAddressDetail.latitude,
-      lng1 = this.data.endAddressDetail.longitude
+      lat1 = this.data.endAddressDetail.latitude || this.data.endAddressDetail.lat1,
+      lng1 = this.data.endAddressDetail.longitude || this.data.endAddressDetail.lng1
+    // console.log(lat,lng,lat1,lng1)
     if(lat && lng && lat1 && lng1){
       this.getDistance(lat,lng,lat1,lng1)
     }
