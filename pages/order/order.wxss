@@ -210,7 +210,7 @@
     border-top: 1rpx solid #f5f5f5;
     border-bottom: 16rpx solid #f5f5f5;
     line-height: 94rpx;
-    padding: 3rpx 20rpx; }
+    padding: 3rpx 30rpx; }
     .map-wrap .suggestion .section-city .city, .end-address-wrap .suggestion .section-city .city {
       display: flex;
       flex-direction: row;
@@ -231,7 +231,7 @@
       text-align: center; }
     .map-wrap .suggestion .section-city .cancel, .end-address-wrap .suggestion .section-city .cancel {
       position: absolute;
-      right: 20rpx;
+      right: 30rpx;
       margin-left: 15rpx;
       font-weight: bold; }
   .map-wrap .suggestion .sug_info, .end-address-wrap .suggestion .sug_info {

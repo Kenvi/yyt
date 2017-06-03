@@ -44,8 +44,8 @@ export default {
     }
 
     switch (that.data.loginType){
-      case 'regist' : data.stype = 1 ; break;
-      case 'forget' : data.stype = 2 ; break;
+      case 'regist' : data.type = 1 ; break;
+      case 'forget' : data.type = 2 ; break;
     }
 
     wx.request({
@@ -123,7 +123,7 @@ export default {
       return
     }
 
-    if(that.data.password === ''){
+    if(that.data.password === '' && that.data.loginType !== 'forget'){
       wx.showModal({
         title:'提示',
         showCancel:false,
