@@ -24,8 +24,10 @@
         .order-detail-wrap .order-detail > view#first-row view:nth-child(2n+1), .order-detail-wrap .order-detail > view#six-row view:nth-child(2n+1) {
           font-weight: bold;
           width: 150rpx; }
+          .order-detail-wrap .order-detail > view#first-row view:nth-child(2n+1).w100, .order-detail-wrap .order-detail > view#six-row view:nth-child(2n+1).w100 {
+            width: 100rpx; }
         .order-detail-wrap .order-detail > view#first-row view:nth-child(2n), .order-detail-wrap .order-detail > view#six-row view:nth-child(2n) {
-          padding: 0 30rpx; }
+          padding: 0 60rpx 0 0; }
         .order-detail-wrap .order-detail > view#first-row view:last-child, .order-detail-wrap .order-detail > view#six-row view:last-child {
           padding: 0;
           color: #FFAF3D; }
@@ -50,8 +52,7 @@
           width: 150rpx;
           font-weight: bold; }
         .order-detail-wrap .order-detail > view view:last-child {
-          width: 420rpx;
-          padding-left: 30rpx; }
+          width: 420rpx; }
 
 .confirm {
   padding-bottom: 40rpx; }

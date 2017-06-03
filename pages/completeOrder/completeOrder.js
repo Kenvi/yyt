@@ -88,7 +88,7 @@ Page({
         content:'订单状态已改变，请在订单列表页重新查看订单',
         success:function (res) {
           if(res.confirm){
-            wx.navigateTo({
+            wx.redirectTo({
               url:'/pages/orderList/orderList'
             })
           }
@@ -110,7 +110,7 @@ Page({
   },
   toPageOrderDetail:function (e) {
     wx.removeStorageSync('orderDetail')
-    wx.navigateTo({
+    wx.redirectTo({
       url:'/pages/orderDetail/orderDetail?uuid=' + e.currentTarget.dataset.uuid
     })
   }

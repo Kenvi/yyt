@@ -9,7 +9,7 @@
 <view class="order-detail-wrap">
   <view class="order-detail">
     <view id="first-row">
-      <view>订单类型</view>
+      <view>订单类型：</view>
       <view wx:if="{{orderDetail.otype === 0}}">市内转运</view>
       <view wx:elif="{{orderDetail.otype === 1}}">接机</view>
       <view wx:elif="{{orderDetail.otype === 2}}">送机</view>
@@ -24,38 +24,38 @@
       <view wx:elif="{{orderDetail.otype === 11}}">澳门</view>
       <view wx:elif="{{orderDetail.otype === 12}}">台湾</view>
       <view wx:else>国外</view>
-      <view class="t-c">状态</view>
+      <view class="t-c w100">状态：</view>
       <view>{{orderDetail.orderstatusname}}</view>
     </view>
     <view>
-      <view>预约时间</view>
+      <view>预约时间：</view>
       <view>{{orderDetail.departuredate}}</view>
     </view>
     <view>
-      <view>出发地</view>
+      <view>出发地：</view>
       <view>{{orderDetail.address1}}</view>
     </view>
     <view>
-      <view>目的地</view>
+      <view>目的地：</view>
       <view>{{orderDetail.address2}}</view>
     </view>
     <view>
-      <view>预算金额</view>
+      <view>预算金额：</view>
       <view class="c-o">{{orderDetail.price1}}元</view>
     </view>
     <view wx:if="{{orderStatus.pricePay > 0}}" id="six-row">
-      <view>实付金额</view>
+      <view>实付金额：</view>
       <view class="c-o">{{orderDetail.price3}}元</view>
-      <view class="t-c">预付</view>
+      <view class="t-c">预付：</view>
       <view class="c-o">{{orderDetail.price4}}元</view>
     </view>
     <view>
-      <view>其他要求</view>
+      <view>其他要求：</view>
       <view>{{orderDetail.note}}</view>
     </view>
     <view class="photo-item">
-      <view>相关照片</view>
-      <view class="pl30">{{orderStatus.photoCount}} 张</view>
+      <view>相关照片：</view>
+      <view>{{orderStatus.photoCount}} 张</view>
       <button bindtap="previewOrderImage" type="primary">查看/上传</button>
     </view>
   </view>

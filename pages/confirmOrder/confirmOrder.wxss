@@ -12,8 +12,7 @@
           width: 150rpx;
           font-weight: bold; }
         .order-detail-wrap .order-detail > view view:last-child {
-          width: 420rpx;
-          padding-left: 30rpx; }
+          width: 420rpx; }
     .order-detail-wrap .order-detail .row {
       margin-bottom: 40rpx; }
       .order-detail-wrap .order-detail .row:last-child {
@@ -28,7 +27,7 @@
     font-weight: bold; }
   .other-serve-wrap textarea {
     width: 640rpx;
-    height: 220rpx;
+    height: 110rpx;
     margin-top: 16rpx;
     border: 2rpx solid #eee;
     border-radius: 10rpx;

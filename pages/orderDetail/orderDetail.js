@@ -81,7 +81,7 @@ Page({
                   showCancel:false,
                   success:function (res) {
                     if(res.confirm){
-                      wx.navigateTo({
+                      wx.redirectTo({
                         url:'/pages/orderList/orderList'
                       })
                     }
@@ -138,7 +138,7 @@ Page({
                   type = 7
                 }
 
-                wx.navigateTo({
+                wx.redirectTo({
                   url:'/pages/completeOrder/completeOrder?type=' + type
                 })
               },

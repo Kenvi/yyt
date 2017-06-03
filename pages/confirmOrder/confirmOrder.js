@@ -121,7 +121,7 @@ Page({
       success:function (res) {
         if(res.data.ret === 1){
           wx.hideLoading()
-          wx.navigateTo({
+          wx.redirectTo({
             url:'/pages/completeOrder/completeOrder?type=3'
           })
         }

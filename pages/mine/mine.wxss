@@ -33,8 +33,8 @@
     .data-count .content:last-child {
       border-right: none; }
     .data-count .content .count {
-      height: 84rpx;
-      padding-top: 24rpx;
+      height: 88rpx;
+      padding-top: 20rpx;
       color: #F05B48;
       font-size: xx-large; }
     .data-count .content .title {

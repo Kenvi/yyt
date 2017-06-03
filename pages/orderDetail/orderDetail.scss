@@ -29,9 +29,12 @@
           &:nth-child(2n+1){
             font-weight: bold;
             width: 150rpx;
+            &.w100{
+              width: 100rpx;
+            }
           }
           &:nth-child(2n){
-            padding:  0 30rpx;
+            padding:  0 60rpx 0 0;
           }
           &:last-child{
             padding: 0 ;
@@ -66,7 +69,7 @@
         }
         &:last-child{
           width: 420rpx;
-          padding-left: 30rpx;
+          //padding-left: 30rpx;
         }
       }
     }
