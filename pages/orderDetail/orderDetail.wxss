@@ -17,18 +17,18 @@
       margin-bottom: 40rpx; }
       .order-detail-wrap .order-detail > view:last-child {
         margin-bottom: 0; }
-      .order-detail-wrap .order-detail > view#first-row view, .order-detail-wrap .order-detail > view#six-row view {
+      .order-detail-wrap .order-detail > view#first-row view, .order-detail-wrap .order-detail > view#five-row view, .order-detail-wrap .order-detail > view#six-row view {
         width: auto; }
-        .order-detail-wrap .order-detail > view#first-row view.t-c, .order-detail-wrap .order-detail > view#six-row view.t-c {
+        .order-detail-wrap .order-detail > view#first-row view.t-c, .order-detail-wrap .order-detail > view#five-row view.t-c, .order-detail-wrap .order-detail > view#six-row view.t-c {
           text-align: center; }
-        .order-detail-wrap .order-detail > view#first-row view:nth-child(2n+1), .order-detail-wrap .order-detail > view#six-row view:nth-child(2n+1) {
+        .order-detail-wrap .order-detail > view#first-row view:nth-child(2n+1), .order-detail-wrap .order-detail > view#five-row view:nth-child(2n+1), .order-detail-wrap .order-detail > view#six-row view:nth-child(2n+1) {
           font-weight: bold;
           width: 150rpx; }
-          .order-detail-wrap .order-detail > view#first-row view:nth-child(2n+1).w100, .order-detail-wrap .order-detail > view#six-row view:nth-child(2n+1).w100 {
+          .order-detail-wrap .order-detail > view#first-row view:nth-child(2n+1).w100, .order-detail-wrap .order-detail > view#five-row view:nth-child(2n+1).w100, .order-detail-wrap .order-detail > view#six-row view:nth-child(2n+1).w100 {
             width: 100rpx; }
-        .order-detail-wrap .order-detail > view#first-row view:nth-child(2n), .order-detail-wrap .order-detail > view#six-row view:nth-child(2n) {
+        .order-detail-wrap .order-detail > view#first-row view:nth-child(2n), .order-detail-wrap .order-detail > view#five-row view:nth-child(2n), .order-detail-wrap .order-detail > view#six-row view:nth-child(2n) {
           padding: 0 60rpx 0 0; }
-        .order-detail-wrap .order-detail > view#first-row view:last-child, .order-detail-wrap .order-detail > view#six-row view:last-child {
+        .order-detail-wrap .order-detail > view#first-row view:last-child, .order-detail-wrap .order-detail > view#five-row view:last-child, .order-detail-wrap .order-detail > view#six-row view:last-child {
           padding: 0;
           color: #FFAF3D; }
       .order-detail-wrap .order-detail > view.photo-item {
