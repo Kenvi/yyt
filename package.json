@@ -1,0 +1,32 @@
+{
+  "name": "yyt",
+  "version": "1.0.0",
+  "description": "a wechet small program of yyt",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kenvi/yyt.git"
+  },
+  "keywords": [
+    "yyt"
+  ],
+  "author": "chenxiaobin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kenvi/yyt/issues"
+  },
+  "homepage": "https://github.com/Kenvi/yyt#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-changed": "^3.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^3.0.0"
+  },
+  "dependencies": {
+    "node-sass": "^4.5.3"
+  }
+}
