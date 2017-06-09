@@ -27,7 +27,7 @@
   </view>
 </view>
 
-<view class="other-serve-wrap">
+<view hidden class="other-serve-wrap">
   <div class="other-serve">
     <view bindtap="toAbout">
       <view class="icon i1"></view>

@@ -56,7 +56,7 @@ Page({
       params.customerOfferPrice = false
       if(this.checkAddressInput()) params.showPrice = true
     }else{
-      if(this.checkAddressInput()) params.customerOfferPrice = true
+      params.customerOfferPrice = true
       params.showPrice = false
     }
     this.setData(params)
