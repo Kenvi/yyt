@@ -44,5 +44,17 @@ Page({
     wx.navigateTo({
       url:'/pages/newsDetail/newsDetail?id=' + e.currentTarget.dataset.id + '&title=' + e.currentTarget.dataset.title + '&date=' +e.currentTarget.dataset.date
     })
+  },
+  onShareAppMessage: function () {
+    return {
+      title: '易医通-医疗转运',
+      path: '/pages/index/index',
+      success: function(res) {
+        // 转发成功
+      },
+      fail: function(res) {
+        // 转发失败
+      }
+    }
   }
 })

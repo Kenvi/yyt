@@ -37,6 +37,18 @@ Page({
     const orderType = wx.getStorageSync('orderType')
     if(orderType !== '') this.shiftServe(orderType)
   },
+  onShareAppMessage: function () {
+    return {
+      title: '易医通-医疗转运',
+      path: '/pages/order/order',
+      success: function(res) {
+        // 转发成功
+      },
+      fail: function(res) {
+        // 转发失败
+      }
+    }
+  },
   // 顶部tab切换
   shiftServe:function (e) {
     let params = {
