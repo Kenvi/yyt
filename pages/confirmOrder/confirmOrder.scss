@@ -85,10 +85,17 @@
   }
 }
 .total-amount{
-  padding: 90rpx;
+  padding: 90rpx 0 20rpx;
   text-align: center;
   font-size: 36rpx;
   font-weight: bold;
+  &.sm{
+    font-size: 28rpx;
+    padding: 0 0 90rpx;
+  }
+  &.pt90{
+    padding-top: 90rpx;
+  }
   >text{
     padding: 0 10rpx;
     color: #f3b255;

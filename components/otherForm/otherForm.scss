@@ -64,6 +64,10 @@
     color: #FFAF3D;
     padding: 30rpx 0 20rpx;
     text-align: center;
+    &.sm{
+      font-size: 28rpx;
+      padding: 0;
+    }
   }
   .next-step{
     padding: 30rpx;

@@ -31,9 +31,9 @@
     <import src="../../components/otherForm/helicopter.wxml" />
     <template is="helicopter" data="{{serveType,needRespirator,needLitter,needWheelChair,currentPersonNum,personNum}}" />
 
-    <view wx:if="{{customerOfferPrice || totalPrice===0}}" class="total">下单后客服人员通过电话给您报价。</view>
+    <view wx:if="{{customerOfferPrice || totalPrice===0}}" class="total sm">下单后客服将10分钟内联系您核准价格</view>
     <view wx:if="{{!customerOfferPrice && showPrice}}" class="total">约{{totalPrice+floorPrice}}元</view>
-    <view wx:if="{{!customerOfferPrice && showPrice}}" class="total">下单后10分钟内客服人员联系您核准订单价格</view>
+    <view wx:if="{{!customerOfferPrice && showPrice}}" class="total sm">下单后客服将10分钟内联系您核准价格</view>
 
     <view class="next-step">
       <view class="agreement">
