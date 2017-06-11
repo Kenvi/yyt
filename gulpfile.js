@@ -2,7 +2,6 @@ const fs = require('fs');
 const path = require('path');
 const gulp = require('gulp');
 const changed = require('gulp-changed');
-const uglify  = require('gulp-uglify');
 const sass  = require('gulp-sass');
 const rename  = require('gulp-rename');
 
