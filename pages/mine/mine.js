@@ -20,8 +20,11 @@ Page({
   onLoad: function() {
     const that = this
     objAssign(that,login)
-    that.setData(that.data)
+    that.setData(that.data)   
 
+  },
+  onShow:function () {
+    const that = this
     app.getUserInfo()
       .then(function () {
         app.getParams()
@@ -39,7 +42,6 @@ Page({
             that.setMenuList()
           })
       })
-
   },
   setUserInfo:function () {
     this.setData({

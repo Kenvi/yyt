@@ -105,7 +105,6 @@ Page({
           }
         },
         fail:function (err) {
-          console.log(222)
           console.log(err)
           reject(err)
         }

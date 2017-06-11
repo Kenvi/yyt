@@ -80,7 +80,6 @@ Page({
     that.setData(data)
   },
   onShow:function () {
-    console.log(222)
     if(wx.getStorageSync('orderDetail') === ''){
       wx.showModal({
         title:'提示',
@@ -97,7 +96,6 @@ Page({
     }
   },
   onUnload:function () {
-    console.log(111)
     if(wx.getStorageSync('orderDetail') !=='' ){
       wx.removeStorageSync('orderDetail')
     }
