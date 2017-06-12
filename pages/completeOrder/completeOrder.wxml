@@ -17,7 +17,7 @@
   <view>
     <view bindtap="callCustomer" class="tel">
       <view class="icon tel_ico"></view>
-      <view class="txt">客户服务电话</view>
+      <view class="txt">020 966120</view>
     </view>
   </view>
   <view>
