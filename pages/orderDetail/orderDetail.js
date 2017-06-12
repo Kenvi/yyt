@@ -171,7 +171,7 @@ Page({
   },
   callCustomer:function () {
     wx.makePhoneCall({
-      phoneNumber: '4000966120'
+      phoneNumber: '020966120'
     })
   }
 })
