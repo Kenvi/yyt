@@ -347,12 +347,13 @@ Page({
             city2 = that.data.city2
 
           let price_01 = 0 , price_02 = 0
-          if(city1 === '广州市' && city2 === '广州市'){
+          if((city1 === '广州市' || city1 === '佛山市') && (city2 === '广州市' || city2 === '佛山市')){
             districtList.forEach(function (item) {
               if(item.areaname === that.data.district1){
                 price_01 = item.price
               }
               if(item.areaname === that.data.district2){
+                // console.log(item.areaname)
                 price_02 = item.price
               }
             })

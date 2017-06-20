@@ -322,7 +322,7 @@ export default {
       editAddress:''
     }
     if(item.addr && item.hospitalname){
-      data.endAddress = item.addr + ' ' + item.hospitalname
+      data.endAddress =  item.hospitalname
       lat1 = item.lat1
       lng1 = item.lng1
     }else{ // 如果没有该参数则是输入关键字搜索的结果，需要对结果数据重新组装
