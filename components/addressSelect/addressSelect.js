@@ -19,6 +19,10 @@ export default {
       lat:'',
       lng:''
     },
+    centerLocation:{
+      lat:0,
+      lng:0
+    },
     controls:[],
     markers: [],
     hideUsualCity:true,
@@ -191,6 +195,7 @@ export default {
   },
   //地图变换后切换标记物到中心
   regionchange:function (e) {
+    // console.log(e)
     if(e.type==='end'){
       this.getCenterLocation()
     }
@@ -210,50 +215,64 @@ export default {
   },
   //地图变换后切换标记物到中心前获取该标记物位置信息
   getCenterLocation: function (change) {
+
     const that = this
     this.mapCtx.getCenterLocation({
       success: function (res) {
-        // console.log(res)
+        if(!that.centerLocation){
+          that.centerLocation = {lat:0,lng:0}
+        }
+        if(res.latitude === that.centerLocation.lat && res.longitude === that.centerLocation.lng){
+          return
+        }else{
+          that.centerLocation.lat = res.latitude
+          that.centerLocation.lng = res.longitude
+          BMap.regeocoding({
+            location:res.latitude+','+res.longitude,
+            fail: function (err) {
+              wx.showModal({
+                title:'提示',
+                content:'用户拒绝授权，无法使用定位功能',
+                showCancel:false
+              })
+            },
+            success: function (data) {
+              let  wxMarkerData = data.wxMarkerData
+              const province = data.originalData.result.addressComponent.province
+              const city = data.originalData.result.addressComponent.city
+              const address = wxMarkerData[0].address
+              wxMarkerData[0].title = address.replace(province,'').replace(city,'')
 
-        BMap.regeocoding({
-          location:res.latitude+','+res.longitude,
-          fail: function (err) {
-            wx.showModal({
-              title:'提示',
-              content:'用户拒绝授权，无法使用定位功能',
-              showCancel:false
-            })
-          },
-          success: function (data) {
-            let  wxMarkerData = data.wxMarkerData
-            const province = data.originalData.result.addressComponent.province
-            const city = data.originalData.result.addressComponent.city
-            const address = wxMarkerData[0].address
-            wxMarkerData[0].title = address.replace(province,'').replace(city,'')
+              let settings = {
+                locate:{
+                  lat:wxMarkerData[0].latitude,
+                  lng:wxMarkerData[0].longitude
+                },
+                markers: wxMarkerData
+              }
 
-            let settings = {
-              locate:{
-                lat:wxMarkerData[0].latitude,
-                lng:wxMarkerData[0].longitude
-              },
-              markers: wxMarkerData
-            }
+              if(change && change === 'notChangeEditAddress'){
 
-            if(change && change === 'notChangeEditAddress'){
+              }else{
+                settings.editAddress = wxMarkerData[0].address
+              }
 
-            }else{
-              settings.editAddress = wxMarkerData[0].address
-            }
+              that.setData(settings)
+            },
+            iconPath: '/images/marker.png',
+            iconTapPath: '/images/marker.png'
+          })
+        }
 
-            that.setData(settings)
-          },
-          iconPath: '/images/marker.png',
-          iconTapPath: '/images/marker.png'
-        })
       },
       fail:function(err){
         console.log(err)
       }
+    })
+  },
+  centerSuccess:function () {
+    return new Promise(function (resolve,reject) {
+
     })
   },
   //移动到当前定位

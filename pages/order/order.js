@@ -49,6 +49,9 @@ Page({
       }
     }
   },
+  onReachBottom:function () {
+
+  },
   // 顶部tab切换
   shiftServe:function (e) {
     let params = {
