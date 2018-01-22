@@ -90,6 +90,10 @@
       height: 80rpx;
       line-height: 80rpx;
       margin-top: 50rpx;
+
+      &.btn-hover{
+        background: #2f82cc;
+      }
     }
   }
   .other-serve-link{

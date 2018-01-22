@@ -5,7 +5,7 @@
 export default {
   data:{
     beginAddress:'',
-    endAddress:'',
+    endAddress:'请选择医院或搜索目的地',
     date:'2017-01-01',
     time:'00:00'
   },

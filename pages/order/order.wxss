@@ -35,6 +35,8 @@
       padding-top: 10rpx; }
     .main-form .form-group .b {
       font-weight: bold; }
+    .main-form .form-group .grey {
+      color: #999; }
     .main-form .form-group > text {
       width: 15%;
       line-height: 84rpx; }
@@ -145,6 +147,8 @@
       height: 80rpx;
       line-height: 80rpx;
       margin-top: 50rpx; }
+      .other-form-wrap .next-step > button.btn-hover {
+        background: #2f82cc; }
   .other-form-wrap .other-serve-link {
     display: flex;
     padding: 30rpx; }

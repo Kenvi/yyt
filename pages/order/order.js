@@ -25,7 +25,12 @@ Page({
     beginAddressDetail:{},
     endAddressDetail:{}
   },
-  onLoad:function () {
+  onLoad:function (opt) {
+    if(opt.orderType) {
+      this.setData({
+        serveType:opt.orderType
+      })
+    }
     const that = this
     objAssign(that, mainForm,otherForm,noticePage,addressSelect,login,headTitle)
     that.setData(that.data)
@@ -36,6 +41,9 @@ Page({
   onShow:function () {
     const orderType = wx.getStorageSync('orderType')
     if(orderType !== '') this.shiftServe(orderType)
+  },
+  onHide:function (opt) {
+    console.log(opt)
   },
   onShareAppMessage: function () {
     return {

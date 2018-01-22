@@ -1,0 +1,36 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "1.7.2",
+	"appid": "wx5b9354188c0671c4",
+	"projectname": "yyt",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": 0,
+					"name": "orderType",
+					"pathName": "pages/order/order",
+					"query": "orderType=aviation",
+					"scene": "1014"
+				}
+			]
+		}
+	}
+}

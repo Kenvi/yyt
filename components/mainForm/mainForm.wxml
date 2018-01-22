@@ -8,7 +8,7 @@
       </view>
       <view class="form-group">
         <text class="b">目的地</text>
-        <view bindtap="showHospitalList" id="endLocation" class="one-line-hide" >{{endAddress}}</view>
+        <view bindtap="showHospitalList" id="endLocation" class="one-line-hide {{endAddress=='请选择医院或搜索目的地' ? 'grey':''}}" >{{endAddress}}</view>
         <text bindtap="showAddressSelect" data-type="endLocation" class="locate"></text>
       </view>
       <view class="form-group pt10">

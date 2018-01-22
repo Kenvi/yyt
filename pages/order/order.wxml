@@ -39,7 +39,7 @@
         <text>同意</text>
         <checkbox  bindtap="checkNoticePageAgreement"></checkbox>
         <text bindtap="showNoticePage">医疗转运知情同意书</text></view>
-      <button bindtap="saveOrder" type="button" >下一步</button>
+      <button bindtap="saveOrder" type="button" hover-class="btn-hover">下一步</button>
     </view>
     <view class="hide other-serve-link" >
       <view>接送机</view>
