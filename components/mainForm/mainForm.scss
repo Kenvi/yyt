@@ -20,9 +20,7 @@
     .b{
       font-weight: bold;
     }
-    .grey{
-      color: #999;
-    }
+
     >text{
       width: 15%;
       line-height: 84rpx;
@@ -47,6 +45,10 @@
       border:4rpx solid #eee;
       border-radius: 10rpx;
       overflow: hidden;
+      &.grey{
+        color: #999;
+        background: #ededed;
+      }
     }
     >picker{
       margin-left: 30rpx;

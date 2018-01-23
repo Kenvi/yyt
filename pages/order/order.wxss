@@ -17,6 +17,21 @@
 .o-h {
   overflow-y: hidden; }
 
+.question {
+  display: flex;
+  height: 28rpx;
+  font-size: 28rpx;
+  line-height: 28rpx; }
+  .question > view {
+    flex: 1;
+    color: #999; }
+  .question .faq {
+    text-align: right;
+    padding-right: 20rpx;
+    border-right: 1rpx solid #ededed; }
+  .question .res {
+    padding-left: 21rpx; }
+
 .main-form-wrap {
   background: #e7efed;
   padding: 10rpx 0; }
@@ -35,8 +50,6 @@
       padding-top: 10rpx; }
     .main-form .form-group .b {
       font-weight: bold; }
-    .main-form .form-group .grey {
-      color: #999; }
     .main-form .form-group > text {
       width: 15%;
       line-height: 84rpx; }
@@ -59,6 +72,9 @@
       border: 4rpx solid #eee;
       border-radius: 10rpx;
       overflow: hidden; }
+      .main-form .form-group #startLocation.grey, .main-form .form-group #endLocation.grey {
+        color: #999;
+        background: #ededed; }
     .main-form .form-group > picker {
       margin-left: 30rpx;
       font-weight: bold;

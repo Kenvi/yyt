@@ -14,7 +14,16 @@ gulp.task('sass', function () {
     .pipe(rename((path) => path.extname = '.wxss'))
     .pipe(gulp.dest('./pages'));
 });
- 
+
+gulp.task('app', function () {
+
+  return gulp.src('./app.scss')
+
+    .pipe(sass().on('error', sass.logError))
+    .pipe(rename((path) => path.extname = '.wxss'))
+    .pipe(gulp.dest('./'));
+});
+
 gulp.task('sass:watch', function () {
   gulp.watch('./pages/**/*.scss', ['sass']);
   gulp.watch('./components/**/*.scss', ['sass']);

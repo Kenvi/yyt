@@ -22,7 +22,25 @@
   overflow-y: hidden;
 }
 
+.question{
+  display: flex;
+  height: 28rpx;
+  font-size: 28rpx;
+  line-height: 28rpx;
+  >view{
+    flex: 1;
+    color: #999;
 
+  }
+  .faq{
+    text-align: right;
+    padding-right: 20rpx;
+    border-right: 1rpx solid #ededed;
+  }
+  .res{
+    padding-left: 21rpx;
+  }
+}
 
 
 @import "../../components/mainForm/mainForm.scss";

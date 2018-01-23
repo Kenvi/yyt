@@ -10,7 +10,8 @@
     "pages/previewOrderImage/previewOrderImage",
     "pages/newsList/newsList",
     "pages/newsDetail/newsDetail",
-    "pages/about/about"
+    "pages/about/about",
+    "pages/faq/faq"
   ],
   "tabBar": {
     "color":"#777",

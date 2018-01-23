@@ -79,6 +79,13 @@ view, text {
     margin: 0 auto;
     background: #ea5d2a; }
 
+.copyRight {
+  text-align: center;
+  font-size: 24rpx;
+  margin-top: 40rpx;
+  padding-bottom: 20rpx;
+  color: #ccc; }
+
 .login-mask {
   position: fixed;
   top: 0;
@@ -219,5 +226,3 @@ view, text {
       line-height: 60rpx;
       right: 30rpx;
       font-size: 28rpx; }
-
-/*# sourceMappingURL=app.wxss.map */

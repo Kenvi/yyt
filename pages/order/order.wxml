@@ -41,6 +41,11 @@
         <text bindtap="showNoticePage">医疗转运知情同意书</text></view>
       <button bindtap="saveOrder" type="button" hover-class="btn-hover">下一步</button>
     </view>
+    <view class="question">
+      <view bindtap="toFaq" class="faq">常见问题</view>
+      <view bindtap="toFeedBack" class="res">意见反馈</view>
+    </view>
+    <view class="copyRight">广东民航医疗快线</view>
     <view class="hide other-serve-link" >
       <view>接送机</view>
       <view>接送高铁</view>

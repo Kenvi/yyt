@@ -43,7 +43,7 @@ Page({
     if(orderType !== '') this.shiftServe(orderType)
   },
   onHide:function (opt) {
-    console.log(opt)
+    console.log('hide')
   },
   onShareAppMessage: function () {
     return {
@@ -407,5 +407,18 @@ Page({
 
 
 
+  },
+
+  //常见问题
+  toFaq(){
+    wx.navigateTo({
+      url:'/pages/faq/faq'
+    })
+  },
+  //意见反馈
+  toFeedBack(){
+    wx.navigateTo({
+      url:'/pages/feedback/feedback'
+    })
   }
 })
