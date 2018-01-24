@@ -48,6 +48,11 @@ Page({
     // return custom share data when user share.
   },
   submitSuggestion(e){
+    wx.showLoading({
+      title:'Loading',
+      mask:true
+    })
+
     let data = e.detail.value
     data.formid = e.detail.formId
     data.method = 'saveComment'
@@ -59,7 +64,7 @@ Page({
         showCancel:false,
         content:'请输入正确的手机号'
       })
-      return
+      return wx.hideLoading()
     }
 
     if(data.content == ''){
@@ -68,14 +73,14 @@ Page({
         showCancel:false,
         content:'意见不能为空'
       })
-      return
+      return wx.hideLoading()
     }
 
     if(app.globalData.userId === null){
       this.setData({
         showLoginModal:true
       })
-      return
+      return wx.hideLoading()
     }
 
     data.userid = app.globalData.userId
@@ -85,10 +90,30 @@ Page({
       url: 'https://www.emtsos.com/emApp.do',
       method:'POST',
       data: data,
+      header: {
+        'Charset': 'utf-8',
+        'content-type': 'application/x-www-form-urlencoded'
+      },
       success:function (res) {
-        console.log(res)
+        wx.hideLoading()
+        wx.showModal({
+          title:'提示',
+          showCancel:false,
+          content:res.data.msg,
+          success:function(obj){
+            if(obj.confirm && res.data.ret == 1){
+              wx.switchTab({
+                url:'../index/index',
+                complete:function (res) {
+                  console.log(res)
+                }
+              })
+            }
+          }
+        })
       },
       fail:function (err) {
+        wx.hideLoading()
         console.log(err)
       }
     })

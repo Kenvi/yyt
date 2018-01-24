@@ -20,6 +20,14 @@ export default {
     //   })
     //   return
     // }
+    wx.hideTabBar({
+      aniamtion:true,
+      success:function () {
+      },
+      fail:function (err) {
+        console.log(err)
+      }
+    })
     if(e.currentTarget.dataset.type && e.currentTarget.dataset.type==='endLocation'){
       var item = this.data.endAddressDetail
       var data = {

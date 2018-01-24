@@ -151,6 +151,10 @@ export default {
     if(lat && lng && lat1 && lng1){
       this.getDistance(lat,lng,lat1,lng1)
     }
+
+    wx.showTabBar({
+      animation:true
+    })
   },
   //获取当前定位坐标
   getLocation:function (setBeginAddress) {
