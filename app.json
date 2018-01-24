@@ -11,7 +11,8 @@
     "pages/newsList/newsList",
     "pages/newsDetail/newsDetail",
     "pages/about/about",
-    "pages/faq/faq"
+    "pages/faq/faq",
+    "pages/feedback/feedback"
   ],
   "tabBar": {
     "color":"#777",

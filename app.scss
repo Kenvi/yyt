@@ -97,6 +97,10 @@ view,text{
     width: 400rpx;
     margin: 0 auto;
     background: #ea5d2a;
+
+    &.button-hover{
+      background: #d45325;
+    }
   }
 }
 

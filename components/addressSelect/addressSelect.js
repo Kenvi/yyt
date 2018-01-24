@@ -31,7 +31,8 @@ export default {
     cityList:app.globalData.cityList,
     currentCity:'广州市',
     currentCityAreaId:'',
-    distance:''
+    distance:'',
+    changing:false
   },
   initMap:function () {
     // 使用 wx.createMapContext 获取 map 上下文
@@ -195,8 +196,8 @@ export default {
   },
   //地图变换后切换标记物到中心
   regionchange:function (e) {
-    // console.log(e)
-    if(e.type==='end'){
+    console.log(this.data.changing)
+    if(e.type==='end' && !this.data.changing){
       this.getCenterLocation()
     }
 
@@ -215,7 +216,9 @@ export default {
   },
   //地图变换后切换标记物到中心前获取该标记物位置信息
   getCenterLocation: function (change) {
-
+    this.setData({
+      changing:true
+    })
     const that = this
     this.mapCtx.getCenterLocation({
       success: function (res) {
@@ -223,6 +226,9 @@ export default {
           that.centerLocation = {lat:0,lng:0}
         }
         if(res.latitude === that.centerLocation.lat && res.longitude === that.centerLocation.lng){
+          that.setData({
+            changing:false
+          })
           return
         }else{
           that.centerLocation.lat = res.latitude
@@ -234,6 +240,9 @@ export default {
                 title:'提示',
                 content:'用户拒绝授权，无法使用定位功能',
                 showCancel:false
+              })
+              that.setData({
+                changing:false
               })
             },
             success: function (data) {
@@ -256,8 +265,14 @@ export default {
               }else{
                 settings.editAddress = wxMarkerData[0].address
               }
-
               that.setData(settings)
+
+              setTimeout(()=>{
+                that.setData({
+                  changing:false
+                })
+              },500)
+              // console.log(that.data.changing)
             },
             iconPath: '/images/marker.png',
             iconTapPath: '/images/marker.png'
@@ -266,6 +281,9 @@ export default {
 
       },
       fail:function(err){
+        that.setData({
+          changing:false
+        })
         console.log(err)
       }
     })

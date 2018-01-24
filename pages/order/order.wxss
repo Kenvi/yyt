@@ -28,7 +28,7 @@
   .question .faq {
     text-align: right;
     padding-right: 20rpx;
-    border-right: 1rpx solid #ededed; }
+    border-right: 1px solid #ccc; }
   .question .res {
     padding-left: 21rpx; }
 
@@ -68,9 +68,11 @@
       height: 60rpx;
       line-height: 60rpx;
       padding: 8rpx 12rpx;
-      background: #fff;
-      border: 4rpx solid #eee;
-      border-radius: 10rpx;
+      background-color: #fff;
+      background-image: none;
+      border: 1px solid #ccc;
+      border-radius: 8rpx;
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
       overflow: hidden; }
       .main-form .form-group #startLocation.grey, .main-form .form-group #endLocation.grey {
         color: #999;

@@ -36,8 +36,8 @@
 				},
 				{
 					"id": 1,
-					"name": "faq",
-					"pathName": "pages/faq/faq",
+					"name": "feedback",
+					"pathName": "pages/feedback/feedback",
 					"query": "",
 					"scene": "1014"
 				}
