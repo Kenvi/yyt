@@ -2,67 +2,70 @@
   <view bindtap="backToLastPage" class="back"></view>
   <view class="tit">订单确认</view>
 </view>
-<view class="order-detail-wrap">
-  <view class="order-detail">
-    <view class="row">
-      <view>订单类型：</view>
-      <view wx:if="{{orderDetail.otype === 0}}">市内转运</view>
-      <view wx:elif="{{orderDetail.otype === 1}}">接机</view>
-      <view wx:elif="{{orderDetail.otype === 2}}">送机</view>
-      <view wx:elif="{{orderDetail.otype === 3}}">接高铁</view>
-      <view wx:elif="{{orderDetail.otype === 4}}">送高铁</view>
-      <view wx:elif="{{orderDetail.otype === 5}}">港澳直达</view>
-      <view wx:elif="{{orderDetail.otype === 6}}">航空</view>
-      <view wx:elif="{{orderDetail.otype === 7}}">高铁</view>
-      <view wx:elif="{{orderDetail.otype === 8}}">直升机</view>
-      <view wx:elif="{{orderDetail.otype === 9}}">活动医疗保障</view>
-      <view wx:elif="{{orderDetail.otype === 10}}">香港</view>
-      <view wx:elif="{{orderDetail.otype === 11}}">澳门</view>
-      <view wx:elif="{{orderDetail.otype === 12}}">台湾</view>
-      <view wx:else>国外</view>
-    </view>
-    <view class="row">
-      <view>预约时间：</view>
-      <view>{{orderDetail.departuredate}}</view>
-    </view>
-    <view class="row">
-      <view>出发地：</view>
-      <view>{{orderDetail.address1}}</view>
-    </view>
-    <view class="row">
-      <view>目的地：</view>
-      <view>{{orderDetail.address2}}</view>
-    </view>
-    <view class="row" wx:if="{{orderDetail.servicetype !== ''}}">
-      <view>配套服务：</view>
-      <view>{{serve}}</view>
-    </view>
-    <view class="row" wx:if="{{orderDetail.option2 === 1}}">
-      <view>担架上楼：</view>
-      <view>{{orderDetail.option2num}}楼</view>
-    </view>
-    <view class="row" wx:if="{{orderDetail.otype !== 0}}">
-      <view>出行人数：</view>
-      <view>{{orderDetail.option1}}人</view>
-    </view>
-  </view>
-</view>
-<view class="other-serve-wrap">
-  <view class="serve-title">其他要求：</view>
-  <textarea bindinput="inputOtherRequest" placeholder="请输入您的其他需求" />
-  <view class="tips">
-    <view class="content">
-      特别说明：请提供住院病历、出院小结、检查报告、门诊病历等资料照片，以便医生对您的病情进行预判。
-    </view>
-    <view class="upload">
-      <view class="tit">相关照片：<text  hidden="{{uploadImgNum === 0}}">已上传{{uploadImgNum}}张</text></view>
-      <view bindtap="uploadImage" class="upload-btn">上传照片</view>
+<form report-submit="true" bindsubmit="submitData">
+  <view class="order-detail-wrap">
+    <view class="order-detail">
+      <view class="row">
+        <view>订单类型：</view>
+        <view wx:if="{{orderDetail.otype === 0}}">市内转运</view>
+        <view wx:elif="{{orderDetail.otype === 1}}">接机</view>
+        <view wx:elif="{{orderDetail.otype === 2}}">送机</view>
+        <view wx:elif="{{orderDetail.otype === 3}}">接高铁</view>
+        <view wx:elif="{{orderDetail.otype === 4}}">送高铁</view>
+        <view wx:elif="{{orderDetail.otype === 5}}">港澳直达</view>
+        <view wx:elif="{{orderDetail.otype === 6}}">航空</view>
+        <view wx:elif="{{orderDetail.otype === 7}}">高铁</view>
+        <view wx:elif="{{orderDetail.otype === 8}}">直升机</view>
+        <view wx:elif="{{orderDetail.otype === 9}}">活动医疗保障</view>
+        <view wx:elif="{{orderDetail.otype === 10}}">香港</view>
+        <view wx:elif="{{orderDetail.otype === 11}}">澳门</view>
+        <view wx:elif="{{orderDetail.otype === 12}}">台湾</view>
+        <view wx:else>国外</view>
+      </view>
+      <view class="row">
+        <view>预约时间：</view>
+        <view>{{orderDetail.departuredate}}</view>
+      </view>
+      <view class="row">
+        <view>出发地：</view>
+        <view>{{orderDetail.address1}}</view>
+      </view>
+      <view class="row">
+        <view>目的地：</view>
+        <view>{{orderDetail.address2}}</view>
+      </view>
+      <view class="row" wx:if="{{orderDetail.servicetype !== ''}}">
+        <view>配套服务：</view>
+        <view>{{serve}}</view>
+      </view>
+      <view class="row" wx:if="{{orderDetail.option2 === 1}}">
+        <view>担架上楼：</view>
+        <view>{{orderDetail.option2num}}楼</view>
+      </view>
+      <view class="row" wx:if="{{orderDetail.otype !== 0}}">
+        <view>出行人数：</view>
+        <view>{{orderDetail.option1}}人</view>
+      </view>
     </view>
   </view>
-  <view hidden="{{uploadImgNum === 0}}" class="info">确认订单后可在订单详情查看上传的照片</view>
-</view>
-<view wx:if="{{orderDetail.otype === 0}}" class="total-amount">约<text>{{orderDetail.price1}}</text>元</view>
-<view class="total-amount sm {{orderDetail.otype === 0 ? '' : 'pt90'}}"><text>下单后客服将10分钟内联系您核准价格</text></view>
-<view class="confirm">
-  <button bindtap="submitData" type="primary" class="confirm-btn">确认</button>
-</view>
+  <view class="other-serve-wrap">
+    <view class="serve-title">其他要求：</view>
+    <textarea bindinput="inputOtherRequest" placeholder="请输入您的其他需求" />
+    <view class="tips">
+      <view class="content">
+        特别说明：请提供住院病历、出院小结、检查报告、门诊病历等资料照片，以便医生对您的病情进行预判。
+      </view>
+      <view class="upload">
+        <view class="tit">相关照片：<text  hidden="{{uploadImgNum === 0}}">已上传{{uploadImgNum}}张</text></view>
+        <view bindtap="uploadImage" class="upload-btn">上传照片</view>
+      </view>
+    </view>
+    <view hidden="{{uploadImgNum === 0}}" class="info">确认订单后可在订单详情查看上传的照片</view>
+  </view>
+  <!--<view wx:if="{{orderDetail.otype === 0}}" class="total-amount">约<text>{{orderDetail.price1}}</text>元</view>-->
+  <view wx:if="{{orderDetail.otype === 0}}" class="total-amount"></view>
+  <view class="total-amount sm {{orderDetail.otype === 0 ? '' : 'pt90'}}"><text>下单后客服将10分钟内联系您核准价格</text></view>
+  <view class="confirm">
+    <button formType="submit" type="primary" class="confirm-btn">确认</button>
+  </view>
+</form>

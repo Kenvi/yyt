@@ -5,6 +5,7 @@ import login from  '../../components/login/login.js'
 
 Page({
   data: {
+    headImg:'', // 临时储存头像路径，如果在当前页面退出登录再重新登录后返回的参数缺少头像
     userInfo:{
       avatarUrl:'https://www.emtsos.com/emt/v-v1-zh_CN-/emt/img/userheader.png',
       nickName:'注册/登录',
@@ -45,12 +46,16 @@ Page({
   },
   setUserInfo:function () {
     this.setData({
-      userInfo:app.globalData.userInfo
+      userInfo:app.globalData.userInfo,
+      headImg:app.globalData.userInfo.avatarUrl
     })
   },
   setMyInfo:function () {
+    let info = app.globalData.orderParams.user
+    info.avatarUrl = this.data.headImg
     this.setData({
-      myInfo:app.globalData.orderParams.user
+      myInfo:app.globalData.orderParams.user,
+      userInfo:info
     })
   },
   setMenuList:function () {

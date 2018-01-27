@@ -32,7 +32,7 @@
     <template is="helicopter" data="{{serveType,needRespirator,needLitter,needWheelChair,currentPersonNum,personNum}}" />
 
     <view class="total sm">下单后客服将10分钟内联系您核准价格</view>
-    <view wx:if="{{!customerOfferPrice && showPrice}}" class="total">约{{totalPrice+floorPrice}}元</view>
+    <!--<view wx:if="{{!customerOfferPrice && showPrice}}" class="hide total">约{{totalPrice+floorPrice}}元</view>-->
 
     <view class="next-step">
       <view class="agreement">
@@ -45,7 +45,7 @@
       <view bindtap="toFaq" class="faq">常见问题</view>
       <view bindtap="toFeedBack" class="res">意见反馈</view>
     </view>
-    <view class="copyRight">广东民航医疗快线</view>
+    <view class="copyRight">服务提供：广东民航医疗快线<text>技术支持：易医通</text></view>
     <view class="hide other-serve-link" >
       <view>接送机</view>
       <view>接送高铁</view>

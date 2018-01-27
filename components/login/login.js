@@ -136,6 +136,7 @@ export default {
       title:'Loading',
       mask:true
     })
+    const openid = wx.getStorageSync('openid')
     let data = {}
     if(that.data.loginType === 'forget'){
       data = {
@@ -146,7 +147,8 @@ export default {
     }else{
       data = {
         account:that.data.phoneNumber,
-        ps:that.data.password
+        ps:that.data.password,
+        openid:openid
       }
       if(app.globalData.userInfo !== null){
         data.nickname = app.globalData.userInfo.nickName

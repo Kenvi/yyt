@@ -93,15 +93,18 @@ Page({
       })
     })
   },
-  submitData:function () {
+  submitData:function (e) {
     wx.showLoading({
       title:'提交订单',
       mask:true
     })
     const that = this
+    const openid = wx.getStorageSync('openid')
     let data = {
       method:'submitOrder',
-      uuid:that.data.orderDetail.uuid
+      uuid:that.data.orderDetail.uuid,
+      openid:openid,
+      formid : e.detail.formId
     }
     if(that.data.otherRequest !== ''){
       data.note = that.data.otherRequest

@@ -39,12 +39,12 @@
       <view>目的地：</view>
       <view>{{orderDetail.address2}}</view>
     </view>
-    <view id="five-row">
-      <view>预算金额：</view>
-      <view class="c-o">{{orderDetail.price1}}元</view>
-      <view hidden="{{orderDetail.price2 === '0.00'}}" class="t-c w100">订金：</view>
-      <view hidden="{{orderDetail.price2 === '0.00'}}" class="c-o">{{orderDetail.price2}}元</view>
-    </view>
+    <!--<view id="five-row">-->
+      <!--<view>预算金额：</view>-->
+      <!--<view class="c-o">{{orderDetail.price1}}元</view>-->
+      <!--<view hidden="{{orderDetail.price2 === '0.00'}}" class="t-c w100">订金：</view>-->
+      <!--<view hidden="{{orderDetail.price2 === '0.00'}}" class="c-o">{{orderDetail.price2}}元</view>-->
+    <!--</view>-->
     <view wx:if="{{orderDetail.status > 2}}" >
       <view>实付金额：</view>
       <view class="c-o">{{orderDetail.price3}}元</view>

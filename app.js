@@ -76,6 +76,7 @@ App({
             },
             success:function (data) {
               if(data.data.ret === 1){
+                wx.setStorageSync('openid', data.data.data.userinfo.openid)
                 typeof cb == "function" && cb(data.data.data.userinfo.openid)
               }
             },
@@ -113,21 +114,41 @@ App({
   },
   getParams:function (cb) {
     const that = this
-    return new Promise(function (resolve,reject) {
+    return new Promise((resolve ,reject )=>{
       wx.showLoading({
         title:'加载中',
         mask:true
       })
       const Account = wx.getStorageSync('Account')
+      const openid = wx.getStorageSync('openid')
       let data = {
         method:'getParams',
-        account:Account
+        account:Account,
       }
       if(that.globalData.userInfo !== null){
         data.wx_nickname = that.globalData.userInfo.nickName
         data.wx_headimgurl = that.globalData.userInfo.avatarUrl
         data.wx_sex = that.globalData.userInfo.gender === 1 ? '男' : '女'
       }
+      if( openid == ''){
+        that.wxLogin(function (openId) {
+          data.openid = openId
+          that.getParamsReq(data).then(()=>{
+            resolve()
+          })
+        })
+      }else{
+        data.openid = openid
+        that.getParamsReq(data).then(()=>{
+          resolve()
+        })
+      }
+    } )
+
+  },
+  getParamsReq(data){
+    const that = this
+    return new Promise((resolve,reject)=>{
       wx.request({
         url: 'https://www.emtsos.com/emMiniApi.do',
         data: data,
@@ -166,8 +187,8 @@ App({
           reject(err)
         }
       })
-    })
 
+    })
   },
   globalData:{
     userInfo:null,
