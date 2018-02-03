@@ -81,6 +81,9 @@ view, text {
     .confirm button.confirm-btn.button-hover {
       background: #d45325; }
 
+button.button-hover {
+  background: #d45325; }
+
 .copyRight {
   text-align: center;
   font-size: 24rpx;

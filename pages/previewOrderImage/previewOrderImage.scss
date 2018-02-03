@@ -7,8 +7,16 @@
     height: 100%;
 
     .slide-image{
+      position: relative;
       width: 100%;
       height: 100%;
+
+      >text{
+        position: absolute;
+        bottom: 10rpx;
+        right: 20rpx;
+        font-size: 26rpx;
+      }
     }
   }
 

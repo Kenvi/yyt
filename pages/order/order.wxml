@@ -45,7 +45,7 @@
       <view bindtap="toFaq" class="faq">常见问题</view>
       <view bindtap="toFeedBack" class="res">意见反馈</view>
     </view>
-    <view class="copyRight">服务提供：广东民航医疗快线<text>技术支持：易医通</text></view>
+    <view class="copyRight">服务提供：广东民航医疗快线<text>平台运营：易医通</text></view>
     <view class="hide other-serve-link" >
       <view>接送机</view>
       <view>接送高铁</view>

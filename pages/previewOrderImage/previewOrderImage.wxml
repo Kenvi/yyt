@@ -3,7 +3,9 @@
   <swiper hidden="{{imageList.length === 0}}" indicator-dots autoplay interval="3000" duration="500">
     <block wx:for="{{imageList}}" wx:key="{{index}}">
       <swiper-item>
-        <view bindtap="previewImage" data-index="{{index}}" class="slide-image" style="background: url({{'https://www.emtsos.com'+item.photo}}) center no-repeat;background-size: 100%;"></view>
+        <view bindtap="previewImage" data-index="{{index}}" class="slide-image" style="background: url({{'https://www.emtsos.com'+item.photo}}) center no-repeat;background-size: 100%;">
+          <text>{{item.photosize}}</text>
+        </view>
       </swiper-item>
     </block>
   </swiper>

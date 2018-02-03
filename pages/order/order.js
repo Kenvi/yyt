@@ -156,7 +156,7 @@ Page({
     if(!data.lat2 || !data.lng2 || !data.address2){
       data.lat2 = that.data.endAddressDetail.lat1
       data.lng2 = that.data.endAddressDetail.lng1
-      data.address2 = that.data.endAddressDetail.addr
+      data.address2 = that.data.endAddressDetail.hospitalname ? that.data.endAddressDetail.hospitalname : that.data.endAddressDetail.addr
     }
 
     //配套服务
