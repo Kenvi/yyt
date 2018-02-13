@@ -72,7 +72,7 @@ Page({
       case '7' :
         data = {
           statusTitle:'尾款支付成功',
-          statusImage:'https://www.emtsos.com/image/ordersta7a.png',
+          statusImage:'https://www.emtsos.com/image/ordersta6.png',
           statusText:'转运预约订单总价'+ that.data.orderInfo.price3 +'元，'+ that.data.orderInfo.price5 +'元尾款支付成功，本订单服务已完成，谢谢您的支持和配合。'
         }
         break

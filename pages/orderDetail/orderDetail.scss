@@ -56,6 +56,11 @@
           line-height: 80rpx;
           font-size: 24rpx;
           background: #3399f3;
+
+
+          &.button-hover{
+            background: #2f82cc;
+          }
         }
       }
       view{

@@ -3,7 +3,7 @@
   <view class="tit">订单详情</view>
   <view bindtap="cancelOrder" hidden="{{orderDetail.status > 5}}" class="cancel">取消订单</view>
 </view>
-<view hidden="{{orderDetail.status === 11}}" class="progress-wrap">
+<view hidden="{{orderDetail.status > 10}}" class="progress-wrap">
   <image wx:if="{{orderDetail.status !== 11 && orderStatus.statusImage}}" src="{{'https://www.emtsos.com'+orderStatus.statusImage}}" mode="aspectFit"></image>
 </view>
 <view class="order-detail-wrap">

@@ -34,7 +34,7 @@
     <view class="item-count">{{menuList.couponlist || 0}}</view>
     <view class="right_arrow"></view>
   </view>
-  <view class="list-item">
+  <view class="list-item hide">
     <view class="item-name">余额</view>
     <view class="item-count">{{menuList.balance || 0}}</view>
     <view class="right_arrow"></view>

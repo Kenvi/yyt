@@ -15,5 +15,6 @@
   <view class="upload">
     <view class="tit">相关照片：<text>已上传{{imageList.length}}张</text></view>
     <view bindtap="uploadImage" class="upload-btn">上传照片</view>
+    <!--<button class="upload-btn">上传照片</button>-->
   </view>
 </view>

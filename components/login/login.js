@@ -242,6 +242,7 @@ export default {
               duration: 2000,
               success:function () {
                 wx.removeStorageSync('Account')
+                wx.removeStorageSync('openid')
                 app.globalData.userId = null
                 that.setData({
                   userInfo:{
@@ -267,7 +268,7 @@ export default {
   },
   userLogin:function () {
     const that = this
-    if(that.data.userInfo.gender){
+    if(that.data.userInfo.account){
       return
     }
     that.setData({

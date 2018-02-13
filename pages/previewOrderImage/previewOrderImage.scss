@@ -53,6 +53,15 @@
       width: 470rpx;
       font-weight: bold;
     }
+    button.upload-btn{
+      font-size: inherit;
+      line-height: inherit;
+      padding-right: 0;
+      width: 220rpx;
+      &.button-hover{
+        background-color: #d45325;;
+      }
+    }
     .upload-btn{
       width: 170rpx;
       padding-left: 50rpx;

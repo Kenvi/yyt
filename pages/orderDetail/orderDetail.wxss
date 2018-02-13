@@ -44,6 +44,8 @@
           line-height: 80rpx;
           font-size: 24rpx;
           background: #3399f3; }
+          .order-detail-wrap .order-detail > view.photo-item button.button-hover {
+            background: #2f82cc; }
       .order-detail-wrap .order-detail > view view {
         color: #555; }
         .order-detail-wrap .order-detail > view view.c-o {

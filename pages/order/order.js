@@ -319,6 +319,11 @@ Page({
       })
     }
 
+    if(app.globalData.userId === null){
+
+      return
+    }
+
     distance = parseInt(distance)
     let price = 0
     if(distance > 200){
