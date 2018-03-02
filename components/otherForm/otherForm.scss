@@ -17,6 +17,15 @@
         font-weight: bold;
         margin: 15rpx 0 0 30rpx;
       }
+      .floor-tit{
+        margin-top: -15rpx;
+        >text{
+          &:last-child{
+            font-size: 24rpx;
+            margin-top: 0;
+          }
+        }
+      }
     }
   }
   .aviation-serve,.highSpeedRail-serve,.helicopter-serve{

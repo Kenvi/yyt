@@ -25,13 +25,13 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 0,
 			"list": [
 				{
 					"id": 0,
 					"name": "orderType",
 					"pathName": "pages/order/order",
-					"query": "orderType=aviation",
+					"query": "orderType=ambulance",
 					"scene": "1014"
 				},
 				{

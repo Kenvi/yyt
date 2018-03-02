@@ -3,7 +3,10 @@
     <view><switch bindchange="ambulanceAddRespirator"></switch><text>呼吸机</text></view>
     <view>
       <switch bindchange="showFloorChange"></switch>
-      <text>担架上楼</text>
+      <view class="floor-tit">
+        <text>担架上楼</text>
+        <text>(非电梯楼)</text>
+      </view>
       <picker class="{{ifShowFloorChange ? '' : 'hide'}} select" bindchange="bindFloorChange" value="{{currentFloor}}" range="{{floors}}">
         <view class="c-f">{{floors[currentFloor]}}楼</view>
       </picker>

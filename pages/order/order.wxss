@@ -107,6 +107,11 @@
         display: block;
         font-weight: bold;
         margin: 15rpx 0 0 30rpx; }
+      .other-form-wrap .ambulance-serve > view .floor-tit {
+        margin-top: -15rpx; }
+        .other-form-wrap .ambulance-serve > view .floor-tit > text:last-child {
+          font-size: 24rpx;
+          margin-top: 0; }
   .other-form-wrap .aviation-serve, .other-form-wrap .highSpeedRail-serve, .other-form-wrap .helicopter-serve {
     padding-bottom: 50rpx; }
     .other-form-wrap .aviation-serve .options, .other-form-wrap .highSpeedRail-serve .options, .other-form-wrap .helicopter-serve .options {
