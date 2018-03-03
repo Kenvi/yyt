@@ -195,6 +195,8 @@
     font-size: 28rpx; }
     .other-form-wrap picker.select.hide {
       display: none; }
+    .other-form-wrap picker.select.w200 {
+      width: 200rpx; }
 
 .map-wrap, .end-address-wrap {
   position: absolute;

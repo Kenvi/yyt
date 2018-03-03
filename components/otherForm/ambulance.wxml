@@ -7,8 +7,8 @@
         <text>担架上楼</text>
         <text>(非电梯楼)</text>
       </view>
-      <picker class="{{ifShowFloorChange ? '' : 'hide'}} select" bindchange="bindFloorChange" value="{{currentFloor}}" range="{{floors}}">
-        <view class="c-f">{{floors[currentFloor]}}楼</view>
+      <picker class="{{ifShowFloorChange ? '' : 'hide'}} {{currentFloor == 7 ? 'w200' : ''}} select" bindchange="bindFloorChange" value="{{currentFloor}}" range="{{floors}}">
+        <view class="c-f">{{floors[currentFloor]}}</view>
       </picker>
     </view>
   </view>

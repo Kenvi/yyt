@@ -201,7 +201,7 @@ Page({
     //是否需要担架上楼
     data.option2 = that.data.ifShowFloorChange ? 1 : 0
     //担架上楼楼层
-    if(that.data.ifShowFloorChange) data.option2num = that.data.floors[that.data.currentFloor]
+    if(that.data.ifShowFloorChange) data.option2num = parseInt(that.data.currentFloor) + 2
 
     //机场内外（未完成）
     data.option3 = '0'

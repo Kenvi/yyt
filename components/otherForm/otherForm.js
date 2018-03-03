@@ -8,7 +8,8 @@ export default {
     needLitter:false,
     needWheelChair:false,
     ifShowFloorChange:false,
-    floors:[2,3,4,5,6,7,8,9],
+    // floors:[2,3,4,5,6,7,8,9],
+    floors:['2楼','3楼','4楼','5楼','6楼','7楼','8楼','9楼或以上'],
     currentFloor:0,
     floorPrice:0,
     currentPersonNum:0,
@@ -70,19 +71,20 @@ export default {
   },
   //选择担架上楼后记录楼层变化
   bindFloorChange:function (e) {
+    console.log(e)
     this.setData({
       currentFloor: e.detail.value
     })
     let price = 0
     switch (this.data.floors[this.data.currentFloor]){
-      case 2 : price+=150;break;
-      case 3 : price+=200;break;
-      case 4 : price+=300;break;
-      case 5 : price+=400;break;
-      case 6 : price+=500;break;
-      case 7 : price+=600;break;
-      case 8 : price+=700;break;
-      case 9 : price+=800;break;
+      case '2楼' : price+=150;break;
+      case '3楼' : price+=200;break;
+      case '4楼' : price+=300;break;
+      case '5楼' : price+=400;break;
+      case '6楼' : price+=500;break;
+      case '7楼' : price+=600;break;
+      case '8楼' : price+=700;break;
+      case '9楼或以上' : price+=800;break;
       default : price+=0;break;
     }
     this.setData({
