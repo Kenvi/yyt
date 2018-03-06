@@ -72,6 +72,27 @@
   <button bindtap="wxPaySubmit" type="primary" class="confirm-btn">微信支付</button>
 </view>
 
+<view class="assess-wrap" wx:if="{{orderDetail.status > 6 && orderDetail.status < 9}}">
+  <form class="assess-content"report-submit="true" bindsubmit="submitAssess">
+    <view class="b">{{orderDetail.score1>0 ? '您已对本次服务进行评价' : '请对本次服务进行评价'}}</view>
+    <view class="star-wrap">
+      <text>服务评分：</text>
+      <view class="star-content">
+        <block wx:for="{{stars}}" wx:key="item">
+          <image class="star-image" style="left: {{item*50}}rpx" src="{{key > item ?(key-item == 0.5?halfSrc:selectedSrc) : normalSrc}}">
+            <!--<view class="item" style="left:0rpx" data-key="{{item+0.5}}" bindtap="selectLeft"></view>-->
+            <view class="item" style="left:0rpx" data-key="{{item+1}}" bindtap="selectRight"></view>
+          </image>
+        </block>
+      </view>
+    </view>
+    <view class="input-wrap">
+      <textarea wx:if="{{orderDetail.score1 > 0}}" disabled name="assessText" class="disabled" value="{{orderDetail.scorenote}}" />
+      <textarea wx:else name="assessText" placeholder="请输入服务评价" />
+    </view>
+    <button wx:if="{{orderDetail.score1 === 0}}" type="primary" class="confirm-btn" formType="submit">提交</button>
+  </form>
+</view>
 
 <view class="other-serve">
   <view>

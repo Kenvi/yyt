@@ -126,9 +126,17 @@ Page({
           wx.redirectTo({
             url:'/pages/completeOrder/completeOrder?type=3'
           })
+        }else{
+          wx.showModal({
+            title:'提示',
+            showCancel:false,
+            content:res.data.msg
+          })
+          return wx.hideLoading()
         }
       },
       fail:function (err) {
+        wx.hideLoading()
         console.log(err)
       }
     })

@@ -47,6 +47,13 @@
 					"pathName": "pages/previewOrderImage/previewOrderImage",
 					"query": "orderid=11677&uuid=1516773786925",
 					"scene": "1014"
+				},
+				{
+					"id": 3,
+					"name": "orderDetail",
+					"pathName": "pages/orderDetail/orderDetail",
+					"query": "uuid=1516980705635",
+					"scene": "1014"
 				}
 			]
 		}

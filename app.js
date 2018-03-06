@@ -178,6 +178,9 @@ App({
             that.globalData.menuList = OrderParams.menuList
             if(OrderParams.user !== null){
               that.globalData.userId = OrderParams.user.userid
+              if(wx.getStorageSync('Account') == ''){
+                wx.setStorageSync('Account', OrderParams.user.tel)
+              }
             }
             // typeof cb == "function" && cb()
             resolve()

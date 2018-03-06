@@ -10,7 +10,13 @@ Page({
   data:{
     orderDetail:{},
     orderStatus:{},
-    imageList:[]
+    imageList:[],
+    uuid:'',
+    stars: [0, 1, 2, 3, 4],
+    normalSrc: '../../images/normal1.png',
+    selectedSrc: '../../images/selected.png',
+    halfSrc:'../../images/half.png',
+    key: 5//评分
   },
   onLoad:function (opt) {
     const that = this
@@ -43,16 +49,23 @@ Page({
       data: {
         method:'getOrderDetail',
         userid: app.globalData.userId,
+        // userid: 10033,
         uuid:uuid
       },
       success:function (data) {
         wx.hideLoading()
         if(data.data.ret === 1){
-
-          that.setData({
+          let _data = {
             orderDetail:data.data.data.order,
-            orderStatus:data.data.data
-          })
+            orderStatus:data.data.data,
+            uuid:uuid
+          }
+
+          if(data.data.data.order.score1 > 0){
+            _data.key = data.data.data.order.score1
+          }
+
+          that.setData(_data)
 
         }else {
           console.log(data.data)
@@ -172,6 +185,76 @@ Page({
   callCustomer:function () {
     wx.makePhoneCall({
       phoneNumber: '020966120'
+    })
+  },
+  //点击右边,半颗星
+  selectLeft: function (e) {
+    if(this.data.orderDetail.score1 > 0){
+      return
+    }
+
+    var key = e.currentTarget.dataset.key
+    if (this.data.key == 0.5 && e.currentTarget.dataset.key == 0.5) {
+      //只有一颗星的时候,再次点击,变为0颗
+      key = 1;
+    }
+    console.log("得" + key + "分")
+    this.setData({
+      key: key
+    })
+
+  },
+  //点击左边,整颗星
+  selectRight: function (e) {
+    if(this.data.orderDetail.score1 > 0){
+      return
+    }
+    var key = e.currentTarget.dataset.key
+    console.log("得" + key + "分")
+    this.setData({
+      key: key
+    })
+  },
+  submitAssess:function (e) {
+    wx.showLoading({
+      title:'正在提交',
+      mask:true
+    })
+    const data = {
+      method:'saveOrderScore',
+      uuid:this.data.uuid,
+      score:this.data.key,
+      scoreNote:e.detail.value.assessText
+    }
+    console.log(data)
+
+    wx.request({
+      url: 'https://www.emtsos.com/emMiniApi.do',
+      header: {
+        'Charset': 'utf-8',
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      method:'POST',
+      data: data,
+      success:function (res) {
+        if(res.data.ret === 1){
+          wx.hideLoading()
+          wx.redirectTo({
+            url:'/pages/orderDetail/orderDetail?uuid=' + data.uuid
+          })
+        }else{
+          wx.showModal({
+            title:'提示',
+            showCancel:false,
+            content:res.data.msg
+          })
+          return wx.hideLoading()
+        }
+      },
+      fail:function (err) {
+        wx.hideLoading()
+        console.log(err)
+      }
     })
   }
 })
