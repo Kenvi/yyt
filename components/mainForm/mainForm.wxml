@@ -13,11 +13,11 @@
       </view>
       <view class="form-group pt10">
         <view class="b">用车时间</view>
-        <picker mode="date" value="{{date}}" start="{{date}}" bindchange="bindDateChange">
+        <picker mode="date" value="{{date}}"  start="{{startDate}}" bindchange="bindDateChange">
           <view  class="icon-date"></view>
           <view>{{date}}</view>
         </picker>
-        <picker mode="time" value="{{time}}" start="{{time}}" bindchange="bindTimeChange">
+        <picker mode="time" value="{{time}}" start="{{startTime}}" bindchange="bindTimeChange">
           <view>{{time}}</view>
         </picker>
       </view>

@@ -13,7 +13,7 @@
 
   <!--预约出发地及目的地选择-->
   <import src="../../components/mainForm/mainForm.wxml" />
-  <template is="mainForm" data="{{beginAddress,endAddress,date,time}}" />
+  <template is="mainForm" data="{{beginAddress,endAddress,date,time,startDate,startTime}}" />
 
   <!--配套服务-->
   <view class="other-form-wrap">

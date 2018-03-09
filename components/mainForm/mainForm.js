@@ -7,6 +7,8 @@ export default {
     beginAddress:'',
     endAddress:'请选择医院或搜索目的地',
     date:'2017-01-01',
+    startDate:'2017-01-01',
+    startTime:'00:00',
     time:'00:00'
   },
   //显示，隐藏地图
@@ -119,8 +121,10 @@ export default {
       }
 
     this.setData({
+      startDate:Y+'-'+_format(M)+'-'+_format(D),
       date:Y+'-'+_format(M)+'-'+_format(D),
-      time:_format(h)+':'+_format(m)
+      time:_format(h)+':'+_format(m),
+      startTime:_format(h)+':'+_format(m)
     })
   }
 }
