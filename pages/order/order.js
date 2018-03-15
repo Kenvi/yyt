@@ -12,7 +12,6 @@ const BMap = new bmap.BMapWX({
 })
 
 const objAssign = require('../../util/objectAssign')
-import noticePage from  '../../components/noticePage/noticePage.js'
 import mainForm from  '../../components/mainForm/mainForm.js'
 import otherForm from  '../../components/otherForm/otherForm.js'
 import addressSelect from  '../../components/addressSelect/addressSelect.js'
@@ -23,7 +22,8 @@ Page({
     serveType:'ambulance',
     serveTit:'救护车预约',
     beginAddressDetail:{},
-    endAddressDetail:{}
+    endAddressDetail:{},
+    agreeNoticePage:false
   },
   onLoad:function (opt) {
     if(opt.orderType) {
@@ -32,7 +32,7 @@ Page({
       })
     }
     const that = this
-    objAssign(that, mainForm,otherForm,noticePage,addressSelect,login,headTitle)
+    objAssign(that, mainForm,otherForm,addressSelect,login,headTitle)
     that.setData(that.data)
     that.getDate()
     that.initMap()
@@ -412,6 +412,19 @@ Page({
 
 
 
+  },
+
+  //医疗转运同意书
+  checkNoticePageAgreement(){
+    this.setData({
+      agreeNoticePage: !this.data.agreeNoticePage
+    })
+  },
+  //
+  showNoticePage(){
+    wx.navigateTo({
+      url:"/pages/noticePage/noticePage"
+    })
   },
 
   //常见问题

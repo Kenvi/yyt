@@ -347,11 +347,19 @@ map#startlocate {
 
 .notice-page {
   position: absolute;
-  z-index: 999;
+  z-index: -10;
   width: 100%;
   top: 0;
-  left: 0;
-  background: #fff; }
+  opacity: 0;
+  left: 100%;
+  background: #fff;
+  display: none; }
+  .notice-page.fade {
+    display: block;
+    transition: .3s;
+    z-index: 999;
+    opacity: 1;
+    left: 0; }
   .notice-page .title {
     display: flex;
     flex-direction: row;
