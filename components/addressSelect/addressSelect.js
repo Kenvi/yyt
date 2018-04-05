@@ -61,6 +61,11 @@ export default {
     })
   },
   hideAddressSelect:function () {
+    if(wx.showTabBar){
+      wx.showTabBar({
+        animation:true
+      })
+    }
     this.setData({
       isShowAddressSelect:false,
       addressType:''
@@ -152,9 +157,11 @@ export default {
       this.getDistance(lat,lng,lat1,lng1)
     }
 
-    wx.showTabBar({
-      animation:true
-    })
+    if(wx.showTabBar){
+      wx.showTabBar({
+        animation:true
+      })
+    }
   },
   //获取当前定位坐标
   getLocation:function (setBeginAddress) {
@@ -367,6 +374,14 @@ export default {
       lat1 = item.lat1
       lng1 = item.lng1
     }else{ // 如果没有该参数则是输入关键字搜索的结果，需要对结果数据重新组装
+      if(!item.location){
+        wx.showModal({
+          title:'提示',
+          content:'该地点无明确位置，请重新选择其他地点',
+          showCancel:false
+        })
+        return
+      }
       data.endAddress = item.name
       data.endAddressDetail = {
         iconPath: "/images/marker.png",

@@ -23,9 +23,11 @@ Page({
   onReady: function() {
     // Do something when page ready.
     if(app.globalData.orderParams !== null){
-      this.setData({
-        phone: app.globalData.orderParams.user.tel
-      })
+      if(app.globalData.orderParams.user !== null){
+        this.setData({
+          phone: app.globalData.orderParams.user.tel
+        })
+      }
     }
 
   },
@@ -48,10 +50,6 @@ Page({
     // return custom share data when user share.
   },
   submitSuggestion(e){
-    wx.showLoading({
-      title:'Loading',
-      mask:true
-    })
 
     let data = e.detail.value
     data.formid = e.detail.formId
@@ -64,7 +62,7 @@ Page({
         showCancel:false,
         content:'请输入正确的手机号'
       })
-      return wx.hideLoading()
+      return
     }
 
     if(data.content == ''){
@@ -73,18 +71,23 @@ Page({
         showCancel:false,
         content:'意见不能为空'
       })
-      return wx.hideLoading()
+      return
     }
 
     if(app.globalData.userId === null){
       this.setData({
         showLoginModal:true
       })
-      return wx.hideLoading()
+      return
     }
 
     data.userid = app.globalData.userId
     data.openid = app.globalData.orderParams.user.openid
+
+    wx.showLoading({
+      title:'Loading',
+      mask:true
+    })
 
     wx.request({
       url: 'https://www.emtsos.com/emApp.do',
