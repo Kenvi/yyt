@@ -198,6 +198,7 @@ App({
     userId:null,
     cityList:null,
     orderParams:null,
-    menuList:[]
+    menuList:[],
+    newsDetailHtml:''
   }
 })

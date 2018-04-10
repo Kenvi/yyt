@@ -1,8 +1,9 @@
 <view class="news-detail-wrap">
   <view class="content-title">{{detailTitle}}</view>
   <view class="content-date">{{detailDate}}</view>
-  <view class="content-item" wx:for="{{newsDetail.informationContentList}}" wx:key="{{index}}">
-    <view wx:if="{{item.type === 0}}">{{item.content}}</view>
-    <image wx:if="{{item.type === 1}}" src="{{item.content}}" mode="widthFix"></image>
-  </view>
+  <!--<view class="content-item" wx:for="{{newsDetail.informationContentList}}" wx:key="{{index}}">-->
+    <!--<view wx:if="{{item.type === 0}}">{{item.content}}</view>-->
+    <!--<image wx:if="{{item.type === 1}}" src="{{item.content}}" mode="widthFix"></image>-->
+  <!--</view>-->
+  <rich-text class="rich-text" nodes="{{newsDetailHtml}}" type="text"></rich-text>
 </view>

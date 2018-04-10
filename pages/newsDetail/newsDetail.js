@@ -7,7 +7,8 @@ Page({
   data:{
     newsDetail:[],
     detailTitle:'',
-    detailDate:''
+    detailDate:'',
+    newsDetailHtml:''
   },
   onLoad:function (opts) {
     const that = this
@@ -36,7 +37,8 @@ Page({
           that.setData({
             newsDetail:content,
             detailTitle:opts.title,
-            detailDate:opts.date
+            detailDate:opts.date,
+            newsDetailHtml: app.globalData.newsDetailHtml.replace(/<img/g,'<img style="max-width:100%;"')
           })
         })
 

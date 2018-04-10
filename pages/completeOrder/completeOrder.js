@@ -59,7 +59,7 @@ Page({
         data = {
           statusTitle:'下单成功',
           statusImage:'https://www.emtsos.com/image/ordersta1.png',
-          statusText:'的医疗转运预约下单成功，请保持电话畅通，五分钟内客服专员将与您确认预约信息。'
+          statusText:'的医疗转运预约下单成功，请保持电话畅通，五分钟内966120客服专员将与您确认预约信息。'
         }
         break
       case '5' :

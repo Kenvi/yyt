@@ -21,6 +21,7 @@ Page({
 
   },
   toPageNewsDetail:function (e) {
+    app.globalData.newsDetailHtml = e.currentTarget.dataset.description
     wx.navigateTo({
       url:'/pages/newsDetail/newsDetail?id=' + e.currentTarget.dataset.id + '&title=' + e.currentTarget.dataset.title + '&date=' +e.currentTarget.dataset.date
     })
