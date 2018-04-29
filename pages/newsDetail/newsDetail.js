@@ -8,7 +8,8 @@ Page({
     newsDetail:[],
     detailTitle:'',
     detailDate:'',
-    newsDetailHtml:''
+    newsDetailHtml:'',
+    detailUrl:'https://www.emtsos.com/trans/mini/newsDetail.html?id='
   },
   onLoad:function (opts) {
     const that = this
@@ -27,20 +28,24 @@ Page({
       })
 
     }else{
-      wx.showLoading({
-        title:'加载中',
-        mask:true
+      // wx.showLoading({
+      //   title:'加载中',
+      //   mask:true
+      // })
+      this.setData({
+        detailUrl:that.data.detailUrl + opts.id
       })
-      app.api.getInformationContent(opts.id)
-        .then(function (content) {
-          wx.hideLoading()
-          that.setData({
-            newsDetail:content,
-            detailTitle:opts.title,
-            detailDate:opts.date,
-            newsDetailHtml: app.globalData.newsDetailHtml.replace(/<img/g,'<img style="max-width:100%;"')
-          })
-        })
+      // app.api.getInformationContent(opts.id)
+      //   .then(function (content) {
+      //     wx.hideLoading()
+      //     that.setData({
+      //       newsDetail:content,
+      //       detailTitle:opts.title,
+      //       detailDate:opts.date,
+      //       newsDetailHtml: app.globalData.newsDetailHtml.replace(/<img/g,'<img style="max-width:100%;"'),
+      //
+      //     })
+      //   })
 
 
     }
