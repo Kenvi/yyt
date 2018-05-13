@@ -1,0 +1,147 @@
+view {
+  font-size: 28rpx; }
+
+.page-tit {
+  background: #d72da2; }
+  .page-tit .tit {
+    font-size: 36rpx; }
+
+.head-status-img {
+  height: 230rpx;
+  background-color: #eee;
+  background-size: 710rpx 142rpx;
+  background-position: center;
+  background-repeat: no-repeat; }
+  .head-status-img.status-0 {
+    background-image: url("https://www.emtsos.com/trans/mini/images/referral-order-status-start.png"); }
+  .head-status-img.status-1 {
+    background-image: url("https://www.emtsos.com/trans/mini/images/referral-order-status-1.png"); }
+  .head-status-img.status-2, .head-status-img.status-7 {
+    background-image: url("https://www.emtsos.com/trans/mini/images/referral-order-status-confirm.png"); }
+  .head-status-img.status-3 {
+    background-image: url("https://www.emtsos.com/trans/mini/images/referral-order-status-3.png"); }
+  .head-status-img.status-15 {
+    background-image: url("https://www.emtsos.com/trans/mini/images/referral-order-status-4.png"); }
+  .head-status-img.status-5 {
+    background-image: url("https://www.emtsos.com/trans/mini/images/referral-order-status-finish.png"); }
+  .head-status-img.status-6, .head-status-img.status-11, .head-status-img.status-14 {
+    display: none; }
+
+.order-type {
+  display: flex;
+  align-items: center;
+  height: 84rpx;
+  padding: 0 20rpx;
+  border-bottom: 2rpx solid #eee;
+  justify-content: space-between; }
+  .order-type > view {
+    display: flex;
+    align-items: center; }
+    .order-type > view view {
+      margin-right: 25rpx; }
+      .order-type > view view.icon-order-type {
+        display: inline-block;
+        width: 25rpx;
+        height: 27rpx;
+        background: url(https://www.emtsos.com/trans/mini/images/icon-order-type.png) center no-repeat;
+        background-size: contain;
+        vertical-align: middle; }
+      .order-type > view view.icon-status {
+        display: inline-block;
+        width: 17rpx;
+        height: 23rpx;
+        background: url(https://www.emtsos.com/trans/mini/images/icon-status.png) center no-repeat;
+        background-size: contain;
+        vertical-align: middle; }
+
+.order-detail {
+  padding: 20rpx; }
+  .order-detail .content-1 {
+    padding: 30rpx 20rpx 10rpx;
+    border: 2rpx solid #dcdcdc; }
+    .order-detail .content-1 table tr td {
+      padding: 0 0 20rpx 0rpx; }
+      .order-detail .content-1 table tr td:first-child {
+        display: flex;
+        align-items: center;
+        width: 220rpx; }
+        .order-detail .content-1 table tr td:first-child span {
+          margin-right: 10rpx;
+          position: relative; }
+      .order-detail .content-1 table tr td:last-child {
+        position: relative;
+        padding-left: 0; }
+      .order-detail .content-1 table tr td .icon-phone {
+        position: relative;
+        left: 20rpx;
+        top: -5rpx; }
+  .order-detail .content-2 {
+    padding: 40rpx 0rpx; }
+    .order-detail .content-2 .tit {
+      padding-bottom: 30rpx; }
+    .order-detail .content-2 .intro-content {
+      padding: 20rpx;
+      border: 2rpx solid #dcdcdc;
+      min-height: 180rpx; }
+  .order-detail .content-3 {
+    padding-bottom: 40rpx; }
+    .order-detail .content-3 .tit {
+      padding-bottom: 30rpx;
+      display: flex;
+      justify-content: space-between; }
+    .order-detail .content-3 ul {
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap; }
+      .order-detail .content-3 ul li {
+        width: 25%;
+        margin-bottom: 20rpx;
+        height: 150rpx; }
+        .order-detail .content-3 ul li > view {
+          display: flex;
+          width: 130rpx;
+          height: 100%;
+          margin: 0 auto;
+          background: #eee;
+          align-items: center;
+          justify-content: center;
+          /*padding: 0 rem(20);*/ }
+          .order-detail .content-3 ul li > view image {
+            max-width: 100%;
+            max-height: 100%;
+            width: 100%;
+            height: 100%;
+            background: url("https://www.emtsos.com/trans/mini/images/loading-img.png") center no-repeat;
+            background-size: cover; }
+
+.update-order-status {
+  padding: 40rpx 20rpx 150rpx;
+  background: #eee; }
+  .update-order-status .info {
+    color: #d72da2;
+    line-height: 1.4;
+    text-align: justify; }
+  .update-order-status .btn-wrap {
+    display: flex;
+    align-self: center;
+    justify-content: space-between;
+    margin-top: 30rpx; }
+    .update-order-status .btn-wrap .btn {
+      background: #d72da2;
+      text-align: center;
+      width: 330rpx;
+      padding: 20rpx 0;
+      border-radius: 8rpx;
+      color: #fff; }
+      .update-order-status .btn-wrap .btn:hover, .update-order-status .btn-wrap .btn:active {
+        background: #b42487; }
+
+.login-btn {
+  height: 100rpx;
+  background: #d72da2;
+  text-align: center;
+  color: #fff;
+  line-height: 100rpx;
+  position: fixed;
+  bottom: 0;
+  width: 100%; }

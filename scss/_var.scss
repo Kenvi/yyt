@@ -1,0 +1,33 @@
+//config
+$baseUrl:'https://www.emtsos.com/';
+$imgBaseUrl:$baseUrl+'trans/mini/images/';
+
+
+//rem
+
+
+@function rem($property){
+  @return $property * 1rpx;
+}
+
+// color
+$theme:#d72da2;
+$btnAct:#b42487;
+$eee:#eee;
+
+//base
+view{
+  font-size: rem(28);
+}
+
+//icon
+@mixin icon($w,$h,$img,$display:inline-block,$url:$imgBaseUrl){
+
+  display:$display;
+  width:rem($w);
+  height:rem($h);
+  background:url(#{$url}#{$img}.png) center no-repeat;
+  background-size:contain;
+  vertical-align:middle;
+
+}

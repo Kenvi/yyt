@@ -13,7 +13,8 @@
     "pages/about/about",
     "pages/faq/faq",
     "pages/feedback/feedback",
-    "pages/noticePage/noticePage"
+    "pages/noticePage/noticePage",
+    "pages/referralOrderDetail/referralOrderDetail"
   ],
   "tabBar": {
     "color":"#777",

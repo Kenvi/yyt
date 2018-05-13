@@ -58,6 +58,13 @@
 					"pathName": "pages/orderDetail/orderDetail",
 					"query": "uuid=1516980705635",
 					"scene": "1014"
+				},
+				{
+					"id": 4,
+					"name": "referralOrderDetail",
+					"pathName": "pages/referralOrderDetail/referralOrderDetail",
+					"query": "id=1516980705635",
+					"scene": "1014"
 				}
 			]
 		}

@@ -2,7 +2,9 @@
  * Created by Administrator on 2017/5/30/030.
  */
 "use strict"
+import config from '../config/config'
 export default {
+  ...config,
   getIndexInformation:function () {
     return new Promise(function (resolve,reject) {
       wx.request({

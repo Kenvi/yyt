@@ -1,0 +1,66 @@
+<view class="page-tit has-back">
+  <view bindtap="backToLastPage" class="back"></view>
+  <view class="tit">转诊订单详情</view>
+</view>
+<view class="head-status-img {{'status-'+status}}"></view>
+<view class="order-type">
+  <view>
+    <view class="icon-order-type"></view>
+    <view>订单类型：转诊申请</view>
+  </view>
+  <view>
+    <view class="icon-status"></view>
+    <view>
+      状态：{{statusName}}
+    </view>
+  </view>
+</view>
+<view class="order-detail">
+  <view class="content-1">
+    <table>
+      <tr><td>预约转院时间：</td><td>{{checkInTime}}</td></tr>
+      <tr><td>接诊医院科室：</td><td>{{currentDepartment.specialtyname}} {{checkInHospitalDetail.hospitalname}}</td></tr>
+      <tr><td>转出医院：</td><td>{{checkOutHospitalDetail.hospitalname}}</td></tr>
+      <tr><td>患者姓名：</td><td>{{userName}}</td></tr>
+      <tr><td>患者性别：</td><td v-if="userSex==1">男</td><td v-if="userSex==2">女</td></tr>
+      <tr v-if="age"><td>患者年龄：</td><td>{{age}}</td></tr>
+      <tr><td>转诊方式：</td><td>{{serviceOptionType.serviceoptiontypename }}<a v-if="transMobile" :href="'tel:'+transMobile" class="icon-phone"></a></td></tr>
+      <tr><td>患者电话：</td><td><a :href="'tel:'+userPhone">{{userPhone}}</a></td></tr>
+      <tr><td>转出医院医生：</td><td>{{checkOutDr}}</td></tr>
+      <tr><td>医生联系电话：</td><td><a :href="'tel:'+checkOutDrPhone">{{checkOutDrPhone}}</a></td></tr>
+    </table>
+  </view>
+  <view class="content-2">
+    <view class="tit">病情描述与诊断：</view>
+    <view class="intro-content">{{sickIntro}}</view>
+  </view>
+  <view class="content-3" v-show="serverIds.length">
+    <view class="tit">
+      <view>相关病历：</view>
+      <!--<view>更多&gt;</view>-->
+    </view>
+    <ul>
+      <li v-for="img in serverIds">
+        <view bindtap="previewImg(img.photo)">
+          <image v-lazy="img.photo" alt="" />
+        </view>
+      </li>
+
+    </ul>
+  </view>
+</view>
+<button type="primary" open-type="contact">转发</button>
+
+<view v-if="status < 2 && ((userInfo.hospitalId && userInfo.hospitalId ==checkInHospitalDetail.hospitalid) || userInfo.usertype == 2)" class="update-order-status">
+  <view class="info">病人如果符合入院条件，并且在预约时间内有空余病床，允许入院？</view>
+  <view class="btn-wrap">
+    <view bindtap="updateTransOrderStatus('agree')" class="btn">同意入院申请</view>
+    <view bindtap="updateTransOrderStatus('disagree')" class="btn">不同意</view>
+  </view>
+</view>
+
+<view wx:if="{{account==''}}" bindtap="$store.dispatch('changeShowLogin',true)" class="login-btn">登陆处理该订单</view>
+
+<!--登陆/注册/忘记密码-->
+<import src="../../components/login/login.wxml" />
+<template is="login" data="{{showLoginModal,loginType,countDownSeconds,phoneNumber,messageCode,password}}" />
