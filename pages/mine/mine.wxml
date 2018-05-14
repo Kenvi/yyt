@@ -1,8 +1,12 @@
 <view class="user-info-wrap">
-  <view class="user-info">
+  <view wx:if="{{!noAuth}}" class="user-info">
     <view bindtap="userLogin" class="avatar" style="background: url({{userInfo.avatarUrl || userInfo.photo}}) center no-repeat;background-size: 100%;"></view>
     <view bindtap="userLogin" class="user-name">{{userInfo.nickName || userInfo.username}}</view>
   </view>
+  <button wx:else open-type="getUserInfo" class="user-info"  bindgetuserinfo="bindGetUserInfo">
+    <view class="avatar" style="background: url({{userInfo.avatarUrl || userInfo.photo}}) center no-repeat;background-size: 100%;"></view>
+    <view class="user-name">{{userInfo.nickName || userInfo.username}}</view>
+  </button>
 </view>
 <view class="data-count">
   <view class="content">

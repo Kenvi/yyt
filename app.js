@@ -13,30 +13,30 @@ App({
     }else{
       that.globalData.cityList = CityList
     }
-    that.checkWxSession()
-      .then(function () {
-        that.getUserInfo()
-      })
-      .then(function () {
+    that.checkWxSession(()=> {
+      that.getUserInfo().catch(err=>{
+        // console.log(err)
+      }).then( ()=> {
         that.getParams()
       })
 
+    })
+
+
   },
-  checkWxSession:function (cb) {
+  checkWxSession (cb) {
     const that = this
-    return new Promise(function (resolve,reject) {
-      wx.checkSession({
-        success:function (res) {
-          // console.log(res)
-          // typeof cb == "function" && cb()
-          resolve()
-        },
-        fail:function (err) {
-          console.log(err)
-          that.wxLogin()
-          reject(err)
-        }
-      })
+    that.getAuthLocation()
+    wx.checkSession({
+      success:function (res) {
+        // console.log(res)
+        // typeof cb == "function" && cb()
+        typeof cb == "function" && cb()
+      },
+      fail:function (err) {
+        console.log(err)
+        that.wxLogin()
+      }
     })
 
   },
@@ -50,11 +50,11 @@ App({
           resolve()
         },
         fail:function () {
-          wx.showModal({
-            title:'提示',
-            content:'用户拒绝授权，无法获取微信信息，请点击右上角->关于易医通->点击右上角->设置->允许获取用户信息授权',
-            showCancel:false
-          })
+          // wx.showModal({
+          //   title:'提示',
+          //   content:'用户拒绝授权，无法获取微信信息，请点击右上角->关于易医通->点击右上角->设置->允许获取用户信息授权',
+          //   showCancel:false
+          // })
           reject()
         }
       })
@@ -65,7 +65,7 @@ App({
     //调用登录接口
     wx.login({
       success: function (res) {
-        that.getUserInfo()
+        // that.getUserInfo()
         if (res.code) {
           //发起网络请求
           wx.request({
@@ -86,6 +86,23 @@ App({
           })
         } else {
           console.log('获取用户登录态失败！' + res.errMsg)
+        }
+      }
+    })
+  },
+  getAuthLocation(){
+    wx.getSetting({
+      success(res) {
+        console.log(res)
+        if (!res.authSetting['scope.userLocation']) {
+          wx.authorize({
+            scope: 'scope.userLocation',
+            success() {
+              // 用户已经同意小程序使用位置
+              // wx.startRecord()
+              console.log('获取位置授权成功')
+            }
+          })
         }
       }
     })

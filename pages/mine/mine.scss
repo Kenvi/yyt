@@ -9,6 +9,14 @@
   position: absolute;
   top: 15%;
   width: 100%;
+  background: none;
+  border:none;
+  &:after{
+    border: none;
+  }
+  &.button-hover{
+    background: none;
+  }
   .avatar{
     width: 170rpx;
     height: 170rpx;

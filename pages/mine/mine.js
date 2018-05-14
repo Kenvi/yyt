@@ -16,7 +16,8 @@ Page({
       userScore2:0,
       userScore3:0
     },
-    menuList:{}
+    menuList:{},
+    noAuth:false
   },
   onLoad: function() {
     const that = this
@@ -42,7 +43,36 @@ Page({
 
             that.setMenuList()
           })
+      }).catch(()=>{
+        that.setData({
+          noAuth:true
+        })
+    })
+  },
+  bindGetUserInfo(e){
+    const that = this
+    if(e.detail.userInfo){
+      app.globalData.userInfo = e.detail.userInfo
+      app.getParams()
+        .then(function () {
+          if(app.globalData.userId === null){
+            that.setData({
+              showLoginModal:true
+            })
+
+          }else{
+            that.setUserInfo()
+            that.setMyInfo()
+          }
+
+          that.setMenuList()
+        })
+    }else{
+      this.setData({
+        showLoginModal:false
       })
+    }
+
   },
   setUserInfo:function () {
     this.setData({
